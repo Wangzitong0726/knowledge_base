@@ -1,0 +1,34 @@
+# ── 凭据与个人配置：绝不进仓库 ──────────────────────────────
+# 作业要求原文：「仓库和截图里不要出现 API key、密码和个人账号」
+#
+# ⚠️ 规则后面**不能写行尾注释**。Git 只把**行首**的 # 当注释，行尾的 # 及其后
+# 文字会被当成规则本身的一部分。旧版写成 `config.json   # 含个人邮箱…`，
+# 于是这条规则变成一个字面量、谁都不匹配——**看着排除了，实际一条没排除**，
+# 一口气暂存了 515 个文件（含 config.json、models/ 1.19GB、knowledge_base/ 457MB）。
+# 注释一律另起一行。
+.env
+config.json
+config.local.json
+
+# ── 语料与中间产物：体积大、且都能重跑出来 ──────────────────
+# 作业要求原文：「财报 PDF 不必传进仓库，写清下载脚本即可」。
+# 下载脚本在 scripts/fetch/，重建顺序见 README「跑起来」。
+knowledge_base/
+data/raw/
+data/extracted/
+data/*.jsonl
+data/*.npy
+data/*_demo.*
+models/
+
+# ── 探测阶段下载回来的原件（脚本与报告留下，原件不留）──────
+_probe/*.pdf
+_probe/*.xml
+_probe/*.html
+_probe/*.jsonl
+
+# ── 缓存 ────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/

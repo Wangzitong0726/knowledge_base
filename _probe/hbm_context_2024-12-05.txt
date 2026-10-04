@@ -1,0 +1,21 @@
+ions to General Prohibition Three 7. Revision to General Order No. 4 Temporary General License 8. Revisions to &ldquo;U.S. Persons&rdquo; Restrictions in &sect;&thinsp;744.6 9. Revisions to &sect;&thinsp;770.2 10. Conforming Changes to Foreign Direct Product Rules 11. Conforming Changes to Section 742.4 C. Addition of High Bandwidth Memory (HBM) Controls 1. Addition of New 3A090.c 2. Conforming Changes for Addition of 3A090.c 3. Addition of New License Exception HBM for 3A090.c D. Clarification to the EAR: Software Keys E. Revisions to the Commerce Control List 1. Revisions to 3B001 2. Revisions to 3B002 3. Revision of ECCNs 3B991 and 3B992 4. Addition 
+
+=== 上下文分隔 ===
+
+tion Three 7. Revision to General Order No. 4 Temporary General License 8. Revisions to &ldquo;U.S. Persons&rdquo; Restrictions in &sect;&thinsp;744.6 9. Revisions to &sect;&thinsp;770.2 10. Conforming Changes to Foreign Direct Product Rules 11. Conforming Changes to Section 742.4 C. Addition of High Bandwidth Memory (HBM) Controls 1. Addition of New 3A090.c 2. Conforming Changes for Addition of 3A090.c 3. Addition of New License Exception HBM for 3A090.c D. Clarification to the EAR: Software Keys E. Revisions to the Commerce Control List 1. Revisions to 3B001 2. Revisions to 3B002 3. Revision of ECCNs 3B991 and 3B992 4. Addition of EC
+
+=== 上下文分隔 ===
+
+ons in &sect;&thinsp;744.6 9. Revisions to &sect;&thinsp;770.2 10. Conforming Changes to Foreign Direct Product Rules 11. Conforming Changes to Section 742.4 C. Addition of High Bandwidth Memory (HBM) Controls 1. Addition of New 3A090.c 2. Conforming Changes for Addition of 3A090.c 3. Addition of New License Exception HBM for 3A090.c D. Clarification to the EAR: Software Keys E. Revisions to the Commerce Control List 1. Revisions to 3B001 2. Revisions to 3B002 3. Revision of ECCNs 3B991 and 3B992 4. Addition of ECCN 3B993 5. Addition of ECCN 3B994 6. Revision to ECCN 3D002 7. Addition of ECCN 3D992 8. Addition of ECCN 3D993 9. Addition
+
+=== 上下文分隔 ===
+
+ductor manufacturing equipment and related items, creating new Foreign Direct Product (FDP) rules for certain commodities to impair the capability to produce &ldquo;advanced-node integrated circuits&rdquo; (&ldquo;advanced-node ICs&rdquo;) by certain destinations or entities of concern, adding new controls for certain high bandwidth memory important for advanced computing, and clarifying controls on certain software keys that allow for the use of items such as software tools. This IFR publishes concurrently with another BIS final rule entitled, &ldquo;Additions and Modifications to the Entity List; and Removals from the Validated End-User (VEU) Program&
+
+=== 上下文分隔 ===
+
+compliance date of December 2, 2024. The changes made in this IFR in amendatory instructions 4, 5, 15, 16, 17, 19, 20, 21, 23, 25, 29, and 31 (ECCNs 3B001, 3B002, 3B991, 3B992, 3B993, 3B994, 3A090, 3D001 (related to 3A090.c and 3B commodities), 3D002, 3D992, 3D993, 3D994, 3E001 (related to 3A090.c and 3B commodities) (HBM controls and related changes), 3E992, 3E993, and 3E994) FN5, and FDP rules, and related changes, and DRAM definition changes) have a compliance date of December 31, 2024. Comments due date: Comments must be received by BIS no later than January 31, 2025. ADDRESSES: Comments on this IFR may be submitted to the Federal 
+
+=== 上下文分隔 ===
+
+on of new FDP rules also requires certain additional revisions to parts 734 and 736, which are described below under sections III.A.4 (regarding the FDP rules) and III.B.1 (regarding de minimis changes) of this preamble. Additionally, BIS is imposing new controls on certain high-bandwidth ( printed page 96792) memory (HBM) commodities that provide necessary memory capacity and bandwidth needed for advanced artificial intelligence (AI) models and supercomputing applications. Such applications can enable advanced military and intelligence applications, lower the barriers to entry for non-experts to develop WMD, support powerful offensive
