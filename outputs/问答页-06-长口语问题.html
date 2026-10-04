@@ -1,0 +1,200 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>内存产业知识库 · 带出处问答</title><style>
+:root{--ink:#1a1a1a;--ink2:#4a4a4a;--ink3:#8a8a8a;--line:#e3e3e3;
+--bg:#fff;--bg2:#f7f7f5;--accent:#1f6f4a;--accent2:#0f4c75;--warn:#b45309}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg2);color:var(--ink);
+font:15px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}
+h1{font-size:22px;margin:0 0 4px}
+.sub{color:var(--ink3);font-size:13px;margin-bottom:22px}
+form{display:flex;gap:8px;margin-bottom:22px}
+input[type=text]{flex:1;padding:12px 14px;border:1px solid var(--line);
+border-radius:8px;font-size:15px;font-family:inherit}
+input[type=text]:focus{outline:2px solid var(--accent2);outline-offset:-1px;border-color:transparent}
+button{padding:12px 22px;border:0;border-radius:8px;background:var(--accent);
+color:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}
+button:disabled{background:var(--ink3);cursor:wait}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:10px;
+padding:18px 20px;margin-bottom:16px}
+.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;
+padding:2px 8px;border-radius:4px;margin-bottom:10px}
+.b-model{background:#eaf4ee;color:var(--accent)}
+.b-src{background:#eef1f6;color:var(--accent2)}
+.bdiag{background:var(--bg2);color:var(--ink3)}
+.answer{white-space:pre-wrap}
+.answer .cite{color:var(--accent2);font-weight:700;font-size:12px;
+vertical-align:super;text-decoration:none}
+.answer .miss{color:var(--warn);font-weight:700}
+.hit{border-left:3px solid var(--line);padding-left:14px;margin:14px 0 0}
+.hit .no{color:var(--accent2);font-weight:700}
+.hit .prov{font-size:12px;color:var(--ink3);margin:2px 0 8px;line-height:1.6}
+.hit .txt{background:var(--bg3,#fbfbf9);border:1px solid var(--line);
+border-radius:6px;padding:10px 12px;font-size:13.5px;white-space:pre-wrap;
+max-height:260px;overflow:auto;color:var(--ink2)}
+.hit .diag{font-size:11px;color:var(--ink3);margin-top:6px;font-family:ui-monospace,Consolas,monospace}
+.hit a{color:var(--accent2);word-break:break-all}
+.err{background:#fdf2f2;border-color:#f5c2c2;color:#9b2226}
+.muted{color:var(--ink3);font-size:13px}
+</style><div class=wrap><h1>内存产业知识库 · 带出处问答</h1><div class=sub>语料：A 股内存产业链年报/半年报 136 份（含 44 份交易所同源副本，去重 92）· SEC 10-K · 三星/SK 海力士 IR · BIS 规则与 CFR 条文 · 共 81,895 块 ｜ 检索：BM25 + 向量（RRF 融合）</div><form method=get><input type=text name=q autofocus placeholder="例如：3A090.c 的管制门槛是多少？" value="我最近在看内存这块，感觉这两年 HBM 突然就热起来了，好多做存储的公司都在讲。我想知道，美国那边的出口管制到底卡的是什么？是卡整个 DRAM，还是只卡 HBM？卡的具体是哪一类，有没有一个明确的技术线？"><button>提问</button></form><div class="card err"><b>作答失败</b><div class=muted>思考链吃光了 max_tokens，没留下正文（max_tokens=4000，思考 12567 字）——调大 max_tokens</div></div><div class=card><span class="badge b-src">语料原文 · 逐字引用</span><div class=muted>检索到 10 条，按 RRF 融合分排序</div><div class=hit id=hit1><span class=no>[1]</span> BIS · Foreign-Produced Direct Product Rule Additions, and Refinements to Controls for Advanced Computing and Semiconductor Manufacturing Items · p63–65 · 2024-12-05<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt</a></div><div class=txt>BIS uses the bandwidth density--rather than just the bandwidth--to ensure controls will still apply if an IC uses a larger quantity of smaller HBM chips at little additional cost.
+As indigenous PRC advanced computing ICs rely upon imported HBM, new ECCN 3A090.c implements restrictions to slow PRC attempts to indigenize advanced AI chip production, which, as explained above,
+[[Page 96800]]
+raises national security and foreign policy concerns.
+Under ECCN 3A090, this IFR adds a new items paragraph .c to impose a new CCL-based control for certain HBM commodities.
+Also, under the advanced computing FDP rule in Sec.
+734.9(h), foreign-produced 3A090.c items will be subject to the EAR if they meet the scope of that FDP rule.</div><div class=diag>rrf=0.0550 · 通道 +dense · bm25#— · dense#8 sim=0.6728</div></div><div class=hit id=hit2><span class=no>[2]</span> BIS · Foreign-Produced Direct Product Rule Additions, and Refinements to Controls for Advanced Computing and Semiconductor Manufacturing Items · p65 · 2024-12-05<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt</a></div><div class=txt>Advanced computing ICs containing co-packaged logic and HBM are not controlled by 3A090.c, though they may be controlled by other ECCNs such as 3A090.a or 3A090.b depending on their Total Processing Performance (TPP) and performance density.
+This IFR imposes these new controls on HBM stacks under ECCN 3A090.c because these commodities are an important part of the ``production&#x27;&#x27; process for making advanced computing ICs, which prior to this IFR were not being controlled under ECCN 3A090.
+In order to more effectively address the national security and foreign policy concerns which are being addressed under ECCN 3A090, BIS added a control on HBM to prevent the PRC, as well as other destinations of concern, from producing advanced computing ICs incorporating HBM.</div><div class=diag>rrf=0.0531 · 通道 +dense · bm25#— · dense#9 sim=0.6713</div></div><div class=hit id=hit3><span class=no>[3]</span> BIS · 15 CFR 年度版（含 part 774 CCL） · § 740.25 License Exception High Bandwidth Memory · p332 · 2025<div class=prov><br><a href="https://www.govinfo.gov/content/pkg/CFR-2025-title15-vol2/xml/CFR-2025-title15-vol2.xml" target=_blank>https://www.govinfo.gov/content/pkg/CFR-2025-title15-vol2/xml/CFR-2025-title15-vol2.xml</a></div><div class=txt>§ 740.25 License Exception High Bandwidth Memory (HBM).
+(a) Scope.
+This License Exception High Bandwidth Memory (HBM) authorizes the export, reexport, or transfer (in-country) of items specified in ECCN 3A090.c on the Commerce Control List (CCL) in supplement no.
+1 to part 774 if all terms and conditions within this section are met.
+(b) Exporter, reexporter, transferor.
+The exporter, reexporter, or transferor must be headquartered in the United States or a destination specified in Country Group A:5 of supplement no.
+1 to this part, without an ultimate parent headquartered in Macau or a destination specified in Country Group D:5 of supplement no.
+1 to this part.
+(c) Conditions.</div><div class=diag>rrf=0.0527 · 通道 +dense · bm25#— · dense#2 sim=0.7410</div></div><div class=hit id=hit4><span class=no>[4]</span> BIS · Foreign-Produced Direct Product Rule Additions, and Refinements to Controls for Advanced Computing and Semiconductor Manufacturing Items · p69 · 2024-12-05<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt</a></div><div class=txt>1 to part 740, without an ultimate parent headquartered in Macau or a destination specified in Country Group D:5 of supplement no.
+1 to part 740.
+No other exporter, reexporter, or transferor may use License Exception HBM.
+This IFR adds paragraph (c) (Conditions) to specify that exports, reexports, or transfers (in-country) are authorized under this License Exception HBM only when the 3A090.c item has a memory bandwidth density less than 3.3 GB/s/mm[supcaret]2.
+Only HBM at less than this parameter may be authorized under License Exception HBM.
+HBM at equal to or greater than this parameter referenced under paragraph (c) are of greater sensitivity, so those HBM of greater sensitivity are not eligible for HBM to ensure U.S.
+national security and foreign policy interests are protected.</div><div class=diag>rrf=0.0526 · 通道 +dense · bm25#— · dense#0 sim=0.7492</div></div><div class=hit id=hit5><span class=no>[5]</span> 佰维存储 · 2025年年度报告 · (三) 所处行业情况 · p30 · 2026-03-20<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2026-03-20/1225020225.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2026-03-20/1225020225.PDF</a></div><div class=txt>根据TrendForce 数
+据，2025 年第三季度的DRAM 市场上，SK 海力士、三星、美光、长鑫存储的市场份额分别为33.2%、
+32.6%、25.7%、5.8%。
+根据TrendForce 报告，得益于数据中心的DDR5 及HBM（高带宽内存）
+需求上升，2025 年全球DRAM 市场规模（含HBM）为1,657 亿美元，预计2026 年市场规模（含
+HBM）将同比增长144%，增长至4,043 亿美元。
+DRAM 具有读写延迟低、随机访问快、带宽持续提升等特点，是电子设备与服务器的关键运
+行内存（Memory），主要应用于AI 服务器/通用服务器、PC、智能手机等。
+随着生成式人工智能
+应用加速渗透，电子设备/服务器对于内存的带宽以及容量的要求越来越高，DRAM 需求量持续提
+升，市场前景广阔。
+3）HBM 行业概况
+HBM（High Bandwidth Memory）作为基于3D 堆栈工艺的高性能内存（Memory），打破了
+内存带宽及功耗的瓶颈。
+HBM 即高带宽存储器，通过使用先进封装工艺，将多个DRAM 芯片进
+行堆叠，并与GPU 一同进行封装，形成大容量、高带宽的DDR 组合阵列。
+在高性能GPU 需求
+的推动下，HBM 已经成为AI 计算芯片的标配。
+根据Gartner 数据显示，2025 年，HBM 市场规模为307.5 亿美元，同比增长超过100%。
+随
+着AI 大模型的兴起，海量算力需求对芯片内存容量和传输带宽提出更高要求，预计HBM 市场规
+模在2026 年同比增长超过90%，市场规模接近600 亿美元，预计2029 年市场规模约为1,100 亿
+美元，2025 年-2029 年复合增速达到37.5%。
+HBM具有超高带宽、3D堆叠集成等特点，是AI加速计算的核心内存方案，主要应用于GPU/AI
+加速卡及AI 训练、推理服务器。</div><div class=diag>rrf=0.0525 · 通道 bm25+dense · bm25#11 · dense#13 sim=0.6601</div></div><div class=hit id=hit6><span class=no>[6]</span> 佰维存储 · 2024年半年度报告 · (二) 所属行业情况 · p35–36 · 2024-08-23<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2024-08-23/1220952257.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2024-08-23/1220952257.PDF</a></div><div class=txt>季度的DRAM 市场上，三星、SK 海力士、美光、南亚科技的市场份额分别为42.1%、30.8%、
+21.7%、1.7%。
+受益于DRAM 价格的全面回升，以及HBM、DDR5 等产品的出货增长，2024 年
+一季度全球DRAM 市场规模为170.6 亿美元，同比增长74.8%。
+（3）HBM 行业概况
+HBM（High Bandwidth Memory）作为基于3D 堆栈工艺的高性能Memory，打破了内存带宽
+及功耗的瓶颈。
+HBM 即高带宽存储器，通过使用晶圆级封装技术将多个DRAM 芯片进行堆叠，
+形成大容量、高带宽的HBM 模块。
+HBM 与GPU/CPU 之间通过2.5D 晶圆级封装技术进行整合
+互联，构建高性能计算芯片。
+在高性能GPU 需求的推动下，HBM 已经成为AI 计算芯片的标
+配。
+根据Gartner 数据显示，2024 年，HBM 市场规模预计将达到123.2 亿美元，同比增长
+284.2%。
+随着AI 大模型的兴起，海量算力需求催生了对芯片内存容量和传输带宽的更高要求，
+预计到2028 年，HBM 市场规模将增长至300.2 亿美元，年复合增长率为24.9%。
+TrendForce 集
+邦咨询报告显示，2023 年，SK 海力士以53%的市场份额领先HBM 市场，其次是三星（38%）
+和美光（9%）。
+HBM 广泛应用于高性能GPU 和AI 计算芯片中，以满足大规模数据处理和高速
+传输的需求。
+AI 服务器对内存容量和带宽的要求推动了HBM 在各类高性能计算中的普及。
+3、行业发展趋势
+2024 年半年度报告
+（1）下游需求多点开花，AI 推动半导体存储市场规模持续扩容
+存储器产业链下游涵盖智能手机、平板电脑、计算机、网络通信设备、可穿戴设备、物联网
+硬件、安防监控、工业控制、汽车电子等行业以及个人移动存储等多个领域，其中多个细分市场</div><div class=diag>rrf=0.0515 · 通道 bm25+dense · bm25#19 · dense#17 sim=0.6436</div></div><div class=hit id=hit7><span class=no>[7]</span> 佰维存储 · 2024年年度报告 · (三) 所处行业情况 · p50–51 · 2025-04-30<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2025-04-30/1223427605.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2025-04-30/1223427605.PDF</a></div><div class=txt>公司在目前的产品中积极采用各大原厂最新制程的NAND Flash，在嵌入式存储产品方面，
+公司已推出eMMC 到UFS 全系列产品；
+在SSD 产品方面，公司已推出SATA 到PCIe 5.0 全系列
+产品。
+NAND Flash 技术发展
+来源：CFM 闪存市场，佰维存储编制
+（2）DRAM 推出1β或1b 制程节点，生成式AI 推动HBM 需求增长
+随着DRAM 制程技术逼近物理极限，进入20nm 级别后微缩难度剧增，导致DRAM 技术升
+级节奏有所放缓。
+目前，三星、SK 海力士、美光均已进入10nm 第五代（1b/1β nm）阶段，下一
+代（1c 或1γnm）技术研发及量产准备正在进行。
+HBM 作为基于3D 堆栈工艺的高性能DRAM，
+深圳佰维存储科技股份有限公司 2024 年年度报告
+打破内存带宽及功耗瓶颈。
+HBM 即高带宽存储器，通过使用先进封装将多个DRAM 芯片进行堆
+叠，并与GPU 一同进行封装，形成大容量、高带宽的存储应用。
+2024 年，以ChatGPT 为代表的
+生成式AI 带动AI 服务器需求激增，进而带动对HBM 需求的急剧增长。
+目前，SK 海力士、三星
+和美光的HBM 销售收入均持续大幅增长，市场需求旺盛且暂无放缓迹象。
+伴随英伟达Blackwell
+系列GPU 及AMD MI 系列GPU 产品的持续放量，以HBM3e 为代表的高性能HBM 产品需求将
+进一步攀升。
+2024 年，公司DDR5 内存模组和LPDDR5X 嵌入式存储产品持续导入市场。
+DRAM 技术发展
+来源：CFM 闪存市场，佰维存储编制
+（3）AI 手机
+第十四届全国人大三次会议审议的政府工作报告中提出“大力发展智能网联新能源汽车、人
+工智能手机和电脑、智能机器人等新一代智能终端以及智能制造装备”，其中，“人工智能手机
+和电脑”作为新词，首次出现在政府工作报告中。</div><div class=diag>rrf=0.0485 · 通道 bm25+dense · bm25#0 · dense#19 sim=0.6368</div></div><div class=hit id=hit8><span class=no>[8]</span> 佰维存储 · 2023年年度报告 · (三) 所处行业情况 · p46–48 · 2024-04-30<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2024-04-30/1219921152.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2024-04-30/1219921152.PDF</a></div><div class=txt>备需要存储器具有低功耗、高可靠性和足够的存储容量，同时还需要小巧的封装。
+而高性能计算
+2023 年年度报告
+领域则需要存储器具有更高的读写速度、更低的延迟、更好的QoS 和更大的存储容量，并且还需
+要具备更强的数据保护能力。
+公司在目前的产品中积极采用各大原厂最新制程的NAND Flash，在
+嵌入式存储产品方面，覆盖从eMMC 到UFS 3.1 全系列；
+在SSD 产品方面，覆盖从SATA 到PCIe
+4.0 全系列。
+NAND Flash 技术发展
+（2）DRAM 推出1β 或1b 制程节点，生成式AI 推动HBM 需求增长
+随着DRAM 制程技术逼近物理极限，20nm 级别之后微缩难度剧增导致DRAM 制程技术升
+级节奏减缓。
+目前，三星、SK 海力士、美光均已推出1β 或1b 节点的DRAM 技术，下一代技术
+研发正在进行。
+HBM 作为基于3D 堆栈工艺的高性能DRAM，打破内存带宽及功耗瓶颈。
+HBM(High Bandwidth Memory)即高带宽存储器，通过使用先进封装将多个DRAM 芯片进行堆叠，
+并与GPU 一同进行封装，形成大容量、高带宽的存储应用。
+2023 年，以ChatGPT 为代表的生成
+式AI 带动AI 服务器需求激增，进而带动对HBM 需求的急剧增长。
+目前，三星、SK 海力士、美
+光的第四代HBM3 产品均已量产，第五代HBM3E 亦计划于2024 年开始量产。
+对于最先进的第
+六代HBM4，SK 海力士计划在2024 年启动开发，三星和美光则计划分别于2025 和2026 年推出。
+2023 年，公司DDR5 内存模组和LPDDR5 嵌入式存储产品持续导入市场。
+DRAM 技术发展
+2023 年年度报告
+（3）企业级存储市场需求逐渐好转
+根据CFM 闪存市场分析，受国内外经济不确定性影响，2023 年全球服务器市场下滑。
+在高</div><div class=diag>rrf=0.0478 · 通道 bm25+dense · bm25#1 · dense#29 sim=0.6224</div></div><div class=hit id=hit9><span class=no>[9]</span> BIS · 15 CFR 年度版（含 part 774 CCL） · § 742.6 Regional stability · p339 · 2025<div class=prov><br><a href="https://www.govinfo.gov/content/pkg/CFR-2025-title15-vol2/xml/CFR-2025-title15-vol2.xml" target=_blank>https://www.govinfo.gov/content/pkg/CFR-2025-title15-vol2/xml/CFR-2025-title15-vol2.xml</a></div><div class=txt>For the purposes of this paragraph, &#x27;equivalent&#x27; means the item is listed on the country&#x27;s export control list and the country applies the same license review policy.
+To receive assistance in determining countries with equivalent controls, you may submit an advisory opinion request in accordance with § 748.3(c) of the EAR.
+(B) High Bandwidth Memory (HBM).
+A license is required for items specified in ECCNs 3A090.c, 3D001 (for 3A090.c), and 3E001 (for 3A090.c) when exported, reexported, or transferred (in-country) to or within Macau or a destination specified in Country Group D:5 in supplement no.
+1 to part 740 of the EAR.
+The license requirements in this paragraph (a)(6)(i)(B) do not apply to deemed exports or deemed reexports.</div><div class=diag>rrf=0.0465 · 通道 +dense · bm25#— · dense#10 sim=0.6686</div></div><div class=hit id=hit10><span class=no>[10]</span> 佰维存储 · 2024年年度报告 · (三) 所处行业情况 · p48 · 2025-04-30<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2025-04-30/1223427605.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2025-04-30/1223427605.PDF</a></div><div class=txt>电子设备/服务器需要存储的数据量也越来越庞大，NAND Flash 需求量巨大，市场前景广阔。
+2）DRAM 行业概况
+DRAM 是动态随机存取存储器，DRAM 的特征是读写速度快、延迟低，但掉电后数据会丢失，
+常用于计算系统的运行内存（Memory）。
+目前全球主要的DRAM IDM 原厂为三星、SK 海力士
+和美光。
+根据CFM 数据显示，2024 年第三季度的DRAM 市场上，三星、SK 海力士、美光、南
+亚科技的市场份额分别为39.5%、34.7%、20.6%、1.0%。
+根据TrendForce 报告，得益于数据中心
+的DDR5 及HBM（高带宽内存）需求上升，2024 年全球DRAM 市场规模为958.63 亿美元，同
+比增长85%。
+3）HBM 行业概况
+HBM（High Bandwidth Memory）作为基于3D 堆栈工艺的高性能Memory，打破了内存带宽
+及功耗的瓶颈。
+HBM 即高带宽存储器，通过使用先进封装将多个DRAM 芯片进行堆叠，并与GPU
+一同进行封装，形成大容量、高带宽的DDR 组合阵列。
+在高性能GPU 需求的推动下，HBM 已
+经成为AI 计算芯片的标配。
+根据Gartner 数据显示，2024 年，HBM 市场规模为118.69 亿美元，同比增长超过300%。
+随
+着AI 大模型的兴起，海量算力需求对芯片内存容量和传输带宽提出更高要求，预计HBM 市场规
+模在2025 年同比增长超过66%，接近200 亿美元，2028 年将达到316 亿美元，2024 至2028 年
+复合增速达到27.8%。
+在竞争格局方面，2024 年，SK 海力士继续保持超过50%的份额领先市场，
+三星以32%~35%的份额次之，美光的份额约为13%~15%。
+（3）行业发展趋势
+1）下游需求多点开花，AI 推动半导体存储市场规模持续扩容</div><div class=diag>rrf=0.0453 · 通道 bm25+dense · bm25#14 · dense#27 sim=0.6302</div></div></div><div class="muted" style="margin-top:20px"></div></div></html>

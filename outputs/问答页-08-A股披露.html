@@ -1,0 +1,209 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>内存产业知识库 · 带出处问答</title><style>
+:root{--ink:#1a1a1a;--ink2:#4a4a4a;--ink3:#8a8a8a;--line:#e3e3e3;
+--bg:#fff;--bg2:#f7f7f5;--accent:#1f6f4a;--accent2:#0f4c75;--warn:#b45309}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg2);color:var(--ink);
+font:15px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}
+h1{font-size:22px;margin:0 0 4px}
+.sub{color:var(--ink3);font-size:13px;margin-bottom:22px}
+form{display:flex;gap:8px;margin-bottom:22px}
+input[type=text]{flex:1;padding:12px 14px;border:1px solid var(--line);
+border-radius:8px;font-size:15px;font-family:inherit}
+input[type=text]:focus{outline:2px solid var(--accent2);outline-offset:-1px;border-color:transparent}
+button{padding:12px 22px;border:0;border-radius:8px;background:var(--accent);
+color:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}
+button:disabled{background:var(--ink3);cursor:wait}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:10px;
+padding:18px 20px;margin-bottom:16px}
+.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;
+padding:2px 8px;border-radius:4px;margin-bottom:10px}
+.b-model{background:#eaf4ee;color:var(--accent)}
+.b-src{background:#eef1f6;color:var(--accent2)}
+.bdiag{background:var(--bg2);color:var(--ink3)}
+.answer{white-space:pre-wrap}
+.answer .cite{color:var(--accent2);font-weight:700;font-size:12px;
+vertical-align:super;text-decoration:none}
+.answer .miss{color:var(--warn);font-weight:700}
+.hit{border-left:3px solid var(--line);padding-left:14px;margin:14px 0 0}
+.hit .no{color:var(--accent2);font-weight:700}
+.hit .prov{font-size:12px;color:var(--ink3);margin:2px 0 8px;line-height:1.6}
+.hit .txt{background:var(--bg3,#fbfbf9);border:1px solid var(--line);
+border-radius:6px;padding:10px 12px;font-size:13.5px;white-space:pre-wrap;
+max-height:260px;overflow:auto;color:var(--ink2)}
+.hit .diag{font-size:11px;color:var(--ink3);margin-top:6px;font-family:ui-monospace,Consolas,monospace}
+.hit a{color:var(--accent2);word-break:break-all}
+.err{background:#fdf2f2;border-color:#f5c2c2;color:#9b2226}
+.muted{color:var(--ink3);font-size:13px}
+</style><div class=wrap><h1>内存产业知识库 · 带出处问答</h1><div class=sub>语料：A 股内存产业链年报/半年报 136 份（含 44 份交易所同源副本，去重 92）· SEC 10-K · 三星/SK 海力士 IR · BIS 规则与 CFR 条文 · 共 81,895 块 ｜ 检索：BM25 + 向量（RRF 融合）</div><form method=get><input type=text name=q autofocus placeholder="例如：3A090.c 的管制门槛是多少？" value="A 股内存产业链公司如何披露出口管制对自身经营的影响？"><button>提问</button></form><div class=card><span class="badge b-model">模型作答 · 非原文</span><div class=answer>## 一、材料覆盖范围
+
+材料中涉及 A 股内存产业链公司出口管制披露的只有两家：**澜起科技**（材料 2）、**普冉股份**（材料 5、6、8、11）。**佰维存储**的材料只覆盖 DRAM/HBM 行业概况（市场规模、原厂份额），未涉及出口管制对自身经营影响的披露 <a class="cite" href="#hit10">[10]</a>。
+
+## 二、披露载体：定期报告中的风险因素章节
+
+- 普冉股份将其置于**「宏观环境风险」**条目下 <a class="cite" href="#hit11">[11]</a>，并写明「因此，公司存在生产经营受国际贸易摩擦影响的风险」<a class="cite" href="#hit5">[5]</a><a class="cite" href="#hit11">[11]</a>。
+- 澜起科技在**境外法律监管/合规风险**段落中披露，写明「可能对公司业务开展、市场布局及经营业绩带来一定程度的影响或风险」<a class="cite" href="#hit2">[2]</a>。
+
+## 三、普冉股份：披露具体传导链条
+
+普冉的披露包含三个环节：
+
+1. **外部管制事实**：「随着美国商务部将多家中国企业和机构列入美国出口管制的&quot;实体清单&quot;，并且不断扩大&quot;实体清单&quot;名单，加强对&quot;实体清单&quot;的限制，加强对中国在先进制程领域发展的限制」<a class="cite" href="#hit8">[8]</a>。
+2. **自身暴露点**：客户结构上「公司的客户主要以境内企业为主」，可能导致「为若干客户提供芯片产品和服务受到限制」；供应链上「公司及公司部分供应商无可避免地使用了美国设备、技术或工业软件等，可能导致其为公司供货或提供服务受到限制」<a class="cite" href="#hit5">[5]</a><a class="cite" href="#hit8">[8]</a>。
+3. **后果情形**：「研发及经营受限、订单减少或供应商无法供货」，「极端情况下可能出现公司的营业收入下滑」，「并且陷入知识产权争端，阻滞公司的业务发展」<a class="cite" href="#hit5">[5]</a><a class="cite" href="#hit8">[8]</a>。
+
+## 四、澜起科技：原则性披露 + 合规体系表述
+
+澜起未描述具体管制事件或自身暴露环节，只说明「经营活动受到多个国家和地区法律管辖，不同司法辖区在出口管制、贸易合规、反垄断等领域的监管要求存在差异」，风险来源为「相关法律法规发生变化或更新，或公司对境外监管规则理解、执行存在偏差」<a class="cite" href="#hit2">[2]</a>；应对措施表述为「持续健全合规管理体系，密切跟踪、研究主要业务所在地法律法规及监管政策变化，加强对员工、合作伙伴的合规培训与宣导」<a class="cite" href="#hit2">[2]</a>。
+
+## 五、可观察到的披露特征
+
+普冉股份 2023 年年度报告 <a class="cite" href="#hit8">[8]</a>、2024 年半年度报告 <a class="cite" href="#hit11">[11]</a>、2024 年年度报告 <a class="cite" href="#hit5">[5]</a>、2025 年半年度报告 <a class="cite" href="#hit6">[6]</a> 中这段出口管制风险文字高度一致，属跨报告期沿用的模板化表述。
+
+## 六、<span class="miss">材料未覆盖</span>的部分
+
+- **量化影响**：两家公司均未在材料中出现出口管制对营收/利润的具体金额或比例影响；材料中只有整体业绩数字（如澜起 2025 年营业收入 54.56 亿元 <a class="cite" href="#hit2">[2]</a>），与管制影响无对应关系。
+- **是否所有 A 股内存产业链公司都如此披露**：材料仅覆盖以上两家，不足以归纳行业普遍做法。
+- **澜起科技与普冉股份披露差异的原因**：材料未涉及。</div></div><div class=card><span class="badge b-src">语料原文 · 逐字引用</span><div class=muted>检索到 14 条，按 RRF 融合分排序</div><div class=hit id=hit1><span class=no>[1]</span> BIS · Implementation of Additional Due Diligence Measures for Advanced Computing Integrated Circuits; Amendments and Clarifications; and Extension of Comment Period · p70 · 2025-01-16<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2025/01/16/2025-00711.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2025/01/16/2025-00711.txt</a></div><div class=txt>As such, it does not restrict exports, reexports and transfers (in-country) of items covered by Sec.
+744.23(a)(2) and the activities of U.S.
+persons Sec.
+744.6 (c)(2)(i) to high bandwidth memory and other advanced DRAM applications.
+Accordingly, this update revises the cell area and memory density parameters to be consistent with production standards in the DRAM industry for the 18 nm half-pitch node, rather than the IRDS definition of ``18 nm half-pitch,&#x27;&#x27; which is based on a theoretical model, rather than actual, physical characteristics of DRAM memory.
+This revision imposes end use and U.S.
+persons controls at DRAM facilities not previously controlled by the definition of DRAM in the December 5, 2024 FDP IFR.
+c.</div><div class=diag>rrf=0.0496 · 通道 +dense · bm25#— · dense#2 sim=0.5791</div></div><div class=hit id=hit2><span class=no>[2]</span> 澜起科技 · 澜起科技2025年年度报告 · (一) 主营业务分析 · p68 · 2026-03-31<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2026-03-31/1225057736.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2026-03-31/1225057736.PDF</a></div><div class=txt>公司业务面向全球市场，经营活动受到多个国家和地区法律管辖，不同司法辖区在出口管制、
+贸易合规、反垄断等领域的监管要求存在差异。
+如果未来相关法律法规发生变化或更新，或公司
+对境外监管规则理解、执行存在偏差，可能对公司业务开展、市场布局及经营业绩带来一定程度
+的影响或风险。
+公司将持续健全合规管理体系，密切跟踪、研究主要业务所在地法律法规及监管
+政策变化，加强对员工、合作伙伴的合规培训与宣导，强化出口管制、贸易合规、反垄断等重点
+领域的风险识别与管控，积极主动防范和化解相关合规风险，保障公司业务持续稳健运行。
+(八) 存托凭证相关风险
+□适用√不适用
+(九) 其他重大风险
+□适用√不适用
+五、报告期内主要经营情况
+2025 年，受益于AI 产业趋势，行业需求旺盛，公司的互连类芯片出货量显著增加，推动公
+司2025 年度经营业绩较上年同期实现大幅增长。
+因此，报告期内公司实现营业收入54.56 亿元，
+较上年度增长49.94%；
+实现归属于母公司股东的净利润22.36 亿元，较上年度增长58.35%。
+(一) 主营业务分析
+1.
+利润表及现金流量表相关科目变动分析表
+营业收入 | 本期数 5,456,316,783.63 | 上年同期数 3,638,911,068.29 | 变动比例（%） 49.94
+营业成本 | 本期数 2,060,961,088.35 | 上年同期数 1,523,614,938.54 | 变动比例（%） 35.27
+销售费用 | 本期数 120,228,658.51 | 上年同期数 96,006,550.08 | 变动比例（%） 25.23
+管理费用 | 本期数 526,287,844.89 | 上年同期数 196,262,500.24 | 变动比例（%） 168.16</div><div class=diag>rrf=0.0491 · 通道 bm25+dense · bm25#11 · dense#1 sim=0.5800</div></div><div class=hit id=hit3><span class=no>[3]</span> BIS · Foreign-Produced Direct Product Rule Additions, and Refinements to Controls for Advanced Computing and Semiconductor Manufacturing Items · p67 · 2024-12-05<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt</a></div><div class=txt>Paragraph (a)(6)(i) (Exports, reexports, transfers (in- country) to or within Macau or Country Group D:5) is revised to designate the text in paragraph (a)(6)(i) as paragraph (a)(6)(i)(A) and add a new paragraph (a)(6)(i)(B) to set forth license requirements for high bandwidth memory (HBM) items specified in ECCNs 3A090.c, 3D001 (for 3A090.c), and 3E001 (for 3A090.c) when exported, reexported, or transferred (in-country) to or within Macau or a destination specified in Country Group D:5 in supplement no.
+1 to part 740 of the EAR.</div><div class=diag>rrf=0.0442 · 通道 +dense · bm25#— · dense#3 sim=0.5784</div></div><div class=hit id=hit4><span class=no>[4]</span> BIS · 15 CFR 年度版（含 part 774 CCL） · § 740.25 License Exception High Bandwidth Memory · p332 · 2025<div class=prov><br><a href="https://www.govinfo.gov/content/pkg/CFR-2025-title15-vol2/xml/CFR-2025-title15-vol2.xml" target=_blank>https://www.govinfo.gov/content/pkg/CFR-2025-title15-vol2/xml/CFR-2025-title15-vol2.xml</a></div><div class=txt>§ 740.25 License Exception High Bandwidth Memory (HBM).
+(a) Scope.
+This License Exception High Bandwidth Memory (HBM) authorizes the export, reexport, or transfer (in-country) of items specified in ECCN 3A090.c on the Commerce Control List (CCL) in supplement no.
+1 to part 774 if all terms and conditions within this section are met.
+(b) Exporter, reexporter, transferor.
+The exporter, reexporter, or transferor must be headquartered in the United States or a destination specified in Country Group A:5 of supplement no.
+1 to this part, without an ultimate parent headquartered in Macau or a destination specified in Country Group D:5 of supplement no.
+1 to this part.
+(c) Conditions.</div><div class=diag>rrf=0.0440 · 通道 +dense · bm25#— · dense#0 sim=0.5843</div></div><div class=hit id=hit5><span class=no>[5]</span> 普冉股份 · 普冉半导体（上海）股份有限公司2024年年度报告 · 五、 报告期内主要经营情况 · p37 · 2025-03-31<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2025-03-31/1222962492.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2025-03-31/1222962492.PDF</a></div><div class=txt>同时，随着美国商务部将多家中国企业和机构列入美国出口管制的“实体清单”，并且不断扩大“实体清单”名单，加强对“实体清单”的限制，加强对中国在先进制程领域发展的限制。
+公司的客户主要以境内企业为主，上述外部因素可能导致公司为若干客户提供芯片产品和服务受到限制。
+公司及公司部分供应商无可避免地使用了美国设备、技术或工业软件等，可能导致其为公司供货或提供服务受到限制。
+一旦国际贸易摩擦的状况持续或进一步加剧，公司可能面临研发及经营受限、订单减少或供应商无法供货等局面，若公司未能及时成功拓展新客户或供应商，极端情况下可能出现公司的营业收入下滑，令公司的经营业绩出现较大下降，并且陷入知识产权争端，阻滞公司的业务发展。
+因此，公司存在生产经营受国际贸易摩擦影响的风险。
+(八) 存托凭证相关风险
+□适用 √不适用
+(九) 其他重大风险
+√适用 □不适用
+1、 募投项目实施效果未达预期风险 由于本次募集资金投资项目的投资金额较大，项目管理和组织实施是项目成功与否的关键，将直接影响到项目的进展和项目的质量。
+若投资项目不能按期完成，将对公司的盈利状况和未来发展产生不利影响。
+此外，项目经济效益的分析均为预测性信息，募集资金投资项目建设需要时间，如果未来市场需求出现较大变化，或者公司不能有效拓展市场，将导致募投项目经济效益的实现存在较大不确定性。
+2、 投资风险 基于产业支持政策、市场环境和发展趋势，公司经过可行性研究作出项目投资决策。
+公司投资项目标的企业在后续发展过程中，可能面临产业政策变化、市场环境变化、产品技术水平不达预期等诸多不确定因素，可能导致标的企业实际经营表现不达预期，进而导致投资项目的实际效益与预期结果存在较大差异。
+五、报告期内主要经营情况
+报告期内，公司实现营业收入18.04 亿元，较2023 年同比增加60.03%；</div><div class=diag>rrf=0.0426 · 通道 bm25+dense · bm25#25 · dense#38 sim=0.5330</div></div><div class=hit id=hit6><span class=no>[6]</span> 普冉股份 · 普冉半导体（上海）股份有限公司2025年半年度报告 · (一) 主营业务分析 · p30 · 2025-08-22<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2025-08-22/1224534594.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2025-08-22/1224534594.PDF</a></div><div class=txt>同时，随着美国商务部将多家中国企业和机构列入美国出口管制的“实体清单”，并且不断扩大“实体清单”名单，加强对“实体清单”的限制，加强对中国在先进制程领域发展的限制。
+公司的客户主要以境内企业为主，上述外部因素可能导致公司为若干客户提供芯片产品和服务受到限制。
+公司及公司部分供应商无可避免地使用了美国设备、技术或工业软件等，可能导致其为公司供货或提供服务受到限制。
+一旦国际贸易摩擦的状况持续或进一步加剧，公司可能面临研发及经营受限、订单减少或供应商无法供货等局面，若公司未能及时成功拓展新客户或供应商，极端情况下可能出现公司的营业收入下滑，令公司的经营业绩出现较大下降，并且陷入知识产权争端，阻滞公司的业务发展。
+因此，公司存在生产经营受国际贸易摩擦影响的风险。
+16、募投项目实施效果未达预期风险由于本次募集资金投资项目的投资金额较大，项目管理和组织实施是项目成功与否的关键，将直接影响到项目的进展和项目的质量。
+若投资项目不能按期完成，将对公司的盈利状况和未来发展产生不利影响。
+此外，项目经济效益的分析均为预测性信息，募集资金投资项目建设需要时间，如果未来市场需求出现较大变化，或者公司不能有效拓展市场，将导致募投项目经济效益的实现存在较大不确定性。
+17、投资风险基于产业支持政策、市场环境和发展趋势，公司经过可行性研究作出项目投资决策。
+公司投资项目标的企业在后续发展过程中，可能面临产业政策变化、市场环境变化、产品技术水平不达预期等诸多不确定因素，可能导致标的企业实际经营表现不达预期，进而导致投资项目的实际效益与预期结果存在较大差异。
+五、报告期内主要经营情况
+报告期内，公司实现营业收入90,670.08 万元，较2024 年半年度同比增加1.19%；
+营业利润3,629.67 万元，利润总额3,629.67 万元；
+归属于母公司所有者的净利润4,073.34 万元。</div><div class=diag>rrf=0.0420 · 通道 bm25+dense · bm25#23 · dense#47 sim=0.5288</div></div><div class=hit id=hit7><span class=no>[7]</span> BIS · Foreign-Produced Direct Product Rule Additions, and Refinements to Controls for Advanced Computing and Semiconductor Manufacturing Items · p174 · 2024-12-05<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt</a></div><div class=txt>This License Exception High Bandwidth Memory (HBM) authorizes the export, reexport, or transfer (in-country) of items specified in ECCN 3A090.c on the Commerce Control List (CCL) in supplement no.
+1 to part 774 if all terms and conditions within this section are met.
+(b) Exporter, reexporter, transferor.
+The exporter, reexporter, or transferor must be headquartered in the United States or a destination specified in Country Group A:5 of supplement no.
+1 to this part, without an ultimate parent headquartered in Macau or a destination specified in Country Group D:5 of supplement no.
+1 to this part.
+(c) Conditions.</div><div class=diag>rrf=0.0405 · 通道 +dense · bm25#— · dense#4 sim=0.5743</div></div><div class=hit id=hit8><span class=no>[8]</span> 普冉股份 · 普冉半导体（上海）股份有限公司2023年年度报告 · (一) 主营业务分析 · p37 · 2024-04-16<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2024-04-16/1219621032.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2024-04-16/1219621032.PDF</a></div><div class=txt>同时，随着美国商务部将多家中国企业和机构列入美国出口管制的“实体清单”，并且不断扩大“实体清单”名单，加强对“实体清单”的限制，加强对中国在先进制程领域发展的限制。
+公司的客户主要以境内企业为主，上述外部因素可能导致公司为若干客户提供芯片产品和服务受到限制。
+公司及公司部分供应商无可避免地使用了美国设备、技术或工业软件等，可能导致其为公司供货或提供服务受到限制。
+一旦国际贸易摩擦的状况持续或进一步加剧，公司可能面临研发及经营受限、订单减少或供应商无法供货等局面，若公司未能及时成功拓展新客户或供应商，极端情况下可能出现公司的营业收入下滑，令公司的经营业绩出现较大下降，并且陷入知识产权争端，阻滞公司的业务发展。
+因此，公司存在生产经营受国际贸易摩擦影响的风险。
+(八) 存托凭证相关风险
+□适用 √不适用
+(九) 其他重大风险
+√适用 □不适用
+1、 募投项目实施效果未达预期风险 由于本次募集资金投资项目的投资金额较大，项目管理和组织实施是项目成功与否的关键，将直接影响到项目的进展和项目的质量。
+若投资项目不能按期完成，将对公司的盈利状况和未来发展产生不利影响。
+此外，项目经济效益的分析均为预测性信息，募集资金投资项目建设需要时间，如果未来市场需求出现较大变化，或者公司不能有效拓展市场，将导致募投项目经济效益的实现存在较大不确定性。
+2、 投资风险 基于产业支持政策、市场环境和发展趋势，公司经过可行性研究作出项目投资决策。
+公司投资项目标的企业在后续发展过程中，可能面临产业政策变化、市场环境变化、产品技术水平不达预期等诸多不确定因素，可能导致标的企业实际经营表现不达预期，进而导致投资项目的实际效益与预期结果存在较大差异。
+五、报告期内主要经营情况
+报告期内，公司实现营业收入11.27 亿元，较2022 年同比增加21.87%；</div><div class=diag>rrf=0.0385 · 通道 bm25+dense · bm25#24 · dense#68 sim=0.5219</div></div><div class=hit id=hit9><span class=no>[9]</span> BIS · Foreign-Produced Direct Product Rule Additions, and Refinements to Controls for Advanced Computing and Semiconductor Manufacturing Items · p69 · 2024-12-05<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt</a></div><div class=txt>1 to part 740, without an ultimate parent headquartered in Macau or a destination specified in Country Group D:5 of supplement no.
+1 to part 740.
+No other exporter, reexporter, or transferor may use License Exception HBM.
+This IFR adds paragraph (c) (Conditions) to specify that exports, reexports, or transfers (in-country) are authorized under this License Exception HBM only when the 3A090.c item has a memory bandwidth density less than 3.3 GB/s/mm[supcaret]2.
+Only HBM at less than this parameter may be authorized under License Exception HBM.
+HBM at equal to or greater than this parameter referenced under paragraph (c) are of greater sensitivity, so those HBM of greater sensitivity are not eligible for HBM to ensure U.S.
+national security and foreign policy interests are protected.</div><div class=diag>rrf=0.0380 · 通道 +dense · bm25#— · dense#19 sim=0.5479</div></div><div class=hit id=hit10><span class=no>[10]</span> 佰维存储 · 2024年年度报告 · (三) 所处行业情况 · p48 · 2025-04-30<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2025-04-30/1223427605.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2025-04-30/1223427605.PDF</a></div><div class=txt>电子设备/服务器需要存储的数据量也越来越庞大，NAND Flash 需求量巨大，市场前景广阔。
+2）DRAM 行业概况
+DRAM 是动态随机存取存储器，DRAM 的特征是读写速度快、延迟低，但掉电后数据会丢失，
+常用于计算系统的运行内存（Memory）。
+目前全球主要的DRAM IDM 原厂为三星、SK 海力士
+和美光。
+根据CFM 数据显示，2024 年第三季度的DRAM 市场上，三星、SK 海力士、美光、南
+亚科技的市场份额分别为39.5%、34.7%、20.6%、1.0%。
+根据TrendForce 报告，得益于数据中心
+的DDR5 及HBM（高带宽内存）需求上升，2024 年全球DRAM 市场规模为958.63 亿美元，同
+比增长85%。
+3）HBM 行业概况
+HBM（High Bandwidth Memory）作为基于3D 堆栈工艺的高性能Memory，打破了内存带宽
+及功耗的瓶颈。
+HBM 即高带宽存储器，通过使用先进封装将多个DRAM 芯片进行堆叠，并与GPU
+一同进行封装，形成大容量、高带宽的DDR 组合阵列。
+在高性能GPU 需求的推动下，HBM 已
+经成为AI 计算芯片的标配。
+根据Gartner 数据显示，2024 年，HBM 市场规模为118.69 亿美元，同比增长超过300%。
+随
+着AI 大模型的兴起，海量算力需求对芯片内存容量和传输带宽提出更高要求，预计HBM 市场规
+模在2025 年同比增长超过66%，接近200 亿美元，2028 年将达到316 亿美元，2024 至2028 年
+复合增速达到27.8%。
+在竞争格局方面，2024 年，SK 海力士继续保持超过50%的份额领先市场，
+三星以32%~35%的份额次之，美光的份额约为13%~15%。
+（3）行业发展趋势
+1）下游需求多点开花，AI 推动半导体存储市场规模持续扩容</div><div class=diag>rrf=0.0343 · 通道 +dense · bm25#— · dense#8 sim=0.5633</div></div><div class=hit id=hit11><span class=no>[11]</span> 普冉股份 · 普冉半导体（上海）股份有限公司2024年半年度报告 · (二) 报告期内发生的导致公司核心竞争力受到严重影响的事件、影响分析 · p28 · 2024-08-28<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2024-08-28/1221001963.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2024-08-28/1221001963.PDF</a></div><div class=txt>根据上海市科学技术委员会、上海市财政局、国家税务总局上海市税务局于2021 年11 月18 日联合颁发《高新技术企业证书》（证书编号：GR202131003437），公司被认定为高新技术企业，认定有效期三年，期间享受企业所得税的税收优惠政策。
+若公司未来不能继续享受高新技术企业税收优惠政策，或者国家有关税收政策发生变化，则公司经营业绩可能会受到影响。
+15、 宏观环境风险 2020 年以来全球贸易规模下行压力较大，加之全球主要经济体贸易摩擦持续升温，地缘政治风险逐渐增大，甚至极端恶化并发生战争，全球贸易环境恶化，全球经济发展存在极大不确定性，加之美国商务部工业与安全局（BIS）公布的多项对于中国出口管制规定，对我国集成电路行业造成一定的冲击。
+宏观经济下行的风险或将对公司所处行业造成冲击，短期内造成下游客户需求疲软，或有可能影响公司相关业务的开展。
+同时，随着美国商务部将多家中国企业和机构列入美国出口管制的“实体清单”，并且不断扩大“实体清单”名单，加强对“实体清单”的限制，加强对中国在先进制程领域发展的限制。
+公司的客户主要以境内企业为主，上述外部因素可能导致公司为若干客户提供芯片产品和服务受到限制。
+公司及公司部分供应商无可避免地使用了美国设备、技术或工业软件等，可能导致其为公司供货或提供服务受到限制。
+一旦国际贸易摩擦的状况持续或进一步加剧，公司可能面临研发及经营受限、订单减少或供应商无法供货等局面，若公司未能及时成功拓展新客户或供应商，极端情况下可能出现公司的营业收入下滑，令公司的经营业绩出现较大下降，并且陷入知识产权争端，阻滞公司的业务发展。
+因此，公司存在生产经营受国际贸易摩擦影响的风险。
+16、 募投项目实施效果未达预期风险 由于本次募集资金投资项目的投资金额较大，项目管理和组织实施是项目成功与否的关键，将直接影响到项目的进展和项目的质量。</div><div class=diag>rrf=0.0341 · 通道 bm25 · bm25#12 · dense#— sim=—</div></div><div class=hit id=hit12><span class=no>[12]</span> BIS · Framework for Artificial Intelligence Diffusion · p45 · 2025-01-15<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2025/01/15/2025-00636.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2025/01/15/2025-00636.txt</a></div><div class=txt>Specifically, BIS imposed new controls on certain high- bandwidth memory (HBM) commodities, which are critical to AI training and inference at scale and a key component of advanced computing ICs.
+BIS also imposed controls on additional SME capable of producing advanced computing ICs (e.g., certain etch, deposition, lithography tools, etc.) and on software that can enhance the capabilities of such SME or can be used to design advanced computing ICs.
+These previous controls reflect BIS&#x27;s determination--made in conjunction with experts from across the U.S.
+government--that the export of even small quantities of advanced computing ICs to specific destinations and end users of concern pose significant risks to U.S.
+national security and foreign policy interests.</div><div class=diag>rrf=0.0331 · 通道 +dense · bm25#— · dense#11 sim=0.5497</div></div><div class=hit id=hit13><span class=no>[13]</span> BIS · 15 CFR 年度版（含 part 774 CCL） · § 742.6 Regional stability · p339 · 2025<div class=prov><br><a href="https://www.govinfo.gov/content/pkg/CFR-2025-title15-vol2/xml/CFR-2025-title15-vol2.xml" target=_blank>https://www.govinfo.gov/content/pkg/CFR-2025-title15-vol2/xml/CFR-2025-title15-vol2.xml</a></div><div class=txt>For the purposes of this paragraph, &#x27;equivalent&#x27; means the item is listed on the country&#x27;s export control list and the country applies the same license review policy.
+To receive assistance in determining countries with equivalent controls, you may submit an advisory opinion request in accordance with § 748.3(c) of the EAR.
+(B) High Bandwidth Memory (HBM).
+A license is required for items specified in ECCNs 3A090.c, 3D001 (for 3A090.c), and 3E001 (for 3A090.c) when exported, reexported, or transferred (in-country) to or within Macau or a destination specified in Country Group D:5 in supplement no.
+1 to part 740 of the EAR.
+The license requirements in this paragraph (a)(6)(i)(B) do not apply to deemed exports or deemed reexports.</div><div class=diag>rrf=0.0321 · 通道 +dense · bm25#— · dense#29 sim=0.5390</div></div><div class=hit id=hit14><span class=no>[14]</span> 美光 Micron · 10-K 2020-10-19 · p19–20 · 2020-10-19<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312520000082/mu-20200903.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312520000082/mu-20200903.htm</a></div><div class=txt>Media Inquiriesmediarelations@micron.comGovernment Inquiriesgovaffairs@micron.comInvestor Inquiriesinvestorrelations@micron.com | Micron Company Profile Global Product Portfolio
+Media Inquiriesmediarelations@micron.comGovernment Inquiriesgovaffairs@micron.comInvestor Inquiriesinvestorrelations@micron.com | Micron Company Profile DRAM | NAND | 3D XPointTM Memory | NOR | Solid-State DrivesHigh Bandwidth Memory (HBM) | Multichip Packages | Advanced Solutions
+Media Inquiriesmediarelations@micron.comGovernment Inquiriesgovaffairs@micron.comInvestor Inquiriesinvestorrelations@micron.com | Micron Company Profile Connect with us on micron.com
+© 2020 Micron Technology, Inc.</div><div class=diag>rrf=0.0309 · 通道 +dense · bm25#— · dense#27 sim=0.5435</div></div></div><div class="muted" style="margin-top:20px"></div></div></html>

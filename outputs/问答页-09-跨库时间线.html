@@ -1,0 +1,114 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>内存产业知识库 · 带出处问答</title><style>
+:root{--ink:#1a1a1a;--ink2:#4a4a4a;--ink3:#8a8a8a;--line:#e3e3e3;
+--bg:#fff;--bg2:#f7f7f5;--accent:#1f6f4a;--accent2:#0f4c75;--warn:#b45309}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg2);color:var(--ink);
+font:15px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}
+h1{font-size:22px;margin:0 0 4px}
+.sub{color:var(--ink3);font-size:13px;margin-bottom:22px}
+form{display:flex;gap:8px;margin-bottom:22px}
+input[type=text]{flex:1;padding:12px 14px;border:1px solid var(--line);
+border-radius:8px;font-size:15px;font-family:inherit}
+input[type=text]:focus{outline:2px solid var(--accent2);outline-offset:-1px;border-color:transparent}
+button{padding:12px 22px;border:0;border-radius:8px;background:var(--accent);
+color:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}
+button:disabled{background:var(--ink3);cursor:wait}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:10px;
+padding:18px 20px;margin-bottom:16px}
+.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;
+padding:2px 8px;border-radius:4px;margin-bottom:10px}
+.b-model{background:#eaf4ee;color:var(--accent)}
+.b-src{background:#eef1f6;color:var(--accent2)}
+.bdiag{background:var(--bg2);color:var(--ink3)}
+.answer{white-space:pre-wrap}
+.answer .cite{color:var(--accent2);font-weight:700;font-size:12px;
+vertical-align:super;text-decoration:none}
+.answer .miss{color:var(--warn);font-weight:700}
+.hit{border-left:3px solid var(--line);padding-left:14px;margin:14px 0 0}
+.hit .no{color:var(--accent2);font-weight:700}
+.hit .prov{font-size:12px;color:var(--ink3);margin:2px 0 8px;line-height:1.6}
+.hit .txt{background:var(--bg3,#fbfbf9);border:1px solid var(--line);
+border-radius:6px;padding:10px 12px;font-size:13.5px;white-space:pre-wrap;
+max-height:260px;overflow:auto;color:var(--ink2)}
+.hit .diag{font-size:11px;color:var(--ink3);margin-top:6px;font-family:ui-monospace,Consolas,monospace}
+.hit a{color:var(--accent2);word-break:break-all}
+.err{background:#fdf2f2;border-color:#f5c2c2;color:#9b2226}
+.muted{color:var(--ink3);font-size:13px}
+</style><div class=wrap><h1>内存产业知识库 · 带出处问答</h1><div class=sub>语料：A 股内存产业链年报/半年报 136 份（含 44 份交易所同源副本，去重 92）· SEC 10-K · 三星/SK 海力士 IR · BIS 规则与 CFR 条文 · 共 81,895 块 ｜ 检索：BM25 + 向量（RRF 融合）</div><form method=get><input type=text name=q autofocus placeholder="例如：3A090.c 的管制门槛是多少？" value="出口管制规则的历次修订时点，与厂商财报里提到的价格或 ASP 变化能对上吗？"><button>提问</button></form><div class=card><span class="badge b-model">模型作答 · 非原文</span><div class=answer>## 一、材料里出现的管制修订时点
+
+- 2022 年 10 月：`in October 2022, BIS published an interim final rule (87 FR 62186)` <a class="cite" href="#hit4">[4]</a>
+- `89 FR 80080, October 2, 2024` <a class="cite" href="#hit4">[4]</a>
+- `89 FR 96790, December 5, 2024` <a class="cite" href="#hit4">[4]</a>；材料 5 也提到 `December 5, 2024 FDP IFR` <a class="cite" href="#hit5">[5]</a>
+- `On January 16, 2025, BIS published in the Federal Register an interim final rule (IFR)`，即 `January 16 IFR`，该规则修订 `ECCN 3A090` <a class="cite" href="#hit1">[1]</a>
+- 材料 2、3、9 所述那部 IFR（`Foreign-Produced Direct Product Rule Additions, and Refinements to Controls for Advanced Computing and Semiconductor Manufacturing Items`）在材料中**没有给出发布/生效日期** <a class="cite" href="#hit2">[2]</a><a class="cite" href="#hit3">[3]</a><a class="cite" href="#hit9">[9]</a>
+
+## 二、材料里出现的厂商 ASP 变化
+
+- 1H24：`Memory-product ASP rose by approximately 60%`；TV `stayed similar`；smartphone `increased by around 7%`；`OLED panels for smartphones decreased by approximately 32%`；digital cockpit `stayed similar` <a class="cite" href="#hit10">[10]</a>
+- 2024 年（全年口径）：`Memory-product ASP rose by approximately 63%`；TV `decreased by approximately 2%`；smartphone `increased by around 2%`；`OLED panels for smartphones decreased by approximately 29%`；digital cockpit `increased by approximately 1%` <a class="cite" href="#hit6">[6]</a>
+- 1H25：`Memory-product ASP decreased by approximately 3%`；TV `decreased by approximately 4%`；smartphone `increased by around 1%`；`OLED panels for smartphones decreased by approximately 12%`；digital cockpit `decreased by approximately 2%` <a class="cite" href="#hit7">[7]</a>
+
+## 三、能不能对上
+
+**<span class="miss">材料未覆盖</span>。** 给出的材料只是把两组事实并列摆在一起，没有任何内容说明管制修订与 ASP 变化之间存在关联、因果关系或可比口径：
+
+- 没有任何材料把某一具体管制规则（如 `January 16 IFR`、`December 5, 2024 FDP IFR`）与某一财报期间的 ASP 变动联系起来 <a class="cite" href="#hit1">[1]</a><a class="cite" href="#hit4">[4]</a><a class="cite" href="#hit5">[5]</a><a class="cite" href="#hit6">[6]</a><a class="cite" href="#hit7">[7]</a><a class="cite" href="#hit10">[10]</a>
+- 口径本身也不同：财报给的是 `Memory-product ASP`（记忆体整体）<a class="cite" href="#hit6">[6]</a><a class="cite" href="#hit7">[7]</a><a class="cite" href="#hit10">[10]</a>，而材料 9 涉及的管制对象是 `HBM`，参数为 `memory bandwidth density&#x27; greater than 2 GB per second per square millimeter (mm)`，并称 `All HBM stacks currently in production exceed this threshold` <a class="cite" href="#hit9">[9]</a>；材料中没有单独的 HBM 价格或 ASP 数据
+- 时间粒度不匹配：管制给的是具体日期 <a class="cite" href="#hit1">[1]</a><a class="cite" href="#hit4">[4]</a>，财报给的是半年或全年平均 <a class="cite" href="#hit6">[6]</a><a class="cite" href="#hit7">[7]</a><a class="cite" href="#hit10">[10]</a>；材料未提供任何可用于对齐的说明
+
+## 四、要回答这个问题还缺什么
+
+1. 材料 2、3、9 所述 IFR 的发布日期/生效日期 <a class="cite" href="#hit2">[2]</a><a class="cite" href="#hit3">[3]</a><a class="cite" href="#hit9">[9]</a>
+2. HBM（或 DRAM 细分产品）单独的价格/ASP 数据——现有 ASP 只有 `Memory-product ASP` 口径 <a class="cite" href="#hit6">[6]</a><a class="cite" href="#hit7">[7]</a><a class="cite" href="#hit10">[10]</a>
+3. 任何把管制时点与价格变化做对应分析的内容（生效日清单、价格时间序列、影响评估等）</div></div><div class=card><span class="badge b-src">语料原文 · 逐字引用</span><div class=muted>检索到 10 条，按 RRF 融合分排序</div><div class=hit id=hit1><span class=no>[1]</span> BIS · Implementation of Additional Due Diligence Measures for Advanced Computing Integrated Circuits; Amendments and Clarifications; and Extension of Comment Period; Correction · p7–11 · 2025-02-14<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2025/02/14/2025-02655.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2025/02/14/2025-02655.txt</a></div><div class=txt>Implementation of Additional Due Diligence Measures for Advanced Computing Integrated Circuits; Amendments and Clarifications; and Extension of Comment Period; Correction
+AGENCY: Bureau of Industry and Security, Department of Commerce.
+ACTION: Correcting amendment.
+-----------------------------------------------------------------------
+SUMMARY: On January 16, 2025, BIS published in the Federal Register an interim final rule (IFR), ``Implementation of Additional Due Diligence Measures for Advanced Computing Integrated Circuits; Amendments and Clarifications; and Extension of Comment Period&#x27;&#x27; (January 16 IFR).
+This rule revises Export Control Classification Number (ECCN) 3A090 to correct this ECCN&#x27;s license requirement added in the January 16 IFR.</div><div class=diag>rrf=0.0460 · 通道 +dense · bm25#— · dense#32 sim=0.5467</div></div><div class=hit id=hit2><span class=no>[2]</span> BIS · Foreign-Produced Direct Product Rule Additions, and Refinements to Controls for Advanced Computing and Semiconductor Manufacturing Items · p25 · 2024-12-05<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt</a></div><div class=txt>SUMMARY: In this interim final rule (IFR), the Bureau of Industry and Security (BIS) makes changes to the Export Administration Regulations (EAR) controls for certain advanced computing items, supercomputers, and semiconductor manufacturing equipment, which includes adding new controls for certain semiconductor manufacturing equipment and related items, creating new Foreign Direct Product (FDP) rules for certain commodities to impair the capability to produce ``advanced-node integrated circuits&#x27;&#x27; (``advanced-node ICs&#x27;&#x27;) by certain destinations or entities of concern, adding new controls for certain high bandwidth memory important for advanced computing, and clarifying controls on certain software keys that allow for the use of items such as software tools.</div><div class=diag>rrf=0.0458 · 通道 +dense · bm25#— · dense#10 sim=0.5760</div></div><div class=hit id=hit3><span class=no>[3]</span> BIS · Public Briefing on Changes to Advanced Computing and Semiconductor Manufacturing Items · p17 · 2024-12-04<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2024/12/04/2024-28423.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2024/12/04/2024-28423.txt</a></div><div class=txt>These amendments revise controls for certain advanced computing items, supercomputers, and semiconductor manufacturing equipment, which includes adding new controls for certain semiconductor manufacturing equipment and related items, creating new Foreign Direct Product (FDP) rules for certain commodities to impair the capability to produce ``advanced-node integrated circuits&#x27;&#x27; (``advanced-node ICs&#x27;&#x27;) by certain destinations or entities of concern, adding new controls for certain high bandwidth memory (HBM) important for advanced computing, and clarifying controls on certain software keys that allow for the use of items such as software tools.</div><div class=diag>rrf=0.0441 · 通道 +dense · bm25#— · dense#4 sim=0.5943</div></div><div class=hit id=hit4><span class=no>[4]</span> BIS · Framework for Artificial Intelligence Diffusion · p43–45 · 2025-01-15<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2025/01/15/2025-00636.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2025/01/15/2025-00636.txt</a></div><div class=txt>748.15 to facilitate the export of advanced computing ICs and related items to qualified data centers (89 FR 80080, October 2, 2024).
+Mostly recently, BIS updated these controls in December 2024 (89 FR 96790, December 5, 2024).
+Specifically, in October 2022, BIS published an interim final rule (87 FR 62186) which made critical changes to the EAR in two areas.
+First, the rule imposed additional export controls on certain advanced computing ICs, computer commodities that contain such ICs, and certain SME and parts and components needed to produce those and other advanced ICs.
+Specifically,
+[[Page 4548]]
+the controls required a license before exporting or reexporting those items to the PRC or to certain entities on the Entity List (supplement no.
+4 to part 744).</div><div class=diag>rrf=0.0439 · 通道 +dense · bm25#— · dense#7 sim=0.5863</div></div><div class=hit id=hit5><span class=no>[5]</span> BIS · Implementation of Additional Due Diligence Measures for Advanced Computing Integrated Circuits; Amendments and Clarifications; and Extension of Comment Period · p70 · 2025-01-16<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2025/01/16/2025-00711.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2025/01/16/2025-00711.txt</a></div><div class=txt>As such, it does not restrict exports, reexports and transfers (in-country) of items covered by Sec.
+744.23(a)(2) and the activities of U.S.
+persons Sec.
+744.6 (c)(2)(i) to high bandwidth memory and other advanced DRAM applications.
+Accordingly, this update revises the cell area and memory density parameters to be consistent with production standards in the DRAM industry for the 18 nm half-pitch node, rather than the IRDS definition of ``18 nm half-pitch,&#x27;&#x27; which is based on a theoretical model, rather than actual, physical characteristics of DRAM memory.
+This revision imposes end use and U.S.
+persons controls at DRAM facilities not previously controlled by the definition of DRAM in the December 5, 2024 FDP IFR.
+c.</div><div class=diag>rrf=0.0432 · 通道 +dense · bm25#— · dense#2 sim=0.6052</div></div><div class=hit id=hit6><span class=no>[6]</span> 三星电子 · 2024_4Q_Interim_Report.pdf · V. Treasury shares · p22 · 2024<div class=prov><br><a href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2024_4Q_Interim_Report.pdf" target=_blank>https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2024_4Q_Interim_Report.pdf</a></div><div class=txt>In 2024, on a year-on-year basis, the average selling price (ASP) of TVs decreased by approximately 2% and the ASP of smartphones increased by around 2%.
+Memory-product ASP rose by approximately 63%, and the ASP of OLED panels for smartphones decreased by approximately 29%, while the digital cockpit ASP increased by approximately 1%.
+3.
+Production materials and production facilities
+A.
+Key production materials
+For the DX Division, key materials include mobile AP solutions and camera modules, which are supplied by Qualcomm, Semco, etc., and display panels for TVs and monitors, which are supplied by CSOT, etc.</div><div class=diag>rrf=0.0394 · 通道 bm25 · bm25#10 · dense#— sim=—</div></div><div class=hit id=hit7><span class=no>[7]</span> 三星电子 · 2025_Half_Interim_Report.pdf · VI. Outstanding shares · p16 · 2025<div class=prov><br><a href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2025_Half_Interim_Report.pdf" target=_blank>https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2025_Half_Interim_Report.pdf</a></div><div class=txt>In 1H25, the average selling price (ASP) of TVs decreased by approximately 4% and the ASP of smartphones increased by around 1% compared to the previous year&#x27;s annual average.
+Memory-product ASP decreased by approximately 3% and the ASP of OLED panels for smartphones decreased by approximately 12%, while the ASP of digital cockpits decreased by approximately 2%.
+3.
+Production materials and production facilities
+A.
+Key production materials
+For the DX Division, key materials include mobile AP solutions and camera modules, which are supplied by Qualcomm, Samsung Electro-Mechanics, etc., and display panels for TVs and monitors, which are supplied by AUO, etc.</div><div class=diag>rrf=0.0394 · 通道 bm25 · bm25#11 · dense#— sim=—</div></div><div class=hit id=hit8><span class=no>[8]</span> BIS · Framework for Artificial Intelligence Diffusion · p23–25 · 2025-01-15<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2025/01/15/2025-00636.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2025/01/15/2025-00636.txt</a></div><div class=txt>ACTION: Interim final rule; request for comments.
+-----------------------------------------------------------------------
+SUMMARY: With this interim final rule, the Commerce Department&#x27;s Bureau of Industry and Security (BIS) revises the Export Administration Regulations&#x27; (EAR) controls on advanced computing integrated circuits (ICs) and adds a new control on artificial intelligence (AI) model weights for certain advanced closed-weight dual-use AI models.
+In conjunction with the expansion of these controls, which BIS has determined are necessary to protect U.S.</div><div class=diag>rrf=0.0391 · 通道 +dense · bm25#— · dense#39 sim=0.5381</div></div><div class=hit id=hit9><span class=no>[9]</span> BIS · Foreign-Produced Direct Product Rule Additions, and Refinements to Controls for Advanced Computing and Semiconductor Manufacturing Items · p65 · 2024-12-05<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt</a></div><div class=txt>Also, under the advanced computing FDP rule in Sec.
+734.9(h), foreign-produced 3A090.c items will be subject to the EAR if they meet the scope of that FDP rule.
+Under new 3A090.c, this IFR will control HBM having a `memory bandwidth density&#x27; greater than 2 GB per second per square millimeter (mm).
+All HBM stacks currently in production exceed this threshold.
+This IFR also adds a technical note to 3A090.c to define for purposes of this ECCN that `memory bandwidth density&#x27; is the memory bandwidth of the package or stack measured in GB per second divided by the area of the package or stack measured in square mm.</div><div class=diag>rrf=0.0373 · 通道 +dense · bm25#— · dense#83 sim=0.5117</div></div><div class=hit id=hit10><span class=no>[10]</span> 三星电子 · 2024_Half_Interim_Report.pdf · VI. Outstanding shares · p17 · 2024<div class=prov><br><a href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2024_Half_Interim_Report.pdf" target=_blank>https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2024_Half_Interim_Report.pdf</a></div><div class=txt>Reported revenue in 1H24, was KRW 89,363.6 billion (61.2% of total net sales) for DX; KRW 51,693.8 billion (35.4%) for DS; KRW 13,032.6 billion (8.9%) for SDC; and KRW 6,819.3 billion (4.7%) for Harman.
+(KRW 100 mil)
+Includes inter-divisional transactions.
+☞ See 『4.
+Revenue and long-term contracts』for information by each product.
+B.
+Changes in average selling price
+In 1H24, on a year-on-year basis, the average selling price (ASP) of TVs stayed similar and the ASP of smartphones increased by around 7%.
+Memory-product ASP rose by approximately 60%, and the APS for OLED panels for smartphones decreased by approximately 32%, while the ASP of digital cockpits stayed similar to the previous year.
+3.
+Production materials and production facilities
+A.
+Key production materials</div><div class=diag>rrf=0.0359 · 通道 bm25 · bm25#16 · dense#— sim=—</div></div></div><div class="muted" style="margin-top:20px"></div></div></html>

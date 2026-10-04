@@ -185,13 +185,24 @@ class Handler(BaseHTTPRequestHandler):
         if u.path not in ("/", "/index.html"):
             self.send_error(404)
             return
-        q = (parse_qs(u.query).get("q") or [""])[0].strip()
+        qs = parse_qs(u.query)
+        q = (qs.get("q") or [""])[0].strip()
+        # 可选取几席。默认 8；`save_qa_snapshots.py` 会按十题记录里各题实际用的
+        # k（8/10/14）来要，好让**截图与记录显示的席数一致**——原先页面写死 8，
+        # 于是 Q7 那张图显示 8 席、记录里却是 14 席，同一个问题两个数。
+        # 上界 50：k 直接决定要读多少块并塞进模型上下文，不设限就是一个
+        # 「一个参数把服务打满」的口子。
+        try:
+            k = int((qs.get("k") or ["8"])[0])
+        except ValueError:
+            k = 8
+        k = max(1, min(k, 50))
         hits, answer, err = [], None, None
         note = ""
         if q:
             try:
                 R = get_retriever()
-                hits = R.search(q, k=8, expand=True)
+                hits = R.search(q, k=k, expand=True)
                 if not hits:
                     note = "检索无命中：整个语料没有块能对上这个问题。"
                 env, p = load_env()
