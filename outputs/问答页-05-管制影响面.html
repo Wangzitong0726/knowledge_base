@@ -35,7 +35,33 @@ max-height:260px;overflow:auto;color:var(--ink2)}
 .hit a{color:var(--accent2);word-break:break-all}
 .err{background:#fdf2f2;border-color:#f5c2c2;color:#9b2226}
 .muted{color:var(--ink3);font-size:13px}
-</style><div class=wrap><h1>内存产业知识库 · 带出处问答</h1><div class=sub>语料：A 股内存产业链年报/半年报 136 份（含 44 份交易所同源副本，去重 92）· SEC 10-K · 三星/SK 海力士 IR · BIS 规则与 CFR 条文 · 共 81,895 块 ｜ 检索：BM25 + 向量（RRF 融合）</div><form method=get><input type=text name=q autofocus placeholder="例如：3A090.c 的管制门槛是多少？" value="出口管制对内存市场的影响涉及哪几个方面？"><button>提问</button></form><div class="card err"><b>作答失败</b><div class=muted>思考链吃光了 max_tokens，没留下正文（max_tokens=4000，思考 9046 字）——调大 max_tokens</div></div><div class=card><span class="badge b-src">语料原文 · 逐字引用</span><div class=muted>检索到 10 条，按 RRF 融合分排序</div><div class=hit id=hit1><span class=no>[1]</span> BIS · 15 CFR 年度版（含 part 774 CCL） · § 740.25 License Exception High Bandwidth Memory · p332 · 2025<div class=prov><br><a href="https://www.govinfo.gov/content/pkg/CFR-2025-title15-vol2/xml/CFR-2025-title15-vol2.xml" target=_blank>https://www.govinfo.gov/content/pkg/CFR-2025-title15-vol2/xml/CFR-2025-title15-vol2.xml</a></div><div class=txt>§ 740.25 License Exception High Bandwidth Memory (HBM).
+</style><div class=wrap><h1>内存产业知识库 · 带出处问答</h1><div class=sub>语料：A 股内存产业链公司 15 家、定期报告 92 份 · SEC 10-K · 三星/SK 海力士 IR · BIS 规则与 CFR 条文 · 共 <b>140</b> 份唯一文档 / <b>67,210</b> 块 ｜ 检索：BM25 + 向量（RRF 融合）</div><form method=get><input type=text name=q autofocus placeholder="例如：3A090.c 的管制门槛是多少？" value="出口管制对内存市场的影响涉及哪几个方面？"><button>提问</button></form><div class=card><span class="badge b-model">模型作答 · 非原文</span><div class=answer>材料能支撑的“影响面”大致有以下几条：
+
+**1. 许可要求覆盖的物项范围**
+- 管制对象是 CCL 上 ECCN `3A090.c` 所列物项，以及 `3D001`（for `3A090.c`）和 `3E001`（for `3A090.c`）<a class="cite" href="#hit1">[1]</a><a class="cite" href="#hit2">[2]</a><a class="cite" href="#hit10">[10]</a>。
+- 具体许可要求是：这些物项在出口、再出口或境内转移到澳门或 supplement no. 1 to part 740 的 Country Group D:5 目的地、或在其境内转移时需要许可证 <a class="cite" href="#hit2">[2]</a><a class="cite" href="#hit10">[10]</a>。
+
+**2. 目的地维度**
+- 触发许可的地理范围明确为澳门（Macau）与 Country Group D:5 <a class="cite" href="#hit2">[2]</a><a class="cite" href="#hit10">[10]</a>。
+- 上述 `(a)(6)(i)(B)` 的许可要求不适用于 deemed exports 或 deemed reexports <a class="cite" href="#hit10">[10]</a>。
+
+**3. 主体维度（谁能用许可例外）**
+- 使用 License Exception HBM 的出口商/再出口商/转让方必须“headquartered in the United States or a destination specified in Country Group A:5”，且“without an ultimate parent headquartered in Macau or a destination specified in Country Group D:5”<a class="cite" href="#hit1">[1]</a><a class="cite" href="#hit6">[6]</a>。
+- “No other exporter, reexporter, or transferor may use License Exception HBM.”<a class="cite" href="#hit6">[6]</a>
+
+**4. 技术参数门槛（决定能否走许可例外）**
+- 只有当 `3A090.c` 物项“has a memory bandwidth density less than 3.3 GB/s/mm[supcaret]2”时才可依 License Exception HBM 获得授权；达到或超过该参数的 HBM 属“greater sensitivity”，不具备该例外资格 <a class="cite" href="#hit6">[6]</a>。
+
+**5. 对 DRAM 制造端（设施/最终用途/美国人员）的管制**
+- 相关修订把 cell area 与 memory density 参数改为与 DRAM 行业 `18 nm half-pitch node` 的生产标准一致，而非 IRDS 基于理论模型的定义 <a class="cite" href="#hit3">[3]</a>。
+- 该修订“imposes end use and U.S. persons controls at DRAM facilities not previously controlled by the definition of DRAM in the December 5, 2024 FDP IFR”<a class="cite" href="#hit3">[3]</a>。
+- 同时明确：该规则不限制对 HBM 及其他 advanced DRAM 应用中受 Sec. `744.23(a)(2)` 与 Sec. `744.6 (c)(2)(i)` 覆盖物项的出口、再出口、境内转移及相关美国人员活动 <a class="cite" href="#hit3">[3]</a>。
+
+**6. 市场层面的影响（企业视角）**
+- 内存行业需“continuously monitor variables that may widely impact the memory market, such as semiconductor export controls and macroeconomic trends”<a class="cite" href="#hit5">[5]</a>。
+- 全球需求担忧因“US-China technological competition and rising protectionism, including domestic industry support measures, export controls, and tariffs”而加剧 <a class="cite" href="#hit7">[7]</a>。
+
+**<span class="miss">材料未覆盖</span>的部分**：材料没有给出出口管制对内存出货量、价格、营收或市场份额的量化影响测算（材料中的市场规模与份额数据未与管制措施建立因果或数量关联）<a class="cite" href="#hit8">[8]</a><a class="cite" href="#hit9">[9]</a>，也没有涉及管制对 HBM 具体客户/订单的影响。</div></div><div class=card><span class="badge b-src">语料原文 · 逐字引用</span><div class=muted>检索到 10 条，按 RRF 融合分排序</div><div class=hit id=hit1><span class=no>[1]</span> BIS · 15 CFR 年度版（含 part 774 CCL） · § 740.25 License Exception High Bandwidth Memory · p332 · 2025<div class=prov><br><a href="https://www.govinfo.gov/content/pkg/CFR-2025-title15-vol2/xml/CFR-2025-title15-vol2.xml" target=_blank>https://www.govinfo.gov/content/pkg/CFR-2025-title15-vol2/xml/CFR-2025-title15-vol2.xml</a></div><div class=txt>§ 740.25 License Exception High Bandwidth Memory (HBM).
 (a) Scope.
 This License Exception High Bandwidth Memory (HBM) authorizes the export, reexport, or transfer (in-country) of items specified in ECCN 3A090.c on the Commerce Control List (CCL) in supplement no.
 1 to part 774 if all terms and conditions within this section are met.
@@ -43,15 +69,15 @@ This License Exception High Bandwidth Memory (HBM) authorizes the export, reexpo
 The exporter, reexporter, or transferor must be headquartered in the United States or a destination specified in Country Group A:5 of supplement no.
 1 to this part, without an ultimate parent headquartered in Macau or a destination specified in Country Group D:5 of supplement no.
 1 to this part.
-(c) Conditions.</div><div class=diag>rrf=0.0503 · 通道 +dense · bm25#— · dense#9 sim=0.6145</div></div><div class=hit id=hit2><span class=no>[2]</span> BIS · Implementation of Additional Due Diligence Measures for Advanced Computing Integrated Circuits; Amendments and Clarifications; and Extension of Comment Period · p70 · 2025-01-16<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2025/01/16/2025-00711.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2025/01/16/2025-00711.txt</a></div><div class=txt>As such, it does not restrict exports, reexports and transfers (in-country) of items covered by Sec.
+(c) Conditions.</div><div class=diag>rrf=0.0503 · 通道 +dense · bm25#— · dense#9 sim=0.6145</div></div><div class=hit id=hit2><span class=no>[2]</span> BIS · Foreign-Produced Direct Product Rule Additions, and Refinements to Controls for Advanced Computing and Semiconductor Manufacturing Items · p67 · 2024-12-05<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt</a></div><div class=txt>Paragraph (a)(6)(i) (Exports, reexports, transfers (in- country) to or within Macau or Country Group D:5) is revised to designate the text in paragraph (a)(6)(i) as paragraph (a)(6)(i)(A) and add a new paragraph (a)(6)(i)(B) to set forth license requirements for high bandwidth memory (HBM) items specified in ECCNs 3A090.c, 3D001 (for 3A090.c), and 3E001 (for 3A090.c) when exported, reexported, or transferred (in-country) to or within Macau or a destination specified in Country Group D:5 in supplement no.
+1 to part 740 of the EAR.</div><div class=diag>rrf=0.0480 · 通道 +dense · bm25#— · dense#3 sim=0.6244</div></div><div class=hit id=hit3><span class=no>[3]</span> BIS · Implementation of Additional Due Diligence Measures for Advanced Computing Integrated Circuits; Amendments and Clarifications; and Extension of Comment Period · p70 · 2025-01-16<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2025/01/16/2025-00711.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2025/01/16/2025-00711.txt</a></div><div class=txt>As such, it does not restrict exports, reexports and transfers (in-country) of items covered by Sec.
 744.23(a)(2) and the activities of U.S.
 persons Sec.
 744.6 (c)(2)(i) to high bandwidth memory and other advanced DRAM applications.
 Accordingly, this update revises the cell area and memory density parameters to be consistent with production standards in the DRAM industry for the 18 nm half-pitch node, rather than the IRDS definition of ``18 nm half-pitch,&#x27;&#x27; which is based on a theoretical model, rather than actual, physical characteristics of DRAM memory.
 This revision imposes end use and U.S.
 persons controls at DRAM facilities not previously controlled by the definition of DRAM in the December 5, 2024 FDP IFR.
-c.</div><div class=diag>rrf=0.0479 · 通道 +dense · bm25#— · dense#0 sim=0.6636</div></div><div class=hit id=hit3><span class=no>[3]</span> BIS · Foreign-Produced Direct Product Rule Additions, and Refinements to Controls for Advanced Computing and Semiconductor Manufacturing Items · p67 · 2024-12-05<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt</a></div><div class=txt>Paragraph (a)(6)(i) (Exports, reexports, transfers (in- country) to or within Macau or Country Group D:5) is revised to designate the text in paragraph (a)(6)(i) as paragraph (a)(6)(i)(A) and add a new paragraph (a)(6)(i)(B) to set forth license requirements for high bandwidth memory (HBM) items specified in ECCNs 3A090.c, 3D001 (for 3A090.c), and 3E001 (for 3A090.c) when exported, reexported, or transferred (in-country) to or within Macau or a destination specified in Country Group D:5 in supplement no.
-1 to part 740 of the EAR.</div><div class=diag>rrf=0.0479 · 通道 +dense · bm25#— · dense#3 sim=0.6244</div></div><div class=hit id=hit4><span class=no>[4]</span> BIS · Foreign-Produced Direct Product Rule Additions, and Refinements to Controls for Advanced Computing and Semiconductor Manufacturing Items · p171–174 · 2024-12-05<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt</a></div><div class=txt>These license exceptions may be used provided the export, reexport, or transfer (in-country) meets all of the applicable criteria identified under this paragraph (a) and none of the restrictions in paragraph (b) of this section.
+c.</div><div class=diag>rrf=0.0479 · 通道 +dense · bm25#— · dense#0 sim=0.6636</div></div><div class=hit id=hit4><span class=no>[4]</span> BIS · Foreign-Produced Direct Product Rule Additions, and Refinements to Controls for Advanced Computing and Semiconductor Manufacturing Items · p171–174 · 2024-12-05<div class=prov><br><a href="https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt" target=_blank>https://www.federalregister.gov/documents/full_text/text/2024/12/05/2024-28270.txt</a></div><div class=txt>These license exceptions may be used provided the export, reexport, or transfer (in-country) meets all of the applicable criteria identified under this paragraph (a) and none of the restrictions in paragraph (b) of this section.
 * * * * *
 0 13.
 Sections 740.25 and 740.26 are added to read as follows:
@@ -76,7 +102,31 @@ DRAM | 1H25 32.7% | 2024 41.5% | 2023 42.2%
 ※ Global market share in revenue; data from research firm DRAMeXchange.
 (Figure for 1H25 is a Company estimate.)
 □ Business condition
-In the Memory Business, for DRAM, we increased the share of HBM3E and high-capacity DDR5 sales in line with the strong server demand in the second quarter.</div><div class=diag>rrf=0.0440 · 通道 +dense · bm25#— · dense#2 sim=0.6326</div></div><div class=hit id=hit8><span class=no>[8]</span> 佰维存储 · 2024年年度报告 · (三) 所处行业情况 · p48 · 2025-04-30<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2025-04-30/1223427605.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2025-04-30/1223427605.PDF</a></div><div class=txt>电子设备/服务器需要存储的数据量也越来越庞大，NAND Flash 需求量巨大，市场前景广阔。
+In the Memory Business, for DRAM, we increased the share of HBM3E and high-capacity DDR5 sales in line with the strong server demand in the second quarter.</div><div class=diag>rrf=0.0440 · 通道 +dense · bm25#— · dense#2 sim=0.6326</div></div><div class=hit id=hit8><span class=no>[8]</span> 佰维存储 · 2025年年度报告 · (三) 所处行业情况 · p30 · 2026-03-20<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2026-03-20/1225020225.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2026-03-20/1225020225.PDF</a></div><div class=txt>根据TrendForce 数
+据，2025 年第三季度的DRAM 市场上，SK 海力士、三星、美光、长鑫存储的市场份额分别为33.2%、
+32.6%、25.7%、5.8%。
+根据TrendForce 报告，得益于数据中心的DDR5 及HBM（高带宽内存）
+需求上升，2025 年全球DRAM 市场规模（含HBM）为1,657 亿美元，预计2026 年市场规模（含
+HBM）将同比增长144%，增长至4,043 亿美元。
+DRAM 具有读写延迟低、随机访问快、带宽持续提升等特点，是电子设备与服务器的关键运
+行内存（Memory），主要应用于AI 服务器/通用服务器、PC、智能手机等。
+随着生成式人工智能
+应用加速渗透，电子设备/服务器对于内存的带宽以及容量的要求越来越高，DRAM 需求量持续提
+升，市场前景广阔。
+3）HBM 行业概况
+HBM（High Bandwidth Memory）作为基于3D 堆栈工艺的高性能内存（Memory），打破了
+内存带宽及功耗的瓶颈。
+HBM 即高带宽存储器，通过使用先进封装工艺，将多个DRAM 芯片进
+行堆叠，并与GPU 一同进行封装，形成大容量、高带宽的DDR 组合阵列。
+在高性能GPU 需求
+的推动下，HBM 已经成为AI 计算芯片的标配。
+根据Gartner 数据显示，2025 年，HBM 市场规模为307.5 亿美元，同比增长超过100%。
+随
+着AI 大模型的兴起，海量算力需求对芯片内存容量和传输带宽提出更高要求，预计HBM 市场规
+模在2026 年同比增长超过90%，市场规模接近600 亿美元，预计2029 年市场规模约为1,100 亿
+美元，2025 年-2029 年复合增速达到37.5%。
+HBM具有超高带宽、3D堆叠集成等特点，是AI加速计算的核心内存方案，主要应用于GPU/AI
+加速卡及AI 训练、推理服务器。</div><div class=diag>rrf=0.0420 · 通道 bm25+dense · bm25#99 · dense#5 sim=0.6181</div></div><div class=hit id=hit9><span class=no>[9]</span> 佰维存储 · 2024年年度报告 · (三) 所处行业情况 · p48 · 2025-04-30<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2025-04-30/1223427605.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2025-04-30/1223427605.PDF</a></div><div class=txt>电子设备/服务器需要存储的数据量也越来越庞大，NAND Flash 需求量巨大，市场前景广阔。
 2）DRAM 行业概况
 DRAM 是动态随机存取存储器，DRAM 的特征是读写速度快、延迟低，但掉电后数据会丢失，
 常用于计算系统的运行内存（Memory）。
@@ -102,14 +152,9 @@ HBM 即高带宽存储器，通过使用先进封装将多个DRAM 芯片进行�
 在竞争格局方面，2024 年，SK 海力士继续保持超过50%的份额领先市场，
 三星以32%~35%的份额次之，美光的份额约为13%~15%。
 （3）行业发展趋势
-1）下游需求多点开花，AI 推动半导体存储市场规模持续扩容</div><div class=diag>rrf=0.0409 · 通道 bm25+dense · bm25#61 · dense#7 sim=0.6168</div></div><div class=hit id=hit9><span class=no>[9]</span> BIS · 15 CFR 年度版（含 part 774 CCL） · § 742.6 Regional stability · p339 · 2025<div class=prov><br><a href="https://www.govinfo.gov/content/pkg/CFR-2025-title15-vol2/xml/CFR-2025-title15-vol2.xml" target=_blank>https://www.govinfo.gov/content/pkg/CFR-2025-title15-vol2/xml/CFR-2025-title15-vol2.xml</a></div><div class=txt>For the purposes of this paragraph, &#x27;equivalent&#x27; means the item is listed on the country&#x27;s export control list and the country applies the same license review policy.
+1）下游需求多点开花，AI 推动半导体存储市场规模持续扩容</div><div class=diag>rrf=0.0412 · 通道 bm25+dense · bm25#57 · dense#7 sim=0.6168</div></div><div class=hit id=hit10><span class=no>[10]</span> BIS · 15 CFR 年度版（含 part 774 CCL） · § 742.6 Regional stability · p339 · 2025<div class=prov><br><a href="https://www.govinfo.gov/content/pkg/CFR-2025-title15-vol2/xml/CFR-2025-title15-vol2.xml" target=_blank>https://www.govinfo.gov/content/pkg/CFR-2025-title15-vol2/xml/CFR-2025-title15-vol2.xml</a></div><div class=txt>For the purposes of this paragraph, &#x27;equivalent&#x27; means the item is listed on the country&#x27;s export control list and the country applies the same license review policy.
 To receive assistance in determining countries with equivalent controls, you may submit an advisory opinion request in accordance with § 748.3(c) of the EAR.
 (B) High Bandwidth Memory (HBM).
 A license is required for items specified in ECCNs 3A090.c, 3D001 (for 3A090.c), and 3E001 (for 3A090.c) when exported, reexported, or transferred (in-country) to or within Macau or a destination specified in Country Group D:5 in supplement no.
 1 to part 740 of the EAR.
-The license requirements in this paragraph (a)(6)(i)(B) do not apply to deemed exports or deemed reexports.</div><div class=diag>rrf=0.0361 · 通道 +dense · bm25#— · dense#23 sim=0.5845</div></div><div class=hit id=hit10><span class=no>[10]</span> 美光 Micron · 10-Q 2025-06-26 · PART II . OTHER INFORMATION · p499–501 · 2025-06-26<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312525000021/mu-20250529.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312525000021/mu-20250529.htm</a></div><div class=txt>A majority of our DRAM production output in 2024 was from our fabrication facilities in Taiwan, and any loss of output could have a material adverse effect on us.
-Any political, economic, or other actions may also adversely affect our customers and the technology industry supply chain, for which Taiwan is a central hub, and as a result, could have a material adverse impact on us.
-The semiconductor memory and storage markets are highly competitive.
-We face intense competition in the semiconductor memory and storage markets from a number of companies, including Kioxia Holdings Corporation; Samsung Electronics Co., Ltd.; SK hynix Inc.; Sandisk Corporation; Yangtze Memory Technologies Co., Ltd.
-(“YMTC”); and ChangXin Memory Technologies, Inc.
-(“CXMT”).</div><div class=diag>rrf=0.0359 · 通道 +dense · bm25#— · dense#15 sim=0.5956</div></div></div><div class="muted" style="margin-top:20px"></div></div></html>
+The license requirements in this paragraph (a)(6)(i)(B) do not apply to deemed exports or deemed reexports.</div><div class=diag>rrf=0.0361 · 通道 +dense · bm25#— · dense#23 sim=0.5845</div></div></div><div class="muted" style="margin-top:20px"></div></div></html>

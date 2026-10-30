@@ -35,144 +35,56 @@ max-height:260px;overflow:auto;color:var(--ink2)}
 .hit a{color:var(--accent2);word-break:break-all}
 .err{background:#fdf2f2;border-color:#f5c2c2;color:#9b2226}
 .muted{color:var(--ink3);font-size:13px}
-</style><div class=wrap><h1>内存产业知识库 · 带出处问答</h1><div class=sub>语料：A 股内存产业链年报/半年报 136 份（含 44 份交易所同源副本，去重 92）· SEC 10-K · 三星/SK 海力士 IR · BIS 规则与 CFR 条文 · 共 81,895 块 ｜ 检索：BM25 + 向量（RRF 融合）</div><form method=get><input type=text name=q autofocus placeholder="例如：3A090.c 的管制门槛是多少？" value="美光最近一期财报里，关于 HBM 的收入、产能或资本开支有哪些表述？"><button>提问</button></form><div class=card><span class="badge b-model">模型作答 · 非原文</span><div class=answer>## 结论：<span class="miss">材料未覆盖</span>
+</style><div class=wrap><h1>内存产业知识库 · 带出处问答</h1><div class=sub>语料：A 股内存产业链公司 15 家、定期报告 92 份 · SEC 10-K · 三星/SK 海力士 IR · BIS 规则与 CFR 条文 · 共 <b>140</b> 份唯一文档 / <b>67,210</b> 块 ｜ 检索：BM25 + 向量（RRF 融合）</div><form method=get><input type=text name=q autofocus placeholder="例如：3A090.c 的管制门槛是多少？" value="美光最近一期财报里，关于 HBM 的收入、产能或资本开支有哪些表述？"><button>提问</button></form><div class=card><span class="badge b-model">模型作答 · 非原文</span><div class=answer>**关于「收入」：<span class="miss">材料未覆盖</span>。** 七条材料中没有任何一处给出 HBM 的收入金额、收入占比或同比增速。材料 1 只说 `In the fourth quarter of 2025, HBM3E 12-high represented the majority of our HBM shipments.` <a class="cite" href="#hit1">[1]</a>，这是出货结构，不是收入。
 
-材料中只有一份美光材料——【材料 5】（美光 Micron / 10-K 2025-10-03 / PART I / p70）。该材料**完全没有**出现 HBM 相关的收入、产能或资本开支的任何表述。因此这三项都无法回答。
+**关于「产能」：有定性表述，无数字。**
 
-**缺什么**：HBM 收入（或营收占比）、HBM 产能/产量数字、HBM 相关资本开支金额——材料 5 中均无。
+- `Singapore: we broke ground on an HBM advanced packaging facility to meaningfully expand our total advanced packaging capacity beginning in calendar 2027` <a class="cite" href="#hit3">[3]</a><a class="cite" href="#hit5">[5]</a>
+- `Taiwan: we are modernizing our production capacity for DRAM and HBM products to meet rising market demand.` <a class="cite" href="#hit3">[3]</a><a class="cite" href="#hit5">[5]</a>
 
-## 材料 5 中仅有的 HBM 相关表述
+产品/节点侧的相关表述：
 
-1. 需求侧描述：&quot;Cloud servers supporting AI and data-centric workloads require significantly increasing quantities of DRAM, including HBM, and NAND as the task of turning data into insight becomes increasingly memory-centric.&quot;<a class="cite" href="#hit5">[5]</a>
-2. &quot;In 2024, we began volume production of our 8-high 24GB HBM3E with increased bandwidth and superior power efficiency enabled by our advanced 1β process node.&quot;<a class="cite" href="#hit5">[5]</a>
-3. &quot;In the fourth quarter of 2025, HBM3E 12-high represented the majority of our HBM shipments.&quot;<a class="cite" href="#hit5">[5]</a>
-4. &quot;In 2025, we delivered samples of HBM4 36GB 12-high to multiple key customers to power next-generation AI platforms.&quot;<a class="cite" href="#hit5">[5]</a>
+- `In 2024, we began volume production of our 8-high 24GB HBM3E` <a class="cite" href="#hit1">[1]</a>
+- `In 2025, we delivered samples of HBM4 36GB 12-high to multiple key customers` <a class="cite" href="#hit1">[1]</a>
+- `Our HBM4 technology is advancing and remains on schedule for volume production in calendar 2026.` <a class="cite" href="#hit7">[7]</a>
+- `We are well-positioned with our industry-leading HBM3E technology.` <a class="cite" href="#hit7">[7]</a>
 
-## 需要提醒的两点
+**关于「资本开支」：<span class="miss">材料未覆盖</span>。** 没有任何 HBM 相关的资本开支金额、全年 capex 指引或同比变化数字。材料 3 里的 `$10 billion` 是股票回购授权（`the discretionary repurchase of up to $10 billion of our outstanding common stock`）<a class="cite" href="#hit3">[3]</a>，与资本开支无关，不能挪用。材料 5 只提到政府激励「generally offset a portion of our planned investments」，同样没有金额 <a class="cite" href="#hit5">[5]</a>。
 
-- 材料 5 是材料中唯一的美光文件，若问的是「最近一期」，材料内没有第二份美光财报可比对。
-- 材料中另有大量 HBM 收入、产能、资本开支相关的数字，但都来自 **SK 海力士**【材料 1】【材料 3】【材料 4】【材料 6】【材料 7】【材料 8】或**三星电子**【材料 2】，不能当作美光的表述使用。</div></div><div class=card><span class="badge b-src">语料原文 · 逐字引用</span><div class=muted>检索到 8 条，按 RRF 融合分排序</div><div class=hit id=hit1><span class=no>[1]</span> SK 海力士 · SK hynix FY2024 Q4 Earnings Results · p13–14 · 2024.01.01<div class=prov><br><a href="https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/81727201766385339.pdf" target=_blank>https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/81727201766385339.pdf</a></div><div class=txt>‘25, with target opening in Q2’27
-CapEx will be focused on products that have
-secured profitability, will flexibly adjust
-investments based on mkt.
-conditions
-At end of Yr.
-‘24, finalized funding of approx.
-KRW 660bn under CHIPS Act
-13
-Expect Yr.
-‘25 revenue to grow over 100% YoY
-Rising demand from ASIC customers
-HBM3E 12Hi product support well in progress, expect 12Hi bit volume
-to crossover with 8Hi in 1H’25, as scheduled
-Developed industry’s 1st HBM3E 16Hi using Adv.
-MR-MUF in Nov.
-‘24
-Will complete development and secure mass production readiness in
-Yr.
-’25 for HBM4 12Hi, which will be mainstream product in Yr.
-‘26
-Tech migration to adv.
-nodes for production of DDR5/LPDDR5
-Preparing various product lines, such as LPCAMM2 &amp; ZUFS, that</div><div class=diag>rrf=0.0613 · 通道 +dense · bm25#— · dense#2 sim=0.6072</div></div><div class=hit id=hit2><span class=no>[2]</span> 三星电子 · 2024_Half_Interim_Report.pdf · X. Transactions with Affiliates and Subsidiaries · p282 · 2024<div class=prov><br><a href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2024_Half_Interim_Report.pdf" target=_blank>https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2024_Half_Interim_Report.pdf</a></div><div class=txt>HBM Oct 2022–Feb 2024 | Details □ Developed AI-accelerator equipped with HBM-PIM and GPU - Materialized HBM-PIM Cluster by installing HBM-PIM memory in AMD’s GPU accelerator - Compared to existing GPU accelerators, on average, the addition of HBM-PIM improved performance by more than double and reduced energy consumption by more than 50% - In preparation to provide software that supports accelerators equipped with HBM-PIM, so consumers are expected to be able to use PIM memory solutions in an integrated software environment □ Unveiled ultra-high performance HBM3E DRAM Shinebolt that will lead AI technology innovation - Provides high-performance of up to 9.8Gbps per one data input/output pin, allowing speed capable of processing up to 1.2TB of data per second - Achieves high-level stacking for HBM chips by optimizing non-conductive film technology for dense chip stacking without gaps, and improved heat transfer coefficient by maximizing heat conduction - Currently mass-producing 8-layer and 12-layer HBM3 products and delivering samples of the next-generation HBM3E to customers □ Developed industry’s first 36GB HBM3E 12H DRAM - Achieved industry’s highest capacity of 36GB by stacking 12 layers - With Advanced TC NCF technology, achieved 12-layer stacks by maintaining the same height as 8-layer HBM3 and also improved both performance and capacity by over 50% - Enhanced vertical integration with 7 micrometer chip spacing—the industry’s smallest— and applied various bump sizes - Started sample shipping to customers, with mass production expected in 2H</div><div class=diag>rrf=0.0595 · 通道 +dense · bm25#— · dense#5 sim=0.5945</div></div><div class=hit id=hit3><span class=no>[3]</span> SK 海力士 · SK hynix FY2025 Q4 Earnings Results · p12–13 · 2025.01.01<div class=prov><br><a href="https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/116964051831620258.pdf" target=_blank>https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/116964051831620258.pdf</a></div><div class=txt>Rapid progression of Yong-in Phase 1 Fab construction
-Cheong-ju P&amp;T7 and Indiana Adv.
-PKG Fab on track
-Expect considerable increase in Yr.
-’26 CapEx, but will
-continue to adhere to CapEx discipline
-12
-Capable of reliably delivering both HBM3E &amp; HBM4
-HBM4 mass production in progress in line with customer-agreed schedule
-Preparing to deliver optimized Custom HBM by strengthening collaboration with
-customers and partners
-Expanding production of high-value products including high-density SV DRAM
-Accelerating 1cnm migration to expand AI memory portfolio, including
-SoCAMM2 and GDDR7
-Maximizing product competitiveness with 321L migration
-Expanding AI storage capabilities leveraging Solidigm QLC eSSD
-Aiming to lead ultra-high-density AI storage mkt.
-with next-gen.
-245TB product development
-13</div><div class=diag>rrf=0.0589 · 通道 +dense · bm25#— · dense#4 sim=0.5988</div></div><div class=hit id=hit4><span class=no>[4]</span> SK 海力士 · SK hynix FY2024 Q3 Earnings Results · p10–11 · 2024.01.01<div class=prov><br><a href="https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/77045741902433810.pdf" target=_blank>https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/77045741902433810.pdf</a></div><div class=txt>DRAM
-Q4 B/G: Mid-single% increase QoQ
-Through higher sales of HBM &amp; SV DRAM
-Production will be focused on products that
-the company has clear competitive edge
-NAND
-Accelerate transition to leading-edge
-Q4 B/G: Low-teen% increase QoQ
-products while reducing production of legacy
-(incl.
-Solidigm)
-products that are showing slower demand
-Increase sales of eSSD products
-Yr.
-‘25 infra capex to increase YoY due to
-construction of M15X &amp; 1st fab in Yong-in
-M15X will be able to contribute to DRAM
-production from Yr.
-‘26
-10
-DRAM revenue share reached 30% in Q3, expect to reach 40% in Q4
-Bit shipment crossover between HBM3E and HBM3 in Q3
-HBM3E 12Hi shipments to start in Q4 as scheduled, expect 12Hi
-share to exceed half of total HBM3E shipments during 1H’25</div><div class=diag>rrf=0.0576 · 通道 +dense · bm25#— · dense#41 sim=0.5417</div></div><div class=hit id=hit5><span class=no>[5]</span> 美光 Micron · 10-K 2025-10-03 · PART I · p70–71 · 2025-10-03<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm</a></div><div class=txt>Cloud servers supporting AI and data-centric workloads require significantly increasing quantities of DRAM, including HBM, and NAND as the task of turning data into insight becomes increasingly memory-centric.
+**缺口小结：** 若要回答收入、产能（bit/晶圆/封装产能数字）、资本开支三项的量化数据，需要补充材料——目前只有封装厂投产时点（`calendar 2027`）<a class="cite" href="#hit3">[3]</a><a class="cite" href="#hit5">[5]</a> 和 HBM4 量产时点（`calendar 2026`）<a class="cite" href="#hit7">[7]</a> 这两个时间锚点。</div></div><div class=card><span class="badge b-src">语料原文 · 逐字引用</span><div class=muted>检索到 8 条，按 RRF 融合分排序</div><div class=hit id=hit1><span class=no>[1]</span> 美光 Micron · 10-K 2025-10-03 · PART I · p70–71 · 2025-10-03<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm</a></div><div class=txt>Cloud servers supporting AI and data-centric workloads require significantly increasing quantities of DRAM, including HBM, and NAND as the task of turning data into insight becomes increasingly memory-centric.
 In 2024, we began volume production of our 8-high 24GB HBM3E with increased bandwidth and superior power efficiency enabled by our advanced 1β process node.
 In the fourth quarter of 2025, HBM3E 12-high represented the majority of our HBM shipments.
 This enhanced version of HBM delivers faster data rates, improved thermal response, and a higher monolithic die density within the same package footprint as previous generations.
-In 2025, we delivered samples of HBM4 36GB 12-high to multiple key customers to power next-generation AI platforms.</div><div class=diag>rrf=0.0562 · 通道 +dense · bm25#— · dense#6 sim=0.5939</div></div><div class=hit id=hit6><span class=no>[6]</span> SK 海力士 · SK hynix FY2025 Q1 Earnings Results · p11–13 · 2025.01.01<div class=prov><br><a href="https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/5001632852769028.pdf" target=_blank>https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/5001632852769028.pdf</a></div><div class=txt>Shipped world’s first HBM4 12Hi samples to customers in March ’25,
-will be ready for mass production within ’25, in time for customers’ demand
-Began shipping high-perform.
-memory module for AI PC, LPCAMM2, in Q1’25
-Preparing to support LP DRAM module for AI SV, SOCAMM, in time for
-market demand
-For NAND, continue profit-oriented operational decisions, and maintain
-prudent approach in CapEx spending
-11
-Profitability
-Income Statement
-(Unit : KRW Billion)
-Revenue | ’25 Q1 17,639 | ’24 Q4 19,767 | ’24 Q1 12,430 | Q/Q -11% | Y/Y +42%
-Gross Profit | ’25 Q1 10,102 | ’24 Q4 10,366 | ’24 Q1 4,795 | Q/Q -3% | Y/Y +111%
-Operating Profit | ’25 Q1 7,441 | ’24 Q4 8,083 | ’24 Q1 2,886 | Q/Q -8% | Y/Y +158%
-EBITDA* | ’25 Q1 10,769 | ’24 Q4 11,249 | ’24 Q1 6,073 | Q/Q -4% | Y/Y +77%</div><div class=diag>rrf=0.0559 · 通道 +dense · bm25#— · dense#3 sim=0.6049</div></div><div class=hit id=hit7><span class=no>[7]</span> SK 海力士 · SK hynix FY2025 Q3 Earnings Results · p10–11 · 2025.01.01<div class=prov><br><a href="https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/3127648149034921.pdf" target=_blank>https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/3127648149034921.pdf</a></div><div class=txt>products including HBM through Yr.
-‘26
-Opened M15X ahead of schedule and begun equipment
-installation.
-Plan to speed up new capacity expansion
-We will accelerate tech migration to support demand for
-Conv.
-DRAM and NAND
-Yr.
-‘26 Capex to increase YoY, we will continue optimal
-investment to meet demand while maintaining Capex
-discipline
-10
-Completed Yr.
-‘26 supply discussions with key customers
-Ready to supply HBM4, which fully meets customer performance requirements
-and supports highest speed in the industry
-Will start shipments of HBM4 in Q4 and further expand in Yr.
-‘26
-1cnm, which we have full product line-up, will expand in Yr.
-’26 to support
-increasing customers’ demand
-1cnm mass production progressing smoothly, and planning to accelerate
-migration to 1cnm in Yr.</div><div class=diag>rrf=0.0532 · 通道 +dense · bm25#— · dense#12 sim=0.5796</div></div><div class=hit id=hit8><span class=no>[8]</span> SK 海力士 · SK hynix FY2024 Q1 Earnings Results · p10–11 · 2024.01.01<div class=prov><br><a href="https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/61321621157035970.pdf" target=_blank>https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/61321621157035970.pdf</a></div><div class=txt>Expect limited DRAM/NAND production
-growth in ‘24, as a result of conservative
-investments in ‘23, and more capa.
-allocated
-to produce HBM which has larger die size
-10
-In March, began mass production/supply of 1bnm HBM3E
-Increase HBM3E supply in-line with customers’ demand
-Expand customer base using increased production capability
-Signed MOU with TSMC for development of HBM4 and
-collaboration on next generation packaging technology
-Represent 45%+ of PC, 60%+ of SV bit sales
-Strong sales of 128GB+ modules contributed to DDR5 sales
-1bnm 32Gb DDR5 product to be launched to support high-
-density SV DRAM demand
-Sales of high-performance 16ch eSSD increased in Q1
-Solidigm’s QLC based high density eSSD will increase in
-demand due to growing needs for high performance, high</div><div class=diag>rrf=0.0531 · 通道 +dense · bm25#— · dense#16 sim=0.5741</div></div></div><div class="muted" style="margin-top:20px"></div></div></html>
+In 2025, we delivered samples of HBM4 36GB 12-high to multiple key customers to power next-generation AI platforms.</div><div class=diag>rrf=0.0726 · 通道 +dense+公司 · bm25#— · dense#6 sim=0.5939</div></div><div class=hit id=hit2><span class=no>[2]</span> 美光 Micron · 10-K 2020-10-19 · p19–20 · 2020-10-19<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312520000082/mu-20200903.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312520000082/mu-20200903.htm</a></div><div class=txt>Media Inquiriesmediarelations@micron.comGovernment Inquiriesgovaffairs@micron.comInvestor Inquiriesinvestorrelations@micron.com | Global Product Portfolio
+Media Inquiriesmediarelations@micron.comGovernment Inquiriesgovaffairs@micron.comInvestor Inquiriesinvestorrelations@micron.com | DRAM | NAND | 3D XPointTM Memory | NOR | Solid-State DrivesHigh Bandwidth Memory (HBM) | Multichip Packages | Advanced Solutions
+Media Inquiriesmediarelations@micron.comGovernment Inquiriesgovaffairs@micron.comInvestor Inquiriesinvestorrelations@micron.com | Connect with us on micron.com
+© 2020 Micron Technology, Inc.
+Micron, the Micron logo, the M orbit logo, Intelligence Accelerated TM , and other Micron trademarks are the property of Micron Technology, Inc.</div><div class=diag>rrf=0.0486 · 通道 +dense · bm25#— · dense#28 sim=0.5596</div></div><div class=hit id=hit3><span class=no>[3]</span> 美光 Micron · 10-K 2025-10-03 · PART II · p672–675 · 2025-10-03<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm</a></div><div class=txt>• Singapore: we broke ground on an HBM advanced packaging facility to meaningfully expand our total advanced packaging capacity beginning in calendar 2027; and
+• Taiwan: we are modernizing our production capacity for DRAM and HBM products to meet rising market demand.
+See Item 8.
+Financial Statements and Supplementary Data, Notes to Consolidated Financial Statements, Note 20.
+Government Incentives.
+Our Board of Directors has authorized the discretionary repurchase of up to $10 billion of our outstanding common stock through open-market purchases, block trades, privately-negotiated transactions, derivative transactions, and/or pursuant to Rule 10b5-1 trading plans.</div><div class=diag>rrf=0.0467 · 通道 +dense+公司 · bm25#— · dense#19 sim=0.5683</div></div><div class=hit id=hit4><span class=no>[4]</span> 美光 Micron · 10-K 2021-10-08 · p19 · 2021-10-08<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312521000065/mu-20210902.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312521000065/mu-20210902.htm</a></div><div class=txt>Media Inquiriesmediarelations@micron.comGovernment Inquiriesgovaffairs@micron.comInvestor Inquiriesinvestorrelations@micron.com | Global Product Portfolio
+Media Inquiriesmediarelations@micron.comGovernment Inquiriesgovaffairs@micron.comInvestor Inquiriesinvestorrelations@micron.com | DRAM | NAND | NOR | Solid-State Drives | Graphics and High Bandwidth Memory (HBM) | Managed NAND and Multichip Packages
+Media Inquiriesmediarelations@micron.comGovernment Inquiriesgovaffairs@micron.comInvestor Inquiriesinvestorrelations@micron.com | Connect with us on micron.com
+© 2021 Micron Technology, Inc.
+Micron, the Micron orbit logo, the M orbit logo, Intelligence AcceleratedTM, and other Micron trademarks are the property of Micron Technology, Inc.</div><div class=diag>rrf=0.0428 · 通道 +dense · bm25#— · dense#69 sim=0.5221</div></div><div class=hit id=hit5><span class=no>[5]</span> 美光 Micron · 10-Q 2025-12-18 · Consolidated Statements of Comprehensive Income · p349–351 · 2025-12-18<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312525000046/mu-20251127.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312525000046/mu-20251127.htm</a></div><div class=txt>• Singapore: we broke ground on an HBM advanced packaging facility to meaningfully expand our total advanced packaging capacity beginning in calendar 2027; and
+• Taiwan: we are modernizing our production capacity for DRAM and HBM products to meet rising market demand.
+In certain countries outside of the U.S, we receive or expect to receive, government incentives related to our investments.
+The amounts of these government incentives generally offset a portion of our planned investments and require us to meet certain conditions in order to receive such incentives.</div><div class=diag>rrf=0.0423 · 通道 +dense+公司 · bm25#— · dense#20 sim=0.5683</div></div><div class=hit id=hit6><span class=no>[6]</span> 美光 Micron · 10-K 2022-10-07 · p19 · 2022-10-07<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312522000048/mu-20220901.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312522000048/mu-20220901.htm</a></div><div class=txt>Media Inquiriesmediarelations@micron.comGovernment Inquiriesgovaffairs@micron.comInvestor Inquiriesinvestorrelations@micron.com | Global Product Portfolio
+Media Inquiriesmediarelations@micron.comGovernment Inquiriesgovaffairs@micron.comInvestor Inquiriesinvestorrelations@micron.com | DRAM | NAND | NOR | Solid-State Drives | Graphics and High Bandwidth Memory (HBM) | Managed NAND and Multichip Packages
+Media Inquiriesmediarelations@micron.comGovernment Inquiriesgovaffairs@micron.comInvestor Inquiriesinvestorrelations@micron.com | Connect with us on micron.com
+© 2022 Micron Technology, Inc.
+Micron, the Micron orbit logo, the M orbit logo, Intelligence AcceleratedTM, and other Micron trademarks are the property of Micron Technology, Inc.</div><div class=diag>rrf=0.0422 · 通道 +dense · bm25#— · dense#71 sim=0.5214</div></div><div class=hit id=hit7><span class=no>[7]</span> 美光 Micron · 10-K 2025-10-03 · PART I · p134–138 · 2025-10-03<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm</a></div><div class=txt>We are unable to predict whether these license agreements can be obtained or renewed on terms acceptable to us.
+15 | 2025 10-K
+Table of Contents
+Research and Development
+Our R&amp;D efforts are focused primarily on development of memory and storage solutions, including our industry-leading DRAM and NAND technology, that enable continuous improvement in performance and cost structure for our products.
+In 2025, we began shipping the 1γ production node, which is our first DRAM node incorporating EUV lithography.
+We also began volume production on our Micron G9 NAND node.
+We are well-positioned with our industry-leading HBM3E technology.
+Our HBM4 technology is advancing and remains on schedule for volume production in calendar 2026.</div><div class=diag>rrf=0.0373 · 通道 +dense · bm25#— · dense#62 sim=0.5241</div></div><div class=hit id=hit8><span class=no>[8]</span> 美光 Micron · 10-K 2023-10-06 · PART I · p54–55 · 2023-10-06<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312523000054/mu-20230831.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312523000054/mu-20230831.htm</a></div><div class=txt>We are working closely with our customers and have begun sampling our industry-leading HBM3E product offering.
+We expect to begin a mass production ramp for HBM3E in early calendar 2024.
+In 2023, we announced the introduction of 128GB and 256GB Compute Express Link (“CXL”) 2.0 memory expansion modules.
+By leveraging a unique dual-channel memory architecture, we are able to deliver higher module capacity and increased bandwidth.
+Enterprise : CNBU sales to the enterprise market in 2023 consisted primarily of our DDR4 and DDR5 DRAM products.</div><div class=diag>rrf=0.0361 · 通道 +dense · bm25#— · dense#36 sim=0.5517</div></div></div><div class="muted" style="margin-top:20px"></div></div></html>

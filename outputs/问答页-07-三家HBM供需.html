@@ -35,7 +35,141 @@ max-height:260px;overflow:auto;color:var(--ink2)}
 .hit a{color:var(--accent2);word-break:break-all}
 .err{background:#fdf2f2;border-color:#f5c2c2;color:#9b2226}
 .muted{color:var(--ink3);font-size:13px}
-</style><div class=wrap><h1>内存产业知识库 · 带出处问答</h1><div class=sub>语料：A 股内存产业链年报/半年报 136 份（含 44 份交易所同源副本，去重 92）· SEC 10-K · 三星/SK 海力士 IR · BIS 规则与 CFR 条文 · 共 81,895 块 ｜ 检索：BM25 + 向量（RRF 融合）</div><form method=get><input type=text name=q autofocus placeholder="例如：3A090.c 的管制门槛是多少？" value="三星、SK 海力士、美光三家最近一期报告对 HBM 供需与产能的表述有哪些共性和差异？"><button>提问</button></form><div class="card err"><b>作答失败</b><div class=muted>思考链吃光了 max_tokens，没留下正文（max_tokens=4000，思考 10470 字）——调大 max_tokens</div></div><div class=card><span class="badge b-src">语料原文 · 逐字引用</span><div class=muted>检索到 14 条，按 RRF 融合分排序</div><div class=hit id=hit1><span class=no>[1]</span> 佰维存储 · 2024年半年度报告 · (二) 所属行业情况 · p35–36 · 2024-08-23<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2024-08-23/1220952257.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2024-08-23/1220952257.PDF</a></div><div class=txt>季度的DRAM 市场上，三星、SK 海力士、美光、南亚科技的市场份额分别为42.1%、30.8%、
+</style><div class=wrap><h1>内存产业知识库 · 带出处问答</h1><div class=sub>语料：A 股内存产业链公司 15 家、定期报告 92 份 · SEC 10-K · 三星/SK 海力士 IR · BIS 规则与 CFR 条文 · 共 <b>140</b> 份唯一文档 / <b>67,210</b> 块 ｜ 检索：BM25 + 向量（RRF 融合）</div><form method=get><input type=text name=q autofocus placeholder="例如：3A090.c 的管制门槛是多少？" value="三星、SK 海力士、美光三家最近一期报告对 HBM 供需与产能的表述有哪些共性和差异？"><button>提问</button></form><div class=card><span class="badge b-model">模型作答 · 非原文</span><div class=answer>## 先说明「最近一期」的认定
+
+按材料中的报告期，我取：三星 = 材料 4（2026_Half_Interim_Report，p36）；SK 海力士 = 材料 6（SK hynix FY2026 Q2 Earnings Results，p10）；美光 = 材料 11（10-Q 2026-06-25，p495）。美光的材料 8 与材料 11 表述基本一致，只是报告期不同，不影响以下比较。
+
+## 共性
+
+1. **三家都把 HBM 的供给节奏与需求节奏是否匹配作为核心表述对象。** 三星：下半年「demand growth is expected to outpace the Company&#x27;s efforts to increase production capacity」<a class="cite" href="#hit4">[4]</a>；SK 海力士：HBM4「Full ramp up planned in 2H」，并以「stable supply capability」维持领导地位<a class="cite" href="#hit6">[6]</a>；美光：既提示 HBM 需求减弱、产能转回 conventional DRAM 会造成 conventional DRAM 供应大增，也提示需求上升时「we may be unable to increase supply sufficiently to meet such demand」<a class="cite" href="#hit11">[11]</a>。
+
+2. **三家都把 HBM 供给与产能/产能转换绑定表述，而不是孤立谈需求。** 三星谈「efforts to increase production capacity」并称将「optimize our product mix」<a class="cite" href="#hit4">[4]</a>；SK 海力士谈 HBM4 出货与 ramp up、1cnm 基 SOCAMM2 供应<a class="cite" href="#hit6">[6]</a>；美光则从工艺端说明「HBM requires a higher number of wafers and more cleanroom space to produce the same number of bits as conventional DRAM in the same technology node」<a class="cite" href="#hit11">[11]</a>。
+
+## 差异
+
+1. **表述性质不同：美光是风险假设句，三星与 SK 海力士是经营计划陈述句。** 美光通篇为「If demand for HBM weakens…could result in…may lead to…could adversely impact」的条件式风险披露，且同时覆盖供过于求和供不应求两个方向<a class="cite" href="#hit11">[11]</a>；三星是对下半年的供需判断加应对措施<a class="cite" href="#hit4">[4]</a>；SK 海力士是已发生动作加下季度指引<a class="cite" href="#hit6">[6]</a>。三星与 SK 海力士的最新一期材料中，没有出现美光那种「HBM 产能转回 conventional DRAM」的风险表述。
+
+2. **供需松紧的判断方向不同。** 三星明确指向偏紧：「demand growth is expected to outpace the Company&#x27;s efforts to increase production capacity」<a class="cite" href="#hit4">[4]</a>；美光不给定方向，两个方向都列为可能<a class="cite" href="#hit11">[11]</a>；SK 海力士未作方向性判断，只给量增指引。
+
+3. **量化程度不同。** SK 海力士给出下季指引：「DRAM Q3 B/G : Approx. 10% increase QoQ」「NAND Q3 B/G : Low-single% increase QoQ」<a class="cite" href="#hit6">[6]</a>；三星与美光最新一期均无此类量增数字<a class="cite" href="#hit4">[4]</a><a class="cite" href="#hit11">[11]</a>。
+
+4. **产品代际披露的具体程度不同。** 三星：扩大「differentiated HBM4」供应，并向主要客户出货 HBM4E 样品，且表述为「the industry&#x27;s first shipments of HBM4E samples」<a class="cite" href="#hit4">[4]</a>；SK 海力士：「Began HBM4 shipment in Q2」，规格表述为「customer-required speeds · industry-leading power efficiency · cost competitiveness」，「Full ramp up planned in 2H」，并在 1H「Supplied 1cnm- based HBM4E samples to a major customer」<a class="cite" href="#hit6">[6]</a>；美光最新一期只作 HBM / conventional DRAM 的泛指，未出现 HBM4、HBM4E 或具体制程节点型号<a class="cite" href="#hit11">[11]</a>。即三星与 SK 海力士在 HBM4/HBM4E 上有可比的具体进展披露，美光没有对应披露；两家中三星把 HBM4E 样品出货定性为行业首次<a class="cite" href="#hit4">[4]</a>，SK 海力士未作此定性，但给出了样品的制程限定「1cnm- based」<a class="cite" href="#hit6">[6]</a>。
+
+5. **关注点侧重不同。** 美光侧重工艺侧的产能占用（wafers 与 cleanroom space）<a class="cite" href="#hit11">[11]</a>；三星侧重产品组合与需求监控（「monitor any shifts in demand and optimize our product mix」）<a class="cite" href="#hit4">[4]</a>；SK 海力士侧重客户合同与需求可见度、以及产品线（SOCAMM2「Fully commenced supply」、321L、SSD）<a class="cite" href="#hit6">[6]</a>。
+
+## <span class="miss">材料未覆盖</span>
+
+- 三家最新一期报告均**未给出 HBM 产能或出货的具体数量**（wafer 数、bit 量、HBM 营收占比均无），因此无法就「产能规模差异」作量化比较。
+- 美光最新一期是否另有 HBM4 相关表述，**<span class="miss">材料未覆盖</span>**（所给材料 11 全文片段中无）。
+- SK 海力士最新一期的资本开支口径**<span class="miss">材料未覆盖</span>**（CapEx 相关表述只出现在材料 9、材料 12 等更早报告期）。</div></div><div class=card><span class="badge b-src">语料原文 · 逐字引用</span><div class=muted>检索到 14 条，按 RRF 融合分排序</div><div class=hit id=hit1><span class=no>[1]</span> 三星电子 · 2024_Half_Interim_Report.pdf · VI. Outstanding shares · p39 · 2024<div class=prov><br><a href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2024_Half_Interim_Report.pdf" target=_blank>https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2024_Half_Interim_Report.pdf</a></div><div class=txt>Regarding industry supply, chances are rising that conventional bit supply for advanced technology products for PC and mobile applications will be further constrained as capacity concentrates on HBM and server DRAM/SSD to address AI sever demand.
+With strong demand, especially for server, we will actively respond to the demand for high-value-added products for AI; and we will further hone our completive edge in the HBM3E and high-density DDR5 markets and increase supply for server SSDs to expand sales.
+For System LSI, we expect to see growth in the global smartphone market—the business’s primary market—centering on OEMs in China.</div><div class=diag>rrf=0.0654 · 通道 +dense+公司 · bm25#— · dense#16 sim=0.6440</div></div><div class=hit id=hit2><span class=no>[2]</span> 美光 Micron · 10-Q 2025-06-26 · PART II . OTHER INFORMATION · p509 · 2025-06-26<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312525000021/mu-20250529.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312525000021/mu-20250529.htm</a></div><div class=txt>If we or our competitors increase HBM supply at a rate that outpaces HBM demand, conversion of HBM capacity to supply other DRAM products could result in significant supply-demand imbalances.
+Due to the higher performance and more complex manufacturing process, HBM requires a higher number of wafers to produce the same number of bits as conventional DRAM in the same technology node.
+This could lead to declines in average selling prices for our DRAM products and could materially affect our business.
+Our product demand forecasts may also be impacted significantly by the strategic actions of our customers.
+In addition, our ability to successfully introduce new products often requires us to make product specification decisions multiple years in advance of when new products enter the market.</div><div class=diag>rrf=0.0722 · 通道 +dense+公司 · bm25#— · dense#5 sim=0.6751</div></div><div class=hit id=hit3><span class=no>[3]</span> SK 海力士 · SK hynix FY2024 Q1 Earnings Results · p10–11 · 2024.01.01<div class=prov><br><a href="https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/61321621157035970.pdf" target=_blank>https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/61321621157035970.pdf</a></div><div class=txt>Expect limited DRAM/NAND production
+growth in ‘24, as a result of conservative
+investments in ‘23, and more capa.
+allocated
+to produce HBM which has larger die size
+10
+In March, began mass production/supply of 1bnm HBM3E
+Increase HBM3E supply in-line with customers’ demand
+Expand customer base using increased production capability
+Signed MOU with TSMC for development of HBM4 and
+collaboration on next generation packaging technology
+Represent 45%+ of PC, 60%+ of SV bit sales
+Strong sales of 128GB+ modules contributed to DDR5 sales
+1bnm 32Gb DDR5 product to be launched to support high-
+density SV DRAM demand
+Sales of high-performance 16ch eSSD increased in Q1
+Solidigm’s QLC based high density eSSD will increase in
+demand due to growing needs for high performance, high</div><div class=diag>rrf=0.0742 · 通道 +dense+公司 · bm25#— · dense#8 sim=0.6715</div></div><div class=hit id=hit4><span class=no>[4]</span> 三星电子 · 2026_Half_Interim_Report.pdf · VI. Outstanding shares · p36 · 2026<div class=prov><br><a href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_Half_Interim_Report.pdf" target=_blank>https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_Half_Interim_Report.pdf</a></div><div class=txt>As a result, both DRAM and NAND achieved record-high bit sales, while the proportion of bit sales for server applications also reached an all-time high.
+The Company expanded the supply of its differentiated HBM4 and further strengthened its technology competitiveness with the industry’s first shipments of HBM4E samples to key customers.
+In the second half, demand growth is expected to outpace the Company’s efforts to increase production capacity.
+In light of this, we will monitor any shifts in demand and optimize our product mix accordingly.
+In addition, we will address AI-related demand by leveraging our industry-leading technology competitiveness and diversified product lineup, further strengthening our market leadership.</div><div class=diag>rrf=0.0654 · 通道 +dense+公司 · bm25#— · dense#20 sim=0.6378</div></div><div class=hit id=hit5><span class=no>[5]</span> 美光 Micron · 10-Q 2025-03-21 · PART II . OTHER INFORMATION · p497 · 2025-03-21<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312525000009/mu-20250227.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312525000009/mu-20250227.htm</a></div><div class=txt>If we or our competitors increase HBM supply at a rate that outpaces HBM demand, conversion of HBM capacity to supply other DRAM products could result in significant supply-demand imbalances.
+Due to the higher performance and more complex manufacturing process, HBM requires a higher number of wafers to produce the same number of bits as conventional DRAM in the same technology node.
+This could lead to declines in average selling prices for our DRAM products and could materially affect our business.
+Our product demand forecasts may also be impacted significantly by the strategic actions of our customers.
+In addition, our ability to successfully introduce new products often requires us to make product specification decisions multiple years in advance of when new products enter the market.</div><div class=diag>rrf=0.0715 · 通道 +dense+公司 · bm25#— · dense#6 sim=0.6751</div></div><div class=hit id=hit6><span class=no>[6]</span> SK 海力士 · SK hynix FY2026 Q2 Earnings Results · p10–11 · 2026.01.01<div class=prov><br><a href="https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/13571040283022005.pdf" target=_blank>https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/13571040283022005.pdf</a></div><div class=txt>deposits) incorporated to support contract
+fulfillment, thereby enhancing mid-to-long-term demand visibility
+DRAM
+Q3 B/G : Approx.
+10% increase QoQ
+Active response centered on SV products
+NAND
+Q3 B/G : Low-single% increase QoQ
+(including Solidigm)
+Increase sales of 321L products and SSD
+10
+Began HBM4 shipment in Q2, with customer-required speeds · industry-leading
+power efficiency · cost competitiveness.
+Full ramp up planned in 2H
+Supplied 1cnm- based HBM4E samples to a major customer in 1H
+Committed to maintaining HBM leadership through comprehensive
+competitiveness across performance, stable supply capability, and cost
+Fully commenced supply of SOCAMM2 products based on 1cnm
+Optimizing product lineup aligned with customer development schedules</div><div class=diag>rrf=0.0643 · 通道 +dense+公司 · bm25#— · dense#9 sim=0.6706</div></div><div class=hit id=hit7><span class=no>[7]</span> 三星电子 · 2025_4Q_Interim_Report.pdf · VI. Outstanding shares · p41 · 2025<div class=prov><br><a href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2025_4Q_Interim_Report.pdf" target=_blank>https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2025_4Q_Interim_Report.pdf</a></div><div class=txt>DRAM | 2025 34.0% | 2024 41.5% | 2023 42.2%
+※ Global market share in revenue; data from research firm DRAMeXchange.
+□ Business condition
+In the Memory Business, under low inventory levels and supply constraints, we expanded HBM sales and concentrated on improving profitability by addressing the demand for high value-added products for servers, such as high-density DDR5, LPDDR5x, and server SSDs.
+In 2026, we aim to continue leading the AI era by leveraging our product competitiveness.
+For DRAM, we plan to actively address customer demand with the timely and expanded supply of competitive HBM4 targeting new GPU and ASIC markets within the AI sector.
+Also, we will continue increasing the sales proportion of AI-related products, such as high-capacity DDR5, SOCAMM2, and GDDR7.</div><div class=diag>rrf=0.0605 · 通道 +dense+公司 · bm25#— · dense#32 sim=0.6062</div></div><div class=hit id=hit8><span class=no>[8]</span> 美光 Micron · 10-Q 2025-12-18 · PART II . OTHER INFORMATION · p494 · 2025-12-18<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312525000046/mu-20251127.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312525000046/mu-20251127.htm</a></div><div class=txt>Due to the higher performance and more complex manufacturing process, HBM requires a higher number of wafers and more cleanroom space to produce the same number of bits as conventional DRAM in the same technology node.
+If demand for HBM weakens and suppliers shift capacity from HBM to conventional DRAM, this could result in a significant increase in conventional DRAM supply.
+An oversupplied DRAM market may lead to downward pressure on pricing, which could adversely impact our financial results.
+Conversely, as the demand for DRAM, HBM, or any of our other products has increased and may continue to increase, we may be unable to increase supply sufficiently to meet such demand.</div><div class=diag>rrf=0.0677 · 通道 +dense+公司 · bm25#— · dense#12 sim=0.6642</div></div><div class=hit id=hit9><span class=no>[9]</span> SK 海力士 · SK hynix FY2025 Q4 Earnings Results · p12–13 · 2025.01.01<div class=prov><br><a href="https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/116964051831620258.pdf" target=_blank>https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/116964051831620258.pdf</a></div><div class=txt>Rapid progression of Yong-in Phase 1 Fab construction
+Cheong-ju P&amp;T7 and Indiana Adv.
+PKG Fab on track
+Expect considerable increase in Yr.
+’26 CapEx, but will
+continue to adhere to CapEx discipline
+12
+Capable of reliably delivering both HBM3E &amp; HBM4
+HBM4 mass production in progress in line with customer-agreed schedule
+Preparing to deliver optimized Custom HBM by strengthening collaboration with
+customers and partners
+Expanding production of high-value products including high-density SV DRAM
+Accelerating 1cnm migration to expand AI memory portfolio, including
+SoCAMM2 and GDDR7
+Maximizing product competitiveness with 321L migration
+Expanding AI storage capabilities leveraging Solidigm QLC eSSD
+Aiming to lead ultra-high-density AI storage mkt.
+with next-gen.
+245TB product development
+13</div><div class=diag>rrf=0.0542 · 通道 +dense+公司 · bm25#— · dense#31 sim=0.6072</div></div><div class=hit id=hit10><span class=no>[10]</span> 三星电子 · 2024_Half_Interim_Report.pdf · XII. Appendix · p10 · 2024<div class=prov><br><a href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2024_Half_Interim_Report.pdf" target=_blank>https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2024_Half_Interim_Report.pdf</a></div><div class=txt>Products Developed 32Gb DDR5 DRAM, the largest capacity currently available
+Samsung Electronics Business Report 10</div><div class=diag>rrf=0.0462 · 通道 +dense+公司 · bm25#— · dense#23 sim=0.6268</div></div><div class=hit id=hit11><span class=no>[11]</span> 美光 Micron · 10-Q 2026-06-25 · PART II . OTHER INFORMATION · p495 · 2026-06-25<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312526000015/mu-20260528.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312526000015/mu-20260528.htm</a></div><div class=txt>Due to the higher performance and more complex manufacturing process, HBM requires a higher number of wafers and more cleanroom space to produce the same number of bits as conventional DRAM in the same technology node.
+If demand for HBM weakens and suppliers shift capacity from HBM to conventional DRAM, this could result in a significant increase in conventional DRAM supply.
+An oversupplied DRAM market may lead to downward pressure on pricing, which could adversely impact our financial results.
+Conversely, as the demand for DRAM, HBM, or any of our other products has increased and may continue to increase, we may be unable to increase supply sufficiently to meet such demand.</div><div class=diag>rrf=0.0670 · 通道 +dense+公司 · bm25#— · dense#10 sim=0.6642</div></div><div class=hit id=hit12><span class=no>[12]</span> SK 海力士 · SK hynix FY2025 Q2 Earnings Results · p9–11 · 2025.01.01<div class=prov><br><a href="https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/40103454849895488.pdf" target=_blank>https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/40103454849895488.pdf</a></div><div class=txt>spending despite macro uncertainties
+SSDs for high-perform., high-capacity
+More widespread AI functions to drive
+General purpose SV demand to grow,
+storage solutions as energy efficiency
+both set demand and contents growth
+due to replacement cycles and new CPU
+becomes more critical
+adoption
+9
+Company Plan
+DRAM
+Q3 B/G: Low-to-Mid Single% increase QoQ
+NAND
+Q3 B/G: Limited increase QoQ
+(incl.
+Solidigm)
+M15X to open Q4’25 as scheduled, to produce DRAM
+products including HBM from Yr.
+’26
+Yong-in 1st fab construction to finish in Q2’27
+Yr.
+‘25 CapEx expected to increase from previous plans
+Proactive investment needed this year to ensure timely
+support for HBM customers, in Yr.
+‘26
+10
+Maintain plan to double HBM sales YoY, and deliver stable performance</div><div class=diag>rrf=0.0500 · 通道 +dense+公司 · bm25#— · dense#18 sim=0.6391</div></div><div class=hit id=hit13><span class=no>[13]</span> 佰维存储 · 2024年半年度报告 · (二) 所属行业情况 · p35–36 · 2024-08-23<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2024-08-23/1220952257.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2024-08-23/1220952257.PDF</a></div><div class=txt>季度的DRAM 市场上，三星、SK 海力士、美光、南亚科技的市场份额分别为42.1%、30.8%、
 21.7%、1.7%。
 受益于DRAM 价格的全面回升，以及HBM、DDR5 等产品的出货增长，2024 年
 一季度全球DRAM 市场规模为170.6 亿美元，同比增长74.8%。
@@ -62,7 +196,7 @@ AI 服务器对内存容量和带宽的要求推动了HBM 在各类高性能计�
 2024 年半年度报告
 （1）下游需求多点开花，AI 推动半导体存储市场规模持续扩容
 存储器产业链下游涵盖智能手机、平板电脑、计算机、网络通信设备、可穿戴设备、物联网
-硬件、安防监控、工业控制、汽车电子等行业以及个人移动存储等多个领域，其中多个细分市场</div><div class=diag>rrf=0.0696 · 通道 bm25+dense · bm25#5 · dense#0 sim=0.7220</div></div><div class=hit id=hit2><span class=no>[2]</span> 佰维存储 · 2023年年度报告 · (三) 所处行业情况 · p46–48 · 2024-04-30<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2024-04-30/1219921152.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2024-04-30/1219921152.PDF</a></div><div class=txt>备需要存储器具有低功耗、高可靠性和足够的存储容量，同时还需要小巧的封装。
+硬件、安防监控、工业控制、汽车电子等行业以及个人移动存储等多个领域，其中多个细分市场</div><div class=diag>rrf=0.0697 · 通道 bm25+dense · bm25#4 · dense#0 sim=0.7220</div></div><div class=hit id=hit14><span class=no>[14]</span> 佰维存储 · 2023年年度报告 · (三) 所处行业情况 · p46–48 · 2024-04-30<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2024-04-30/1219921152.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2024-04-30/1219921152.PDF</a></div><div class=txt>备需要存储器具有低功耗、高可靠性和足够的存储容量，同时还需要小巧的封装。
 而高性能计算
 2023 年年度报告
 领域则需要存储器具有更高的读写速度、更低的延迟、更好的QoS 和更大的存储容量，并且还需
@@ -91,179 +225,4 @@ DRAM 技术发展
 2023 年年度报告
 （3）企业级存储市场需求逐渐好转
 根据CFM 闪存市场分析，受国内外经济不确定性影响，2023 年全球服务器市场下滑。
-在高</div><div class=diag>rrf=0.0680 · 通道 bm25+dense · bm25#4 · dense#3 sim=0.6788</div></div><div class=hit id=hit3><span class=no>[3]</span> 佰维存储 · 2024年年度报告 · (三) 所处行业情况 · p48 · 2025-04-30<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2025-04-30/1223427605.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2025-04-30/1223427605.PDF</a></div><div class=txt>电子设备/服务器需要存储的数据量也越来越庞大，NAND Flash 需求量巨大，市场前景广阔。
-2）DRAM 行业概况
-DRAM 是动态随机存取存储器，DRAM 的特征是读写速度快、延迟低，但掉电后数据会丢失，
-常用于计算系统的运行内存（Memory）。
-目前全球主要的DRAM IDM 原厂为三星、SK 海力士
-和美光。
-根据CFM 数据显示，2024 年第三季度的DRAM 市场上，三星、SK 海力士、美光、南
-亚科技的市场份额分别为39.5%、34.7%、20.6%、1.0%。
-根据TrendForce 报告，得益于数据中心
-的DDR5 及HBM（高带宽内存）需求上升，2024 年全球DRAM 市场规模为958.63 亿美元，同
-比增长85%。
-3）HBM 行业概况
-HBM（High Bandwidth Memory）作为基于3D 堆栈工艺的高性能Memory，打破了内存带宽
-及功耗的瓶颈。
-HBM 即高带宽存储器，通过使用先进封装将多个DRAM 芯片进行堆叠，并与GPU
-一同进行封装，形成大容量、高带宽的DDR 组合阵列。
-在高性能GPU 需求的推动下，HBM 已
-经成为AI 计算芯片的标配。
-根据Gartner 数据显示，2024 年，HBM 市场规模为118.69 亿美元，同比增长超过300%。
-随
-着AI 大模型的兴起，海量算力需求对芯片内存容量和传输带宽提出更高要求，预计HBM 市场规
-模在2025 年同比增长超过66%，接近200 亿美元，2028 年将达到316 亿美元，2024 至2028 年
-复合增速达到27.8%。
-在竞争格局方面，2024 年，SK 海力士继续保持超过50%的份额领先市场，
-三星以32%~35%的份额次之，美光的份额约为13%~15%。
-（3）行业发展趋势
-1）下游需求多点开花，AI 推动半导体存储市场规模持续扩容</div><div class=diag>rrf=0.0667 · 通道 bm25+dense · bm25#0 · dense#2 sim=0.6830</div></div><div class=hit id=hit4><span class=no>[4]</span> 佰维存储 · 2025年年度报告 · (三) 所处行业情况 · p30 · 2026-03-20<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2026-03-20/1225020225.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2026-03-20/1225020225.PDF</a></div><div class=txt>根据TrendForce 数
-据，2025 年第三季度的DRAM 市场上，SK 海力士、三星、美光、长鑫存储的市场份额分别为33.2%、
-32.6%、25.7%、5.8%。
-根据TrendForce 报告，得益于数据中心的DDR5 及HBM（高带宽内存）
-需求上升，2025 年全球DRAM 市场规模（含HBM）为1,657 亿美元，预计2026 年市场规模（含
-HBM）将同比增长144%，增长至4,043 亿美元。
-DRAM 具有读写延迟低、随机访问快、带宽持续提升等特点，是电子设备与服务器的关键运
-行内存（Memory），主要应用于AI 服务器/通用服务器、PC、智能手机等。
-随着生成式人工智能
-应用加速渗透，电子设备/服务器对于内存的带宽以及容量的要求越来越高，DRAM 需求量持续提
-升，市场前景广阔。
-3）HBM 行业概况
-HBM（High Bandwidth Memory）作为基于3D 堆栈工艺的高性能内存（Memory），打破了
-内存带宽及功耗的瓶颈。
-HBM 即高带宽存储器，通过使用先进封装工艺，将多个DRAM 芯片进
-行堆叠，并与GPU 一同进行封装，形成大容量、高带宽的DDR 组合阵列。
-在高性能GPU 需求
-的推动下，HBM 已经成为AI 计算芯片的标配。
-根据Gartner 数据显示，2025 年，HBM 市场规模为307.5 亿美元，同比增长超过100%。
-随
-着AI 大模型的兴起，海量算力需求对芯片内存容量和传输带宽提出更高要求，预计HBM 市场规
-模在2026 年同比增长超过90%，市场规模接近600 亿美元，预计2029 年市场规模约为1,100 亿
-美元，2025 年-2029 年复合增速达到37.5%。
-HBM具有超高带宽、3D堆叠集成等特点，是AI加速计算的核心内存方案，主要应用于GPU/AI
-加速卡及AI 训练、推理服务器。</div><div class=diag>rrf=0.0641 · 通道 bm25+dense · bm25#18 · dense#1 sim=0.7070</div></div><div class=hit id=hit5><span class=no>[5]</span> 佰维存储 · 2024年年度报告 · (三) 所处行业情况 · p50–51 · 2025-04-30<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2025-04-30/1223427605.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2025-04-30/1223427605.PDF</a></div><div class=txt>公司在目前的产品中积极采用各大原厂最新制程的NAND Flash，在嵌入式存储产品方面，
-公司已推出eMMC 到UFS 全系列产品；
-在SSD 产品方面，公司已推出SATA 到PCIe 5.0 全系列
-产品。
-NAND Flash 技术发展
-来源：CFM 闪存市场，佰维存储编制
-（2）DRAM 推出1β或1b 制程节点，生成式AI 推动HBM 需求增长
-随着DRAM 制程技术逼近物理极限，进入20nm 级别后微缩难度剧增，导致DRAM 技术升
-级节奏有所放缓。
-目前，三星、SK 海力士、美光均已进入10nm 第五代（1b/1β nm）阶段，下一
-代（1c 或1γnm）技术研发及量产准备正在进行。
-HBM 作为基于3D 堆栈工艺的高性能DRAM，
-深圳佰维存储科技股份有限公司 2024 年年度报告
-打破内存带宽及功耗瓶颈。
-HBM 即高带宽存储器，通过使用先进封装将多个DRAM 芯片进行堆
-叠，并与GPU 一同进行封装，形成大容量、高带宽的存储应用。
-2024 年，以ChatGPT 为代表的
-生成式AI 带动AI 服务器需求激增，进而带动对HBM 需求的急剧增长。
-目前，SK 海力士、三星
-和美光的HBM 销售收入均持续大幅增长，市场需求旺盛且暂无放缓迹象。
-伴随英伟达Blackwell
-系列GPU 及AMD MI 系列GPU 产品的持续放量，以HBM3e 为代表的高性能HBM 产品需求将
-进一步攀升。
-2024 年，公司DDR5 内存模组和LPDDR5X 嵌入式存储产品持续导入市场。
-DRAM 技术发展
-来源：CFM 闪存市场，佰维存储编制
-（3）AI 手机
-第十四届全国人大三次会议审议的政府工作报告中提出“大力发展智能网联新能源汽车、人
-工智能手机和电脑、智能机器人等新一代智能终端以及智能制造装备”，其中，“人工智能手机
-和电脑”作为新词，首次出现在政府工作报告中。</div><div class=diag>rrf=0.0601 · 通道 bm25+dense · bm25#8 · dense#4 sim=0.6761</div></div><div class=hit id=hit6><span class=no>[6]</span> SK 海力士 · SK hynix FY2024 Q1 Earnings Results · p10–11 · 2024.01.01<div class=prov><br><a href="https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/61321621157035970.pdf" target=_blank>https://mis-prod-koce-homepage-cdn-01-blob-ep.azureedge.net/web/attach/61321621157035970.pdf</a></div><div class=txt>Expect limited DRAM/NAND production
-growth in ‘24, as a result of conservative
-investments in ‘23, and more capa.
-allocated
-to produce HBM which has larger die size
-10
-In March, began mass production/supply of 1bnm HBM3E
-Increase HBM3E supply in-line with customers’ demand
-Expand customer base using increased production capability
-Signed MOU with TSMC for development of HBM4 and
-collaboration on next generation packaging technology
-Represent 45%+ of PC, 60%+ of SV bit sales
-Strong sales of 128GB+ modules contributed to DDR5 sales
-1bnm 32Gb DDR5 product to be launched to support high-
-density SV DRAM demand
-Sales of high-performance 16ch eSSD increased in Q1
-Solidigm’s QLC based high density eSSD will increase in
-demand due to growing needs for high performance, high</div><div class=diag>rrf=0.0578 · 通道 +dense · bm25#— · dense#8 sim=0.6715</div></div><div class=hit id=hit7><span class=no>[7]</span> 美光 Micron · 10-Q 2025-03-21 · PART II . OTHER INFORMATION · p497 · 2025-03-21<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312525000009/mu-20250227.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312525000009/mu-20250227.htm</a></div><div class=txt>If we or our competitors increase HBM supply at a rate that outpaces HBM demand, conversion of HBM capacity to supply other DRAM products could result in significant supply-demand imbalances.
-Due to the higher performance and more complex manufacturing process, HBM requires a higher number of wafers to produce the same number of bits as conventional DRAM in the same technology node.
-This could lead to declines in average selling prices for our DRAM products and could materially affect our business.
-Our product demand forecasts may also be impacted significantly by the strategic actions of our customers.
-In addition, our ability to successfully introduce new products often requires us to make product specification decisions multiple years in advance of when new products enter the market.</div><div class=diag>rrf=0.0562 · 通道 +dense · bm25#— · dense#5 sim=0.6751</div></div><div class=hit id=hit8><span class=no>[8]</span> 美光 Micron · 10-Q 2025-06-26 · PART II . OTHER INFORMATION · p509 · 2025-06-26<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312525000021/mu-20250529.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312525000021/mu-20250529.htm</a></div><div class=txt>If we or our competitors increase HBM supply at a rate that outpaces HBM demand, conversion of HBM capacity to supply other DRAM products could result in significant supply-demand imbalances.
-Due to the higher performance and more complex manufacturing process, HBM requires a higher number of wafers to produce the same number of bits as conventional DRAM in the same technology node.
-This could lead to declines in average selling prices for our DRAM products and could materially affect our business.
-Our product demand forecasts may also be impacted significantly by the strategic actions of our customers.
-In addition, our ability to successfully introduce new products often requires us to make product specification decisions multiple years in advance of when new products enter the market.</div><div class=diag>rrf=0.0557 · 通道 +dense · bm25#— · dense#6 sim=0.6751</div></div><div class=hit id=hit9><span class=no>[9]</span> 佰维存储 · 2025年半年度报告 · (二) 所属行业情况 · p31 · 2025-08-11<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2025-08-11/1224442929.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2025-08-11/1224442929.PDF</a></div><div class=txt>从市场规模来看，2025 年第一季度全球NAND Flash 市场规模为130.10 亿美元，
-同比减少14.2%，主要是单价相对2024 年第一季度有所下滑。
-从2025 年第二季度开始，闪存价
-格企稳回升；
-根据集邦咨询TrendForce 预测，从第三季度开始，企业级存储产品价格将进一步上
-涨。
-NAND Flash 具有存储容量大、读写速度快、功耗低、单位成本低等特点，主要应用于有大容
-量存储（Storage）需求的电子设备。
-随着AI、物联网、大数据、5G 等新兴应用场景不断落地，
-电子设备/服务器需要存储的数据量也越来越庞大，NAND Flash 需求量巨大，市场前景广阔。
-（2）DRAM 行业概况
-DRAM 是动态随机存取存储器，DRAM 的特征是读写速度快、延迟低，但掉电后数据会丢失，
-常用于计算系统的运行内存（Memory）。
-目前全球主要的DRAM IDM 原厂为三星、SK 海力士
-和美光，2025 年第一季度，SK 海力士DRAM 销售额历史上首次超越三星，位列DRAM 市场第
-一。
-根据CFM 数据显示，2025 年第一季度的DRAM 市场上，SK 海力士、三星、美光、南亚科
-技的市场份额分别为36.7%、35.6%、22.9%、0.8%。
-受益于数据中心的DDR5 及HBM（高带宽
-内存）等高价值内存产品的强劲出货，2025 年第一季度全球DRAM 市场规模为267.29 亿美元，
-同比增长42.5%。
-（3）HBM 行业概况
-HBM（High Bandwidth Memory）作为基于3D 堆栈工艺的高性能Memory，打破了内存带宽
-及功耗的瓶颈。
-HBM 即高带宽存储器，通过使用先进封装将多个DRAM 芯片进行堆叠，并与GPU
-一同进行封装，形成大容量、高带宽的DDR 组合阵列。
-在高性能GPU 需求的推动下，HBM 已</div><div class=diag>rrf=0.0545 · 通道 bm25+dense · bm25#2 · dense#24 sim=0.6231</div></div><div class=hit id=hit10><span class=no>[10]</span> 佰维存储 · 2025年年度报告 · (三) 所处行业情况 · p33–34 · 2026-03-20<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2026-03-20/1225020225.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2026-03-20/1225020225.PDF</a></div><div class=txt>工艺的高性能DRAM，打破内存带宽及功耗瓶颈，通过使用先进封装技术将多个DRAM 芯片进
-行堆叠，并与GPU 一同进行封装，形成大容量、高带宽的存储应用。
-2025 年，以ChatGPT、Gemini
-为代表的生成式AI 带动AI 服务器需求激增，进而带动对HBM 需求的急剧增长。
-目前，SK 海力
-士、三星和美光的HBM 销售收入均持续大幅增长，市场需求旺盛。
-伴随英伟达Blackwell 系列
-GPU 及AMD MI 系列GPU 产品的持续放量，以HBM3e 为代表的高性能HBM 产品需求将进一步
-攀升。
-2025 年，公司DDR5 内存模组和LPDDR5X 产品的出货量持续攀升。
-DRAM 技术发展
-深圳佰维存储科技股份有限公司 2025 年年度报告
-来源：CFM 闪存市场，佰维存储编制
-（3）先进封装成为AI 推理时代的关键基座
-在大模型向万亿参数演进、推理侧KV Cache 等典型负载快速膨胀的背景下，单纯依赖HBM
-的容量爬坡已出现滞后现象，行业正通过HBF（高带宽闪存）构建新的存储层级。
-HBF 基于NAND
-闪存堆叠，在相同物理空间内提供约为现有HBM 8~16 倍的容量，与HBM 共同形成面向推理时
-代的“分层存储”体系。
-针对推理关键场景，SK 海力士提出了H3（HBM+HBF）混合架构，该
-架构的仿真测试显示，其每瓦性能较纯HBM 方案提升2.69 倍，在降低GPU 占用的同时支撑更大
-规模推理并发。
-当前，制程微缩逼近物理极限，以混合键合等技术为核心的2.5D/3D 堆叠技术成为延续摩尔
-定律的关键。
-台积电CoWoS 已演进至支持5.5 倍光刻版尺寸（约4719mm²）、可集成12 个HBM4
-堆栈。
-英特尔EMIB 通过硅桥嵌入基板，能够以更高良率、更低成本实现局部高密度互连，并已</div><div class=diag>rrf=0.0538 · 通道 bm25+dense · bm25#19 · dense#7 sim=0.6718</div></div><div class=hit id=hit11><span class=no>[11]</span> 美光 Micron · 10-Q 2025-12-18 · PART II . OTHER INFORMATION · p494 · 2025-12-18<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312525000046/mu-20251127.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312525000046/mu-20251127.htm</a></div><div class=txt>Due to the higher performance and more complex manufacturing process, HBM requires a higher number of wafers and more cleanroom space to produce the same number of bits as conventional DRAM in the same technology node.
-If demand for HBM weakens and suppliers shift capacity from HBM to conventional DRAM, this could result in a significant increase in conventional DRAM supply.
-An oversupplied DRAM market may lead to downward pressure on pricing, which could adversely impact our financial results.
-Conversely, as the demand for DRAM, HBM, or any of our other products has increased and may continue to increase, we may be unable to increase supply sufficiently to meet such demand.</div><div class=diag>rrf=0.0531 · 通道 +dense · bm25#— · dense#11 sim=0.6642</div></div><div class=hit id=hit12><span class=no>[12]</span> 美光 Micron · 10-Q 2026-06-25 · PART II . OTHER INFORMATION · p495 · 2026-06-25<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312526000015/mu-20260528.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312526000015/mu-20260528.htm</a></div><div class=txt>Due to the higher performance and more complex manufacturing process, HBM requires a higher number of wafers and more cleanroom space to produce the same number of bits as conventional DRAM in the same technology node.
-If demand for HBM weakens and suppliers shift capacity from HBM to conventional DRAM, this could result in a significant increase in conventional DRAM supply.
-An oversupplied DRAM market may lead to downward pressure on pricing, which could adversely impact our financial results.
-Conversely, as the demand for DRAM, HBM, or any of our other products has increased and may continue to increase, we may be unable to increase supply sufficiently to meet such demand.</div><div class=diag>rrf=0.0528 · 通道 +dense · bm25#— · dense#10 sim=0.6642</div></div><div class=hit id=hit13><span class=no>[13]</span> 美光 Micron · 10-Q 2026-03-19 · PART II . OTHER INFORMATION · p479 · 2026-03-19<div class=prov><br><a href="https://www.sec.gov/Archives/edgar/data/723125/000072312526000006/mu-20260226.htm" target=_blank>https://www.sec.gov/Archives/edgar/data/723125/000072312526000006/mu-20260226.htm</a></div><div class=txt>Due to the higher performance and more complex manufacturing process, HBM requires a higher number of wafers and more cleanroom space to produce the same number of bits as conventional DRAM in the same technology node.
-If demand for HBM weakens and suppliers shift capacity from HBM to conventional DRAM, this could result in a significant increase in conventional DRAM supply.
-An oversupplied DRAM market may lead to downward pressure on pricing, which could adversely impact our financial results.
-Conversely, as the demand for DRAM, HBM, or any of our other products has increased and may continue to increase, we may be unable to increase supply sufficiently to meet such demand.</div><div class=diag>rrf=0.0527 · 通道 +dense · bm25#— · dense#12 sim=0.6642</div></div><div class=hit id=hit14><span class=no>[14]</span> 东芯股份 · 2026年半年度报告 · 一、 报告期内公司所属行业及主营业务情况说明 · p13–14 · 2026-08-22<div class=prov><br><a href="http://static.cninfo.com.cn/finalpage/2026-08-22/1225493179.PDF" target=_blank>http://static.cninfo.com.cn/finalpage/2026-08-22/1225493179.PDF</a></div><div class=txt>1、供给侧：海外原厂加速产能重心转移，成熟制程利基存储供给持续收敛整体来看，三星、SK 海力士、美光、铠侠等全球头部存储原厂持续调整资本开支与晶圆产能布局，资源全面倾斜HBM、DDR5、高层3D NAND 等高附加值算力存储，主动缩减成熟利基存储产线，成熟晶圆新增投放有限。
-国内及中国台湾存储厂商成为供给增量核心，但晶圆建厂、工艺爬坡、客户认证周期较长，短期供给缺口难以快速填补，国产替代进程持续加速。
-（1）SLC NAND
-东芯半导体股份有限公司2026 年半年度报告
-海外原厂持续出清2D 平面SLC 产线，全球有效产能持续收缩，工控、车规级高可靠SLC 出现持续性供给缺口。
-当前市场竞争格局重构，国内具备完整SLC 自研、量产能力的企业持续承接海外转移订单，2026 上半年出货规模稳步抬升，细分市占率持续提升。
-行业存在客户长期认证、宽温高可靠性工艺、稳定供货三重壁垒，海外厂商短期难以回流扩产，国内企业替代空间持续打开。
-受成熟代工产能约束，行业新增供给释放节奏平缓，供需失衡支撑产品价格持续上行。
-（2）NOR Flash 行业主流制造工艺以48nm、55nm 成熟ETOX 制程为主，少量厂商布局差异化SONOS 工艺，全球产能供给主体集中于大陆、中国台湾存储设计企业，海外大厂基本退出通用NOR 赛道。
-行业整体无大规模新增产能投放，车规、工业领域中大容量NOR 需求持续走高，但境内外晶圆厂成熟制程扩产规划有限，产线建设、工艺调试周期长达2 至3 年，短期增量供给不足，高容量型号供需持续偏紧，产品价格保持上涨态势。
-（3）利基型DRAM 海外三大DRAM 厂商持续压缩DDR3、小容量DDR4、LPDDR 等成熟利基产线，产能全面向DDR5、HBM 倾斜，利基DRAM 供给持续收缩，形成长期产能缺口。</div><div class=diag>rrf=0.0505 · 通道 bm25+dense · bm25#1 · dense#19 sim=0.6381</div></div></div><div class="muted" style="margin-top:20px"></div></div></html>
+在高</div><div class=diag>rrf=0.0677 · 通道 bm25+dense · bm25#5 · dense#3 sim=0.6788</div></div></div><div class="muted" style="margin-top:20px"></div></div></html>
