@@ -14,8 +14,11 @@
     （依据 embed_corpus.py: `texts = [r["text"] for r in rows]`）
   · 查 `vectors.npy[row]`——row 就是 chunks.jsonl 的行号
 
-**抽样**：等间隔取 28 行（跨全部来源与长度）× 再加 4 个最长的块
-（截断边界在最长处，必须覆盖）。
+**抽样**：**按来源分层**——每个来源先保底 2 行，其余名额按块数比例分配
+（等间隔取），合计约 28 行；再加 4 个最长的块（截断边界在最长处，必须覆盖）。
+早先是「等间隔 28 行」，去重后语料只剩 7 个来源、且 fedreg 块少，
+等间隔采样**一个 fedreg 块都没抽到**，于是「跨全部来源」这句话就不成立了——
+抽样方式必须保证它要断言的那件事，否则断言是空的。
 """
 import json
 import sys
@@ -45,12 +48,28 @@ def main():
     N = len(rows)
     print(f"语料 {N:,} 块")
 
-    idx = sorted(range(0, N, max(1, N // N_SAMPLE))[:N_SAMPLE])
+    by_src = {}
+    for i, r in enumerate(rows):
+        by_src.setdefault(r.get("source", "?"), []).append(i)
+
+    idx = set()
+    for s in sorted(by_src):
+        ids = by_src[s]
+        k = min(len(ids), max(2, round(N_SAMPLE * len(ids) / N)))
+        if k >= len(ids):
+            idx.update(ids)
+        else:                                  # 等间隔取 k 个（含首尾）
+            idx.update(ids[round(j * (len(ids) - 1) / (k - 1))] for j in range(k))
     longest = sorted(range(N), key=lambda i: len(rows[i]["text"]))[-4:]
-    idx = sorted(set(idx) | set(longest))
-    print(f"抽样 {len(idx)} 行（含 4 个最长块，长度 "
-          f"{min(len(rows[i]['text']) for i in idx)}–"
-          f"{max(len(rows[i]['text']) for i in idx)} 字）")
+    idx = sorted(idx | set(longest))
+    got_src = sorted({rows[i].get("source", "?") for i in idx})
+    print(f"抽样 {len(idx)} 行，覆盖 {len(got_src)}/{len(by_src)} 个来源 "
+          f"（{', '.join(got_src)}）")
+    print(f"长度 {min(len(rows[i]['text']) for i in idx)}–"
+          f"{max(len(rows[i]['text']) for i in idx)} 字（含 4 个最长块）")
+    if len(got_src) < len(by_src):
+        print("✗ 抽样没覆盖全部来源，下面「跨全部来源」的结论不成立")
+        return 1
 
     V = np.load(ROOT / "knowledge_base" / "vectors.npy", mmap_mode="r")
     print(f"vectors.npy  {V.shape}  {V.dtype}")

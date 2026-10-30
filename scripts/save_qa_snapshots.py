@@ -14,11 +14,12 @@
 
 用法（需先起服务：`scripts/serve_qa.py`）。**要用系统 Python**——量高度和裁剪靠 pymupdf，
 venv 里没装（venv 装的是 torch/transformers 那一套）：
-    C:/Python314/python.exe scripts/save_qa_snapshots.py
+    C:/Python314/python.exe scripts/save_qa_snapshots.py            # 十道题全截
+    C:/Python314/python.exe scripts/save_qa_snapshots.py --only 4 7 # 只截这两题
+
+裁剪逻辑在 `scripts/shotlib.py`，和静态交付页的截图（`save_static_snapshots.py`）共用。
 """
-import os
 import re
-import subprocess
 import sys
 import time
 import urllib.parse
@@ -33,22 +34,15 @@ for s in (sys.stdout, sys.stderr):
     except Exception:
         pass
 
-import pymupdf  # 只在系统 Python 里；若缺失见下方 ImportError 提示
+# 裁剪逻辑（找浏览器 / 无头渲染 / 量底边 / 裁）在 `shotlib`——
+# 静态交付页的截图（`save_static_snapshots.py`）走的是**同一份**，
+# 免得一边修了「固定高度会切底」，另一边还留着。
+from shotlib import find_chrome, shoot                      # noqa: E402
 
 ROOT = Path(".").resolve()
 OUT = ROOT / "outputs"
 SHOT_DIR = OUT / "截图"
 SERVER = "http://127.0.0.1:8848/"
-
-CHROME_CANDIDATES = [
-    r"C:\Program Files\Google\Chrome\Application\chrome.exe",
-    r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
-    r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
-    r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
-]
-
-VIEW_W = 1000
-VIEW_H = 20000          # 足够高，保证任何一页都装得下；之后按实际底边裁掉空白
 
 # 与 run_questions.py 的 Q 一一对应：(题号, 主题, 库, k, 问题)
 # `k` 必须跟 run_questions.py 里该题的 k **一模一样**——否则图里显示的席数
@@ -78,13 +72,6 @@ CASES = [
 NAMED = {7: ("三星", "SK 海力士", "美光")}
 
 
-def find_chrome():
-    for p in CHROME_CANDIDATES:
-        if os.path.exists(p):
-            return p
-    raise SystemExit("找不到 Chrome/Edge，无法截图。")
-
-
 def seats_by_company(html_text: str) -> Counter:
     """按**出处公司**统计召回分布：每条召回出自哪家，而不是「公司名在不在正文里」。
 
@@ -105,61 +92,12 @@ def seats_by_company(html_text: str) -> Counter:
     return out
 
 
-def content_height(png: Path) -> int:
-    """整页 PNG 里内容的下边界（像素）。
-
-    背景色从**最底下一行**取——那是页面内容之外的空白区，肯定不是内容色。
-    （若从左上角取，遇到彩色页头就会把整页都判成内容。）
-    """
-    pix = pymupdf.Pixmap(str(png))
-    w, h, n, stride = pix.width, pix.height, pix.n, pix.stride
-    buf = pix.samples
-
-    def rgb(x, y):
-        o = y * stride + x * n
-        return buf[o], buf[o + 1], buf[o + 2]
-
-    bg = rgb(2, h - 2)
-    for y in range(h - 1, -1, -1):
-        row = y * stride
-        for x in range(0, w, 5):
-            o = row + x * n
-            if (abs(buf[o] - bg[0]) > 8 or abs(buf[o + 1] - bg[1]) > 8
-                    or abs(buf[o + 2] - bg[2]) > 8):
-                return y
-    return 0
-
-
-def shoot(chrome: str, html: Path, png: Path) -> tuple[int, int]:
-    """整页截图：高窗口渲染 → 量底边 → 裁。返回 (页面高度, 输出高度)。"""
-    tmp = png.with_name("_full.png")
-    tmp.unlink(missing_ok=True)
-    url = "file:///" + html.resolve().as_posix()
-    r = subprocess.run(
-        [chrome, "--headless", "--disable-gpu", "--hide-scrollbars",
-         "--force-device-scale-factor=1", f"--window-size={VIEW_W},{VIEW_H}",
-         f"--screenshot={tmp}", url],
-        capture_output=True, encoding="utf-8", errors="replace", timeout=300)
-    if not tmp.exists():
-        raise SystemExit(f"截图失败：{html.name}\n{r.stderr[-400:]}")
-
-    h = content_height(tmp) + 20          # 留 20px 下边距，不让最后一行贴边
-    doc = pymupdf.open(str(tmp))
-    page = doc[0]
-    # 图片文档按 96dpi→72dpi 换算，1 像素 = 0.75 点
-    k = page.rect.width / VIEW_W
-    part = page.get_pixmap(clip=pymupdf.Rect(0, 0, page.rect.width, h * k), dpi=96)
-    part.save(str(png))
-    doc.close()
-    tmp.unlink(missing_ok=True)
-    return h, part.height
-
-
-def main():
+def main(only=()):
     chrome = find_chrome()
     SHOT_DIR.mkdir(parents=True, exist_ok=True)
-    print(f"服务 {SERVER}  浏览器 {Path(chrome).name}\n")
-    for n, topic, lib, k, q in CASES:
+    todo = [c for c in CASES if not only or c[0] in only]
+    print(f"服务 {SERVER}  浏览器 {Path(chrome).name}  本轮 {len(todo)}/{len(CASES)} 题\n")
+    for n, topic, lib, k, q in todo:
         t0 = time.time()
         url = SERVER + "?" + urllib.parse.urlencode({"q": q, "k": k})
         with urllib.request.urlopen(url, timeout=600) as resp:
@@ -178,12 +116,17 @@ def main():
                     else "  点名公司均有自家材料")
         print(f"  [{n:>2}] 库{lib:<3} {topic:<14} 页高 {page_h:>5}px → 图 {out_h:>5}px  "
               f"{png.stat().st_size/1024:>4.0f}KB  {time.time()-t0:>5.1f}s{note}")
-    print(f"\nHTML 存档 {len(CASES)} 份 → outputs/    截图 {len(CASES)} 张 → outputs/截图/")
+    print(f"\nHTML 存档 {len(todo)} 份 → outputs/    截图 {len(todo)} 张 → outputs/截图/")
 
 
 if __name__ == "__main__":
+    # `--only 4 7`：只截这几题。每题都要过一次检索 + 模型作答（要花真钱、要等），
+    # 改渲染逻辑时不必把十道题全跑一遍。
+    _only = set()
+    if "--only" in sys.argv:
+        _only = {int(x) for x in sys.argv[sys.argv.index("--only") + 1:] if x.isdigit()}
     try:
-        main()
+        main(_only)
     except ImportError as e:
         raise SystemExit(f"缺 pymupdf（用它来量页面高度并裁剪）：{e}\n"
                          f"本脚本要用**系统** Python：C:/Python314/python.exe scripts/save_qa_snapshots.py")

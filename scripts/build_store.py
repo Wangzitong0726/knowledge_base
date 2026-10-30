@@ -25,7 +25,7 @@ DB = ROOT / "knowledge_base" / "index" / "chunks.sqlite"
 
 COLS = ["row", "chunk_id", "doc_id", "source", "company", "title", "date",
         "url", "file", "unit", "page_start", "page_end", "section", "seq",
-        "chars", "n_units", "text"]
+        "chars", "n_units", "period", "amount_unit", "table_title", "text"]
 
 
 def build(chunks=CHUNKS, db=DB, vectors=None, force=False):
@@ -81,7 +81,9 @@ def _ddl():
          "doc_id": "TEXT", "source": "TEXT", "company": "TEXT", "title": "TEXT",
          "date": "TEXT", "url": "TEXT", "file": "TEXT", "unit": "TEXT",
          "page_start": "INT", "page_end": "INT", "section": "TEXT",
-         "seq": "INT", "chars": "INT", "n_units": "INT", "text": "TEXT"}
+         "seq": "INT", "chars": "INT", "n_units": "INT", "text": "TEXT",
+         # 口径三项：从块文本读出来的期间 / 金额单位 / 报表名，读不出就是空串
+         "period": "TEXT", "amount_unit": "TEXT", "table_title": "TEXT"}
     return [f"{c} {t[c]}" for c in COLS]
 
 

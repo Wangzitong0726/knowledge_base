@@ -21,7 +21,12 @@ from pathlib import Path
 
 import pymupdf
 
-from .tablefmt import flatten_table, join_wrapped_lines, table_ok
+from .tablefmt import clean_rows, flatten_table, join_wrapped_lines, table_ok
+
+# 续页判据：表从页面**上缘往下这么多比例**之内开始，才考虑继承上一页的表头。
+# A4 高约 842pt，0.20 约 168pt——续页的报表紧接上一页断处，必落在这一带；
+# 页中间另起的表则落不进来。宁可漏继承（退化成无表头），也不误继承。
+TOP_OF_PAGE = 0.20
 
 
 def _find_tables(page):
@@ -44,13 +49,35 @@ def _find_tables(page):
         return [], "none"
 
 
-def extract_page(page, page_no):
-    """抽一页。返回 dict：正文 + 拍平后的表格 + 计数。"""
+def inherit_for(bbox_y0, page_height, width, last_header):
+    """续页该不该继承上一页的表头。三条**缺一不可**：
+
+      ① 本页**页顶**起（页中间另起的新表，不该套上一张表的表头）
+      ② 列数与继承来的表头**对得上**（对不上就是另一张表）
+      ③ 有上一页表头可继承
+
+    抽成具名函数是为了让 `scripts/checks/t_header.py` 复用**同一份判据**——
+    检查脚本若自己复刻一遍，就只能证明「两段代码想法一致」，证明不了抽取本身对不对。
+    """
+    if last_header and bbox_y0 <= page_height * TOP_OF_PAGE and width == len(last_header):
+        return last_header
+    return None
+
+
+def extract_page(page, page_no, prev_header=None):
+    """抽一页。返回 `(dict, 可传给下一页的表头或 None)`。
+
+    `prev_header` 是**上一页**留下的表头。财报的资产负债表/利润表常跨页，
+    真表头在上一页，续页自己一行表头都没有；此时若让本页自己去挑，
+    挑出来的多半是页顶那个「一个标签 + 两个空格」的残行
+    （江波龙半年报 p79 的 `利息收入` 就是这么当上表头的）。
+    """
     tabs, strat = _find_tables(page)
     tboxes = [t.bbox for t in tabs]
 
     # 只判一次：哪些表留、哪些丢，留下的把拍平文本算好
     kept, dropped = [], []
+    last_header = prev_header
     for t in tabs:
         try:
             rows = t.extract()
@@ -61,7 +88,12 @@ def extract_page(page, page_no):
         if not ok:
             dropped.append(why)
             continue
-        flat = flatten_table(rows)
+        width = max((len(r) for r in clean_rows(rows)), default=0)
+        inherited = inherit_for(t.bbox[1], page.rect.height, width, last_header)
+        # 本表自己挑得出可信表头就用它自己的；挑不出才用继承来的（见 flatten_table）
+        flat, carried = flatten_table(rows, inherited=inherited)
+        if carried:
+            last_header = carried            # 换了张新表（如利润表接在资产负债表后），表头随之更新
         if flat.strip():
             kept.append((t.bbox[1], flat))
         else:
@@ -98,26 +130,38 @@ def extract_page(page, page_no):
         "strategy": strat,
         "chars": len(body),
         "kind": "page",
-    }
+    }, last_header
 
 
-def extract_pdf(path, meta=None):
-    """抽一份 PDF。返回 (pages, info)。pages 每项是 extract_page 的结果。"""
+def extract_pdf(path, meta=None, max_page=None):
+    """抽一份 PDF。返回 (pages, info)。pages 每项是 extract_page 的结果。
+
+    表头**按文档顺序往下带**：上一页末张表的表头留给下一页开头那张表继承。
+
+    `max_page`：只抽到第 N 页就停。表头是**从前向后**带的，所以抽到第 N 页的结果
+    与整份抽完再取第 N 页**逐字相同**。给检查脚本用——为核一页而抽完 300 页，
+    纯属白烧时间，而白烧的时间会诱使人把检查脚本关掉不跑。
+    """
     meta = meta or {}
     doc = pymupdf.open(str(path))
     pages = []
-    for i in range(doc.page_count):
+    header = None                            # 跨页携带的表头，逐页更新
+    n_page = doc.page_count if max_page is None else min(max_page, doc.page_count)
+    for i in range(n_page):
         try:
-            pages.append(extract_page(doc[i], i + 1))
+            rec, header = extract_page(doc[i], i + 1, prev_header=header)
+            pages.append(rec)
         except Exception as e:
             pages.append({"page": i + 1, "text": "", "tables": 0, "tables_dropped": 0,
                           "drop_reasons": [f"整页失败 {type(e).__name__}: {e}"],
                           "strategy": "err", "chars": 0, "kind": "page"})
-    n = doc.page_count
+    n_file = doc.page_count                  # 先取，`close()` 之后就读不到了
+    n = n_page                               # 报**抽了多少页**，不是文件有多少页
     doc.close()
     info = {
         "file": Path(path).name,
         "pages": n,
+        "pages_in_file": n_file,
         "text_pages": sum(1 for p in pages if p["chars"] > 0),
         "empty_pages": sum(1 for p in pages if p["chars"] == 0),
         "chars": sum(p["chars"] for p in pages),

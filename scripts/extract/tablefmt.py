@@ -100,9 +100,42 @@ def table_ok(rows):
     return True, ""
 
 
-def _looks_numeric(s):
-    """像数字：含阿拉伯数字，且去掉数字与千分位/百分号后基本没剩什么。"""
-    return bool(re.search(r"\d", s)) and len(re.sub(r"[\d,.\-—－%（）()\s]", "", s)) <= 2
+MIN_HEADER_CELLS = 2         # 表头行的非空格子下限，低于此是残行（见 _header_score）
+
+
+# 「像期间」：`2025` / `2025年` / `2025 年半年度` / `2025-06-30` / `2025.06.30` / `2025年6月30日`
+_PERIOD = re.compile(
+    r"^(?:19|20)\d{2}\s*(?:"
+    r"年\s*(?:半年度|年度|第[一二三四]季度|全年度)?"
+    r"|[.\-/]\s*\d{1,2}\s*(?:[.\-/月]\s*\d{1,2}\s*日?)?"
+    r")?$"
+)
+# 「像金额/数量」：千分位 37,378 ｜ 小数 370.19 ｜ 货币 ¥$€£ ｜ 百分号 60%
+_NUMERIC = re.compile(r"\d{1,3}(?:,\d{3})+|\d\.\d|[¥$€£]|\d\s*[%‰]")
+
+
+def _is_period(s):
+    """像「期间」的格子。
+
+    期间**不是数值**：它是「这个数属于哪一期」，恰恰是文本里最不该丢的东西
+    （课件 p91：数值进了图谱只剩一个节点，是谁的、哪个口径、哪一期都丢了）。
+    所以它绝不能把一行判成「数据行」——否则 `项目 | 2025 年半年度 | 2024 年半年度`
+    这个再正确不过的表头会被误杀。
+    """
+    return bool(_PERIOD.match((s or "").strip()))
+
+
+def _is_value(s):
+    """像**金额/数量**（而不是像期间）。
+
+    判据刻意收得很紧，只认**千分位、小数点、货币符号、百分号**四样——
+    光凭「含阿拉伯数字」区分不了数据与期间（`2025 年半年度` 里也有数字）。
+    反过来说，一行里只要有一个这样的格子，它就是数据行、不配当表头。
+    """
+    s = (s or "").strip()
+    if not s or _is_period(s):
+        return False
+    return bool(_NUMERIC.search(s))
 
 
 def _is_label(s):
@@ -118,19 +151,59 @@ def _is_label(s):
 
 
 def _header_score(row):
-    """给候选表头行打分：**像标签的格子数 − 半个像数字的格子数**。
+    """可信表头行的得分（= 像标签的格子数）；返回 `None` 表示**这一行不配当表头**。
+
+    ⚠️ 旧版是 `labels - 0.5*nums`，且**只数非空格子**。这条式子有个致命漏洞：
+    一个「一个标签 + 两个空格」的**残行**得 1.0 分，而正常数据行
+    （`二、营业总成本 | 10,081,506,072.43 | 8,215,067,574.55`）得 0.0 分——
+    **残行赢**；接着被「表头向左填充」灌满整行，给后面每个数字都盖上它的名字。
+    实测（江波龙 2025 半年报 p79，合并利润表跨页）：续页顶部那行 `['利息收入','','']`
+    当选表头，于是 `二、营业总成本` 的两个数被写成「利息收入 10,081,506,072.43」。
+    同类实例还有德明利年报 p130（整张资产负债表被冠 `商誉`）、
+    雅克科技年报 p142（被冠 `报废`，重复 30 次）。
+
+    所以改成**先否决、再打分**：
+      ① 非空格子少于 `MIN_HEADER_CELLS` → 否决（灭掉残行）；
+      ② 行内出现金额/数量（`_is_value`）→ 否决（那是数据行，不是表头）；
+      ③ 一个文字标签都没有（纯数字行）→ 否决。
 
     用 `set` 去重再数：colspan 会把一个格子展成 3 个一模一样的，
     不去重的话「跨 3 列的表头」会凭空多出 2 倍的分数。
     """
     vals = {c for c in row if c}
+    if len(vals) < MIN_HEADER_CELLS:
+        return None                          # ① 残行
+    if any(_is_value(v) for v in vals):
+        return None                          # ② 数据行
     labels = sum(1 for v in vals if _is_label(v))
-    nums = sum(1 for v in vals if _looks_numeric(v))
-    return labels - 0.5 * nums
+    if labels == 0:
+        return None                          # ③ 纯数字行
+    return labels
 
 
-def flatten_table(rows, header_rows=1):
+def pick_header(rows, header_rows=1):
+    """在本表**前 `header_rows + 1` 行**里挑可信表头，返回行号；挑不出就返回 `None`。
+
+    平手取**靠前**的那一行。挑不出时不硬猜——宁可这一张表没有表头，
+    也不要给它安一个错的（错的归属比没有归属坏得多，且没人会去查）。
+    """
+    best_i, best_s = None, 0
+    for i in range(min(header_rows + 1, len(rows))):
+        s = _header_score(rows[i])
+        if s is not None and s > best_s:
+            best_i, best_s = i, s
+    return best_i
+
+
+def flatten_table(rows, header_rows=1, inherited=None):
     """按行拍平：`表头 值` 配对，让每个数字都带着自己的标签。
+
+    返回 `(文本, 本表可传给下一张表的表头或 None)`。返回表头是为了**跨页继承**：
+    合并利润表/资产负债表常跨页，真表头在上一页，续页自己一行表头都没有
+    （`scripts/extract/pdf.py` 的 `extract_pdf` 负责把表头带过去）。
+
+    `inherited` 是上一页带过来的表头。只在**本表自己挑不出可信表头**时才用它——
+    本表有表头就用本表的（新表新表头，比如财报里利润表接在资产负债表后面）。
 
     合并单元格的两种表现都要处理：
       · 纵向合并 → 提取出空串 → **表头行内向左填充**（让被合并列继承左边那格）
@@ -142,35 +215,36 @@ def flatten_table(rows, header_rows=1):
     """
     rows = clean_rows(rows)
     if not rows:
-        return ""
+        return "", None
 
-    # 选表头：前几行里得分最高的那一行；**平手取靠前的**。
-    # 平手必须取靠前：`For the year ended|2025|2024|2023` 与
-    # `Revenue|$|37,378|100|%` 得分相同（各 1 个真标签），
-    # 取靠后的就会把数据行当表头——这正是上面 `100 60` 那个错的来源。
-    hdr_i, best = 0, _header_score(rows[0])
-    for i in range(1, min(header_rows + 1, len(rows))):
-        score = _header_score(rows[i])
-        if score > best:
-            hdr_i, best = i, score
-    header = list(rows[hdr_i])
-    last = ""
-    for i, c in enumerate(header):          # 行内向左填充
-        if c:
-            last = c
-        elif last:
-            header[i] = last
+    hdr_i = pick_header(rows, header_rows)
+    if hdr_i is not None:
+        header, data = list(rows[hdr_i]), rows[hdr_i + 1:]
+    elif inherited and any(inherited):
+        header, data = list(inherited), rows      # 续页：整页都是数据
+    else:
+        header, data = [], rows                   # 无可信表头：不猜，原样输出
+
+    carried = None
+    if header:
+        last = ""
+        for i, c in enumerate(header):            # 行内向左填充
+            if c:
+                last = c
+            elif last:
+                header[i] = last
+        carried = header
 
     out = []
-    for r in rows[hdr_i + 1:]:
+    for r in data:
         parts = []
-        for i, c in collapse_keep_col(r):   # ← 按**原列号**取表头，不按压缩后的位置
+        for i, c in collapse_keep_col(r):         # ← 按**原列号**取表头，不按压缩后的位置
             if not c:
                 continue
             h = header[i] if i < len(header) else ""
             parts.append(c if (i == 0 or not h or h == c) else f"{h} {c}")
         if parts:
             out.append(" | ".join(parts))
-    if not out:                              # 只有表头没有数据行时，至少把表头留住
+    if not out and header:                        # 只有表头没有数据行时，至少把表头留住
         out = [" | ".join(c for _i, c in collapse_keep_col(header) if c)]
-    return "\n".join(out)
+    return "\n".join(out), carried

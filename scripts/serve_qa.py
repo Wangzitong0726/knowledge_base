@@ -84,6 +84,18 @@ max-height:260px;overflow:auto;color:var(--ink2)}
 from llm import chat, load_env  # noqa: E402
 
 
+# 作答的 token 预算。**它是从思考链开始计的**，不是「答案能写多长」
+# （见 `llm.DEFAULT_MAX_TOKENS` 的说明）。
+# 实测：第 7 题（14 席全景题）思考链吃了 **9451 字**，默认 4000 不够，
+# `stop_reason=max_tokens`、正文为空 → 答案栏记「未点名 三星/海力士/美光」。
+# 那一栏当时测的**不是答案质量，是 token 预算够不够**——同一道题在几次运行里
+# ✅/❌ 反复横跳，就是这个原因，与被测对象无关。
+# 所以：给足预算，并且**截断后自动加预算重试一次**。
+# 一次 token 上限不该决定一道题的判定——否则这道题在测的是我们自己设的参数。
+ANSWER_MAX_TOKENS = 8000
+ANSWER_RETRY_MAX_TOKENS = 16000
+
+
 def call_model(env, question, hits):
     """把检索到的材料喂给模型。返回 (作答文本, 错误)。"""
     parts = []
@@ -91,7 +103,13 @@ def call_model(env, question, hits):
         prov = f"{m['company'] or m['source']} / {m['title'] or m['file']} / {m['section']} / p{m['page_start']}"
         parts.append(f"【材料 {i}】{prov}\n{m['text']}")
     user = "材料：\n\n" + "\n\n---\n\n".join(parts) + f"\n\n=====\n问题：{question}"
-    return chat(SYSTEM, user, env)
+    ans, err = chat(SYSTEM, user, env, max_tokens=ANSWER_MAX_TOKENS)
+    if ans is None and err and "max_tokens" in err:
+        # 只在**确实是被截断**时重试；其他错误（网络、鉴权）重试没有意义，直接上报。
+        ans, err = chat(SYSTEM, user, env, max_tokens=ANSWER_RETRY_MAX_TOKENS)
+        if err:
+            err = "（已按两倍预算重试一次）" + err
+    return ans, err
 
 
 def _ng(v, fmt=""):
@@ -113,6 +131,34 @@ def render_answer(text):
     return t
 
 
+_STATS = {}
+
+
+def _corpus_stats():
+    """页头那几个数**从 chunks.sqlite 现数**（含缓存），不写死。
+
+    写死的数一定会过期，而且过期了没人发现：旧页头写「136 份」，是把巨潮 92 +
+    深交所 44 两批字节相同的副本当成两批材料；后来去重让块数从 81,895 变成 67,210，
+    页头又过期一次。数一遍只要几十毫秒。
+    """
+    if _STATS:
+        return _STATS
+    import sqlite3
+    import retrieve
+    con = sqlite3.connect(f"file:{retrieve.DB}?mode=ro", uri=True)
+    try:
+        n_chunk = con.execute("SELECT COUNT(*) FROM chunks").fetchone()[0]
+        n_doc = con.execute("SELECT COUNT(DISTINCT doc_id) FROM chunks").fetchone()[0]
+        n_a = con.execute("SELECT COUNT(DISTINCT doc_id) FROM chunks "
+                          "WHERE source='cninfo'").fetchone()[0]
+        n_co = con.execute("SELECT COUNT(DISTINCT company) FROM chunks "
+                           "WHERE source='cninfo'").fetchone()[0]
+    finally:
+        con.close()
+    _STATS.update(n_chunk=n_chunk, n_doc=n_doc, n_a=n_a, n_co=n_co)
+    return _STATS
+
+
 def page(q="", hits=None, answer=None, err=None, note=""):
     hits = hits or []
     h = ['<!doctype html><html lang="zh-CN"><meta charset="utf-8">',
@@ -120,12 +166,14 @@ def page(q="", hits=None, answer=None, err=None, note=""):
          '<title>内存产业知识库 · 带出处问答</title>',
          f"<style>{ANSWER_CSS}</style><div class=wrap>",
          "<h1>内存产业知识库 · 带出处问答</h1>",
-         # ⚠️ 「136」= 巨潮 92 + 深交所 44，而深交所那 44 份与巨潮**字节相同**
-         # （见 crosscheck_sources.py：44 对 sha256 100% 相同）。136 是记录数，
-         # 去重后 A 股唯一文档是 92。旧版直接写 136，等于把重复当成了两批材料。
-         '<div class=sub>语料：A 股内存产业链年报/半年报 136 份（含 44 份交易所同源副本，去重 92）· '
-         'SEC 10-K · 三星/SK 海力士 IR · BIS 规则与 CFR 条文 · 共 81,895 块 ｜ '
-         '检索：BM25 + 向量（RRF 融合）</div>',
+         # ⚠️ 这些数**从库里现数**，不写死。旧版写死「136 份」，是把巨潮 92 + 深交所 44
+         # 两批字节相同的副本当成了两批材料；后来去重（81,340 → 67,210 块）又让写死的
+         # 「81,895 块」过期。写死的数字一定会过期，过期了没人会当场发现。
+         (lambda st: '<div class=sub>语料：A 股内存产业链公司 %d 家、定期报告 %d 份 · '
+                     'SEC 10-K · 三星/SK 海力士 IR · BIS 规则与 CFR 条文 · '
+                     '共 <b>%d</b> 份唯一文档 / <b>%s</b> 块 ｜ '
+                     '检索：BM25 + 向量（RRF 融合）</div>'
+                     % (st["n_co"], st["n_a"], st["n_doc"], format(st["n_chunk"], ",")))(_corpus_stats()),
          '<form method=get><input type=text name=q autofocus '
          f'placeholder="例如：3A090.c 的管制门槛是多少？" value="{html.escape(q)}">'
          "<button>提问</button></form>"]

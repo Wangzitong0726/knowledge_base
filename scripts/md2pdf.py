@@ -69,6 +69,8 @@ def main():
     ap.add_argument("md", help="输入 .md")
     ap.add_argument("-o", "--out", help="输出 .pdf（默认与输入同目录同名）")
     ap.add_argument("--keep-html", action="store_true", help="留下中间 HTML 供检查")
+    ap.add_argument("--html-only", action="store_true",
+                    help="只出 HTML、不调 Chrome（`save_static_snapshots.py` 拿它去截图）")
     a = ap.parse_args()
 
     for s in (sys.stdout, sys.stderr):
@@ -95,7 +97,7 @@ def main():
            f"<title>{_html.escape(title)}</title><style>{CSS}</style></head>"
            f"<body>{body}</body></html>")
 
-    if a.keep_html:
+    if a.keep_html or a.html_only:
         hp = md_path.with_suffix(".print.html")
         hp.write_text(doc, encoding="utf-8")
         print(f"  中间 HTML：{hp}")
@@ -105,6 +107,9 @@ def main():
         tf.write(doc)
         tf.close()
         hp = Path(tf.name)
+
+    if a.html_only:
+        return
 
     browser = find_browser()
     # ⚠️ Chrome 要的是 file:// URL，不是 Windows 路径；空格要转义。

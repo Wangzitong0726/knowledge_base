@@ -136,6 +136,77 @@ def detect_section(line):
 FOOTER_RE = re.compile(r"^\d{1,4}\s*/\s*\d{1,4}$")
 
 
+# ────────────────── 口径：期间 / 金额单位 / 报表名 ──────────────────
+#
+# 课件 p91：数值进了图谱只剩一个节点，「是谁的、哪个口径、哪一期都丢了，要回到那张表」。
+# 表头一修，期间就随着行文本进到块里了（`其中：利息费用 | 2026 年半年度 55,091,719.40`），
+# 所以这三项**从块文本本身读得出来**，不必再回阶段 2 的产物另挂一条链路——
+# 一条链路只有一份真相，两条迟早互相矛盾。
+#
+# ⚠️ **读不出来就留空，绝不补默认值**。财务表「一般是元」是常识不是事实：
+# 有的表头写「单位：万元」，有的写「单位：千元」，同一份年报里都能混着出现。
+# 猜出来的口径比没有口径坏得多——它会被当成事实往下传。
+PERIOD_RE = re.compile(
+    r"(?:19|20)\d{2}\s*年\s*(?:半年度|年度|第[一二三四五]季度)?"
+    r"|(?:19|20)\d{2}\s*[-/.]\s*\d{1,2}\s*(?:[-/.]\s*\d{1,2}\s*日?)?"
+    r"|(?:19|20)\d{2}\s*年\s*\d{1,2}\s*月(?:\s*\d{1,2}\s*日)?"
+    r"|FY\s?\d{2,4}|[1-4]Q\s?\d{2,4}")
+AMOUNT_UNIT_RE = re.compile(r"单位\s*[:：]\s*(?:人民币)?\s*([万亿千]?元)")
+# 报表名要**整行**才是它：正文里一句「见合并利润表」不是报表名。
+TABLE_TITLE_RE = re.compile(
+    r"^\s*(合并(?:资产负债表|利润表|现金流量表)"
+    r"|母公司(?:资产负债表|利润表|现金流量表)"
+    r"|(?:资产负债表|利润表|现金流量表))\s*$", re.M)
+MAX_CALIBER_ITEMS = 4          # 每项最多记这么多个，多了只说明这份块不属于某一张表
+
+
+def derive_caliber(text):
+    """从块文本里读出 (期间, 金额单位, 报表名)。读不出就是空串。
+
+    返回的期间按**首次出现顺序**排（不是字母序）——表里「本期」写在「上期」前面，
+    这个顺序本身就是口径的一部分（哪个是本报告期）。
+    """
+    def uniq(seq):
+        seen, out = set(), []
+        for x in seq:
+            x = _norm(x)
+            if x and x not in seen:
+                seen.add(x)
+                out.append(x)
+        return out
+
+    per = uniq(PERIOD_RE.findall(text))[:MAX_CALIBER_ITEMS]
+    ttl = uniq(TABLE_TITLE_RE.findall(text))[:MAX_CALIBER_ITEMS]
+    unit = uniq(AMOUNT_UNIT_RE.findall(text))
+    # 一份块里出现两种单位（比如正文 元、附表 万元），记「元／万元」——
+    # 不替读者挑一个，让他自己回原表看（p91 的原话就是「要回到那张表」）。
+    return "／".join(per), "／".join(unit[:2]), "／".join(ttl)
+
+
+# 报表名**前向携带**的页距上限。为什么需要携带：`合并资产负债表` 这一行常常
+# 独占一个很短的开头单元，被并进前一个块或自己成了不足 40 字的残块而被丢掉，
+# 于是真正装着这张表的那个块**自己一行标题都没有**——实测字面命中只有 373 块（0.5%）。
+# 携带只在**同一份文档**内、且**距标题不超过这么几页**时生效：再远就不是这张表了。
+# 这条规则是「读出来的」，不是「猜出来的」：携带值一律取自文档里真实出现过的标题行。
+TITLE_CARRY_PAGES = 3
+
+
+def carry_table_title(chunks):
+    """把报表名从它出现的那一块**往前带几页**。返回 (携带后的标题列表, 字面命中数)。"""
+    out, cur, cur_pg, literal = [], "", None, 0
+    for c in chunks:
+        if c["table_title"]:
+            cur, cur_pg = c["table_title"], c["page_start"]
+            literal += 1
+            out.append(cur)
+            continue
+        if cur and c["page_start"] - cur_pg <= TITLE_CARRY_PAGES:
+            out.append(cur)
+        else:
+            out.append("")
+    return out, literal
+
+
 def units_from_text(text):
     """把一页/一块的文字拆成**不可再分**的单元。
 
@@ -224,6 +295,10 @@ def chunk_doc(pages, source=""):
             "text": text, "page_start": p0, "page_end": p1,
             "section": units[st][2] if st < len(units) else "",
             "n_units": nu,
+            # 这里先记**字面命中**的报表名（块内真有一行标题）；
+            # 携带是下一道工序（carry_table_title），分两步是为了让「读出来的」
+            # 与「带过来的」各自可数、可核，不混成一个数。
+            "table_title": derive_caliber(text)[2],
         })
     return out, len(units)
 
@@ -263,6 +338,8 @@ def main():
     out_path.parent.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     stats, sizes, n_chunk, n_doc, n_unit, sec_hit, n_drop = [], [], 0, 0, 0, 0, 0
+    n_title_lit = 0                                          # 块内**字面**含报表名标题行的块数
+    n_title_tot = n_per = n_amt = 0                          # 口径三项各自的覆盖块数
     samples = []
     by_src = {}
 
@@ -282,6 +359,8 @@ def main():
                     ("doc_id", "source", "company", "title", "date", "url", "file", "unit")}
             chunks, n_u = chunk_doc(rows, meta.get("source") or "")
             chunks, dropped = drop_tiny(chunks)
+            titles, n_lit = carry_table_title(chunks)      # 报表名按页距前向携带
+            n_title_lit += n_lit
             n_drop += len(dropped)
             n_doc += 1
             n_unit += n_u
@@ -289,6 +368,7 @@ def main():
             s["docs"] += 1
 
             for seq, c in enumerate(chunks):
+                per, amt_unit, ttl = derive_caliber(c["text"])
                 rec = {
                     "chunk_id": f"{meta['doc_id']}::{seq:05d}",
                     "doc_id": meta["doc_id"], "source": meta["source"],
@@ -297,10 +377,16 @@ def main():
                     "unit": meta["unit"], "page_start": c["page_start"],
                     "page_end": c["page_end"], "section": c["section"],
                     "seq": seq, "chars": len(c["text"]), "n_units": c["n_units"],
+                    # 口径三项，读不出就是空串（见 derive_caliber 的注释）
+                    "period": per, "amount_unit": amt_unit,
+                    "table_title": titles[seq] if seq < len(titles) else "",
                     "text": c["text"],
                 }
                 fo.write(json.dumps(rec, ensure_ascii=False) + "\n")
                 n_chunk += 1
+                n_per += 1 if per else 0
+                n_amt += 1 if amt_unit else 0
+                n_title_tot += 1 if rec["table_title"] else 0
                 sizes.append(len(c["text"]))
                 s["chunks"] += 1
                 s["chars"] += len(c["text"])
@@ -330,6 +416,17 @@ def main():
          f"| {sizes[-1] if sizes else 0} | {over} | {tiny} |",
          "",
          f"- 带章节标签的块：**{sec_hit:,} / {n_chunk:,}**（{sec_hit/max(n_chunk,1):.1%}）",
+         f"- 带**报表名**标签的块：**{n_title_tot:,}**（其中块内字面命中标题行的 {n_title_lit:,}，"
+         f"其余按 ≤{TITLE_CARRY_PAGES} 页距携带而来）",
+         "",
+         "## 口径三项（期间 / 金额单位 / 报表名）\n",
+         "课件 p91：数值只剩一个节点时，「是谁的、哪个口径、哪一期」就丢了。表头一修，"
+         "期间随行文本进了块，于是这三项**从块文本读得出来**；读不出来的留空，不补默认值。\n",
+         "| 口径项 | 有值的块 | 占比 | 说明 |",
+         "|---|---:|---:|---|",
+         f"| 期间 period | {n_per:,} | {n_per/max(n_chunk,1):.1%} | 块文本里出现的报告期，按首次出现顺序，最多 4 个 |",
+         f"| 金额单位 amount_unit | {n_amt:,} | {n_amt/max(n_chunk,1):.1%} | 块文本里写着「单位：X元」才算；不按常识补 |",
+         f"| 报表名 table_title | {n_title_tot:,} | {n_title_tot/max(n_chunk,1):.1%} | 块内字面命中标题行，或 ≤{TITLE_CARRY_PAGES} 页内携带 |",
          ""]
     L.append("## 分来源\n")
     L.append("| 来源 | 文档 | 块 | 字 | 块均字 |")

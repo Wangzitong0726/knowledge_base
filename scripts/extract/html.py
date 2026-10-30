@@ -21,7 +21,7 @@ from pathlib import Path
 
 import lxml.html
 
-from .tablefmt import cell_text, flatten_table, table_ok
+from .tablefmt import cell_text, clean_rows, flatten_table, table_ok
 
 # 这些标签里的内容不要。
 # ⚠️ **不要**按「带冒号就删」来清 XBRL —— 内联 XBRL 里 `ix:nonfraction` 等标签
@@ -118,13 +118,16 @@ def extract_html(path, meta=None):
     items = []          # [(块号, kind, text)]
     buf = []
     block = 0
+    last_header = None  # 上一张表的可信表头，供**紧邻**的续表继承
+    since_table = 0     # 距上一张表之间已经输出过几个文本块（>0 就不是续表了）
 
     def flush():
-        nonlocal buf, block
+        nonlocal buf, block, since_table
         t = _norm(" ".join(buf))
         if t:
             block += 1
             items.append((block, "text", t))
+            since_table += 1
         buf = []
 
     # ⚠️ 表格的**后代节点要从正文流里整棵剪掉**。
@@ -141,10 +144,20 @@ def extract_html(path, meta=None):
             rows = _tbody_grid(el)
             ok, why = table_ok(rows)
             if ok:
-                flat = flatten_table(rows)
+                # 一张陈述表被拆进相邻的几个 `<table>` 时，续表自己没有表头。
+                # 只在**紧邻**（中间没夹任何文字块）且列数相同的情况下继承上一张表的表头，
+                # 与 `extract/pdf.py` 的跨页继承同一条道理，只是这里用「相邻」代替「页顶」。
+                inherited = None
+                if last_header and since_table == 0:
+                    if max((len(r) for r in clean_rows(rows)), default=0) == len(last_header):
+                        inherited = last_header
+                flat, carried = flatten_table(rows, inherited=inherited)
+                if carried:
+                    last_header = carried
                 if flat.strip():
                     block += 1
                     items.append((block, "table", flat))
+                since_table = 0
             else:
                 items.append((0, "drop", why))
             # `tail` 是**表外**的文字（紧跟表格之后），不属于表，别跟着一起剪掉
